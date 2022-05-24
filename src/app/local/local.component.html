@@ -1,0 +1,38 @@
+<div class="grid grid-cols-1 overflow-x-clip md:grid-cols-4 grid-rows-1   md:fixed ">
+       <div class="grid grid-rows-5  bg-white shadow-xl md:h-screen">
+        <div class="title mx-auto items-center ">
+            <h1 class=" animate__animated animate__zoomOut animate__infinite	infinite animate__delay-0.1s	0.5s animate__slow	1s">DGFAG</h1>
+          </div>
+
+          <div class="report-activity w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%]  bg-white rounded-r-full flex flex-row items-center animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow	1s">
+                <img src="../../assets/photo1.png" class="md:w-[60px] h-[60px]">
+                <h4 class="ml-3">Rapports d'Activités</h4>
+
+          </div>
+
+          <div class="report-CRGP w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow	1s">
+            <img src="../../assets/photo2.png" class="md:w-[60px] h-[60px]">
+            <h4 class="ml-3">Compte Rendu CRGB</h4>
+         </div>
+
+        <a><div class="report-formation w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center  animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow	1s" (click)="ShowLogin()" >
+            <img src="../../assets/photo3.png" class="md:w-[60px] h-[60px]">
+            <h4 class="ml-3">Rapports de Formation</h4>
+         </div></a>
+
+
+
+            <div class="update-SRB w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow 1s" (click)="ShowReport()">
+               <img src="../../assets/photo4.png" class="md:w-[60px] h-[60px]">
+               <h4 class="ml-3">Mise à Jour SRB</h4>
+            </div>
+
+
+
+       </div>
+
+       <div class="col-span-3 md:w-full md:h-full">
+           <app-report-list [style.display]="visibilityReport"></app-report-list>
+           <app-login [style.display]="visibilityTwo"></app-login>
+        </div>
+</div>

@@ -1,0 +1,107 @@
+<div class="grid grid-rows-2 gap-4 w-full h-full  pt-2 pr-2 pl-2 ">
+  <div class="bg-white md:flex md:justify-center items-center md:px-2">
+    <div class="container w-full bg-white shadow-2xl p-4 ">
+       <form #report="ngForm">
+
+         <div class="grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-2 ">
+             <div class=" w-full flex justify-around">
+              <div class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+              </div>
+              <select class="w-full h-[40px] text-gray-700 text-sm font-bold border-2 border-cyan-500 ">
+                <option disabled selected value="">Votre Région</option>
+                <option value="Alaotra-Mangoro">Alaotra Mangoro</option>
+                <option value="Amoron'i Mania">Amoron'i Mania</option>
+                <option value="Analanjirofo">Analanjirofo</option>
+                <option value="Androy">Androy</option>
+                <option value="Atsimo Andrefana">Atsimo Andrefana</option>
+                <option value="Atsimo Atsinanana">Atsimo Atsinanana</option>
+                <option value="Atsinanana">Atsinanana</option>
+                <option value="Betsiboka">Betsiboka</option>
+                <option value="saab">Boeny</option>
+                <option value="Bongolava">Bongolava</option>
+                <option value="Diana">Diana</option>
+                <option value="Fitovinany">Fitovinany</option>
+                <option value="Haute Matsiatra">Haute Matsiatra</option>
+                <option value="Ihorombe">Ihorombe</option>
+                <option value="Itasy">Itasy</option>
+                <option value="Melaky">Melaky</option>
+                <option value="Menabe">Menabe</option>
+                <option value="Sava">Sava</option>
+                <option value="Sofia">Sofia</option>
+                <option value="Vakinakaratra">Vakinakaratra</option>
+                <option value="Vatovavy">Vatovavy</option>
+              </select>
+             </div>
+
+             <div class="bg-white flex justify-around ">
+              <div class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
+                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+              </div>
+              <select class="w-full h-[40px] text-gray-700 text-sm font-bold border-2 border-cyan-500 " >
+                <option disabled selected value="volvo">Choisir si CIRFIN</option>
+                <option value="saab">Moramanga</option>
+                <option value="opel">Marolambo</option>
+                <option value="audi">Nosy Be</option>
+                <option value="audi">Sainte Marie</option>
+              </select>
+             </div>
+
+
+             <div class="bg-white flex justify-around">
+              <div class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
+                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+              </div>
+              <select class="w-full h-[40px] text-gray-700 text-sm font-bold border-2 border-cyan-500 ">
+                <option disabled selected value="">Choisir le Mois</option>
+                <option value="saab">Janvier</option>
+                <option value="opel">Février</option>
+                <option value="audi">Mars</option>
+                <option value="saab">Avril</option>
+                <option value="saab">Mai</option>
+                <option value="saab">Juin</option>
+                <option value="saab">Juillet</option>
+                <option value="saab">Août</option>
+                <option value="saab">Septembre</option>
+                <option value="saab">Octobre</option>
+                <option value="saab">Novembre</option>
+                <option value="saab">Décembre</option>
+              </select>
+             </div>
+          </div>
+          <div class="sm:grid grid-cols-1 mt-8 sm:gap-2 md:grid-rows-2 md:grid-cols-2 md:gap-2 ">
+                 <div> 
+                   <label for="produit" class="text-gray-700 text-sm font-bold ">Votre produit</label><br>
+                   <input type="text"  class="shadow appearance-none border w-full rounded h-8 px-2 " required>
+                </div>
+                <div>
+                  <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre réalisation</label>
+                  <input type="text" name="realisation" class="shadow appearance-none border w-full h-8 rounded px-2" required>
+                </div>
+                <div>
+                  <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre valeur cible</label>
+                  <input type="text" name="realisation" class="shadow appearance-none border w-full h-8 rounded px-2 " required>
+                </div>
+                <div>
+                  <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre  pourcentage de réalistation</label>
+                  <input type="text" name="realisation" class="shadow appearance-none border w-full h-8 rounded px-2 " required>
+                </div>
+          </div>
+        </form>
+       </div>
+  </div>
+
+  <div class="bg-white md:flex md:justify-center items-center  ">
+   <table class="w-full h-full bg-white shadow-xl m-2 sm:grid grid-cols-1">
+      <tr class="grid grid-rows-4  md:grid-cols-4">
+         <td class="border border-gray-300 md:flex md:justify-center items-center text-gray-700 text-sm font-bold "> PRODUIT</td>
+         <td class="border border-gray-300 md:flex md:justify-center items-center text-gray-700 text-sm font-bold "> REALISATION</td>
+         <td class="border border-gray-300 md:flex md:justify-center items-center text-gray-700 text-sm font-bold "> VALEUR CIBLE</td>
+         <td class="border border-gray-300 md:flex md:justify-center items-center text-gray-700 text-sm font-bold "> POURCENTAGE DE REALISATION</td>
+      </tr>
+    </table>
+  </div>
+
+
+</div>
+
