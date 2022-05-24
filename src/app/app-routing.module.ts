@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PdfBAAFComponent } from './pdf-baaf/pdf-baaf.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,10 @@ const routes: Routes = [
   },
   { path:'report-activity',
     component:ReportActivityComponent,
+  },
+  {
+    path:'pdf-BAAF',
+    component:PdfBAAFComponent
   }
 
 

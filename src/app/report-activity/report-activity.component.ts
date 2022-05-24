@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-report-activity',
   templateUrl: './report-activity.component.html',
@@ -11,5 +12,7 @@ export class ReportActivityComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+generatePdf(){}
 
 }

@@ -1,8 +1,7 @@
 <div class="grid grid-rows-2 gap-4 w-full h-full  pt-2 pr-2 pl-2 ">
   <div class="bg-white md:flex md:justify-center items-center md:px-2">
-    <div class="container w-full bg-white shadow-2xl p-4 ">
+    <div class="w-full bg-white shadow-2xl p-4 lg:w-full ">
        <form #report="ngForm">
-
          <div class="grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-2 ">
              <div class=" w-full flex justify-around">
               <div class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
@@ -40,10 +39,10 @@
               </div>
               <select class="w-full h-[40px] text-gray-700 text-sm font-bold border-2 border-cyan-500 " >
                 <option disabled selected value="volvo">Choisir si CIRFIN</option>
-                <option value="saab">Moramanga</option>
-                <option value="opel">Marolambo</option>
-                <option value="audi">Nosy Be</option>
-                <option value="audi">Sainte Marie</option>
+                <option value="Moramanga">Moramanga</option>
+                <option value="Marolambo">Marolambo</option>
+                <option value="Nosy Be">Nosy Be</option>
+                <option value="Sainte Marie">Sainte Marie</option>
               </select>
              </div>
 
@@ -54,23 +53,23 @@
               </div>
               <select class="w-full h-[40px] text-gray-700 text-sm font-bold border-2 border-cyan-500 ">
                 <option disabled selected value="">Choisir le Mois</option>
-                <option value="saab">Janvier</option>
-                <option value="opel">Février</option>
-                <option value="audi">Mars</option>
-                <option value="saab">Avril</option>
-                <option value="saab">Mai</option>
-                <option value="saab">Juin</option>
-                <option value="saab">Juillet</option>
-                <option value="saab">Août</option>
-                <option value="saab">Septembre</option>
-                <option value="saab">Octobre</option>
-                <option value="saab">Novembre</option>
-                <option value="saab">Décembre</option>
+                <option value="Janvier">Janvier</option>
+                <option value="Février">Février</option>
+                <option value="Mars">Mars</option>
+                <option value="Avril">Avril</option>
+                <option value="Mai">Mai</option>
+                <option value="Juin">Juin</option>
+                <option value="Juillet">Juillet</option>
+                <option value="Août">Août</option>
+                <option value="Septembr">Septembre</option>
+                <option value="Octobre">Octobre</option>
+                <option value="Novembre">Novembre</option>
+                <option value="Décembre">Décembre</option>
               </select>
              </div>
           </div>
           <div class="sm:grid grid-cols-1 mt-8 sm:gap-2 md:grid-rows-2 md:grid-cols-2 md:gap-2 ">
-                 <div> 
+                 <div>
                    <label for="produit" class="text-gray-700 text-sm font-bold ">Votre produit</label><br>
                    <input type="text"  class="shadow appearance-none border w-full rounded h-8 px-2 " required>
                 </div>
@@ -91,17 +90,19 @@
        </div>
   </div>
 
-  <div class="bg-white md:flex md:justify-center items-center  ">
+  <div class="bg-white md:flex">
    <table class="w-full h-full bg-white shadow-xl m-2 sm:grid grid-cols-1">
-      <tr class="grid grid-rows-4  md:grid-cols-4">
+      <tr class="grid grid-rows-4  md:grid-cols-5">
          <td class="border border-gray-300 md:flex md:justify-center items-center text-gray-700 text-sm font-bold "> PRODUIT</td>
          <td class="border border-gray-300 md:flex md:justify-center items-center text-gray-700 text-sm font-bold "> REALISATION</td>
          <td class="border border-gray-300 md:flex md:justify-center items-center text-gray-700 text-sm font-bold "> VALEUR CIBLE</td>
          <td class="border border-gray-300 md:flex md:justify-center items-center text-gray-700 text-sm font-bold "> POURCENTAGE DE REALISATION</td>
+         <td class="border border-gray-300 md:flex md:justify-center items-center text-gray-700 text-sm font-bold "> MODIFICATION</td>
       </tr>
+     
     </table>
-  </div>
-
+   </div>
+   <button class="w-36 h-10 bg-cyan-500 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold" (click)="generatePdf()">Génerer Pdf</button>
 
 </div>
 

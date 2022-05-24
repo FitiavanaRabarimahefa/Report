@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReportActivityComponent } from './report-activity/report-activity.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PdfBAAFComponent } from './pdf-baaf/pdf-baaf.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     LocalComponent,
     ReportListComponent,
     RegisterComponent,
-    ReportActivityComponent
+    ReportActivityComponent,
+    PdfBAAFComponent
   ],
   imports: [
     BrowserModule,
