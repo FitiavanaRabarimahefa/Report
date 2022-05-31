@@ -13,7 +13,7 @@ export class LocalComponent implements OnInit {
 
   ngOnInit(): void {
   }
-visibilityReport='none';
+visibilityReport='block';
 visibilityTwo='none';
 
 ShowReport(){

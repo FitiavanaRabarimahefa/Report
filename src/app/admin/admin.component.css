@@ -1,0 +1,9 @@
+
+.map path{
+  fill: #a4ced2;
+  stroke:#FFF;
+  stroke-width:1px;
+}
+.map  path:hover{
+  fill:maroon;
+}

@@ -1,3 +1,4 @@
+import { AdminComponent } from './admin/admin.component';
 import { ReportActivityComponent } from './report-activity/report-activity.component';
 import { ReportListComponent } from './report-list/report-list.component';
 import { LocalComponent } from './local/local.component';
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path:'pdf-BAAF',
     component:PdfBAAFComponent
+  },
+  {
+    path:'admin',
+    component:AdminComponent
   }
 
 

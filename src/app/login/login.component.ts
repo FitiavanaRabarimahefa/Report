@@ -2,66 +2,56 @@ import { AuthService } from './../authservice/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-
-interface VerificationUser{
-  IM:Number,
-  password:String
+interface VerificationUser {
+  IM: Number;
+  password: String;
 }
 
-
-
-const EMPTY_MODEL :VerificationUser = {
-   IM:0,
-   password:''
-}
+const EMPTY_MODEL: VerificationUser = {
+  IM: 0,
+  password: '',
+};
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  UserVerification:VerificationUser={...EMPTY_MODEL};
+  UserVerification: VerificationUser = { ...EMPTY_MODEL };
 
+  constructor(private ServiceLogin: AuthService, private route: Router) {}
 
+  ngOnInit(): void {}
 
-  constructor(private ServiceLogin:AuthService,
-              private route:Router
-    ) { }
+  succes = {};
+  authmessage = false;
+  delay = 6;
 
-  ngOnInit(): void {
-  }
+  Auth(UserVerification: VerificationUser) {
+    this.ServiceLogin.login(UserVerification).subscribe({
+      next: (res: any) => {
+        console.log(res.token);
+         this.succes=res;
+       console.log(this.succes);
+       if((this.succes!="Votre champ est vide") && (this.succes!="Ereur authentification Mot de passe invalide" )) {
+         const lien=['acceuil']
+         this.authmessage=true;
 
-succes={};
-authmessage=false;
-delay=6;
+         setInterval(() => {
+           this.delay -= 1;
+           if(this.delay == 0){
+             this.route.navigate(lien);
+             clearInterval();
+           }
 
-  Auth(UserVerification:VerificationUser){
-   this.ServiceLogin.login(UserVerification).subscribe(
-     res=>{
-          this.succes=res;
-          console.log(this.succes);
-          if((this.succes!="Votre champ est vide") && (this.succes!="Ereur authentification Mot de passe invalide" )) {
-            const lien=['acceuil']
-            this.authmessage=true;
-
-            setInterval(() => {
-              this.delay -= 1;
-              if(this.delay == 0){
-                this.route.navigate(lien);
-                clearInterval();
-              }
-
-            }, 2000);
-        }
-
-
-
-    },
-     err=>{
-         console.error('Login error', err.error.error);
+         }, 2000);
      }
-   )
-
-}
+      },
+      error: (err) => {
+        console.error('Login error', err.error.error);
+      },
+    });
+  }
+  
 }

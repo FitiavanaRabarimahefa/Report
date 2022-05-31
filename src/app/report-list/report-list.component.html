@@ -1,43 +1,14 @@
-<!--<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-1 ">-->
+  <ul class="grid grid-cols-2 sm:grid-cols-3 sm:gap-6 md:grid-cols-3 gap-6 p-2  ">
+             <a  [routerLink]="['/report-activity']" routerLinkActive="router-link-active" >
+              <li class="card card-1 bg-white rounded-[20px] shadow-md animate__animated animate__zoomIn">
+                <div class="h-48  flex flex-col justify-center items-center">
 
-    <!--<div class="grid grid-rows-5 bg-white shadow-xl md:h-full">
+                     <div class="card__icon flex items-center "><i class="fa fa-wrench " aria-hidden="true"></i></div>
+                     <h2 class="card__title text-white ">Logistiques</h2>
 
-          <div class="title mx-auto items-center ">
-            <h1 class=" animate__animated animate__zoomOut animate__infinite	infinite animate__delay-0.1s	0.5s animate__slow	1s">DGFAG</h1>
-          </div>
-
-          <div class="report-activity w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%]  bg-white rounded-r-full flex flex-row items-center animate__animated animate__slideInLeft animate__repeat-2 2 animate__delay-0.1s	0.5s animate__slow	1s">
-                <img src="../../assets/photo1.png" class="md:w-[60px] h-[60px]">
-                <h4 class="ml-3">Rapports d'Activités</h4>
-
-          </div>
-
-          <div class="report-CRGP w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center animate__animated animate__slideInLeft animate__repeat-2 2 animate__delay-0.1s	0.5s animate__slow	1s">
-            <img src="../../assets/photo2.png" class="md:w-[60px] h-[60px]">
-            <h4 class="ml-3">Compte Rendu CRGB</h4>
-         </div>
-
-         <div class="report-formation w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center  animate__animated animate__slideInLeft animate__repeat-2 2 animate__delay-0.1s	0.5s animate__slow	1s">
-            <img src="../../assets/photo3.png" class="md:w-[60px] h-[60px]">
-            <h4 class="ml-3">Rapports de Formation</h4>
-         </div>
-
-         <div class="update-SRB w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center animate__animated animate__slideInLeft animate__repeat-2 2 animate__delay-0.1s	0.5s animate__slow	1s">
-            <img src="../../assets/photo4.png" class="md:w-[60px] h-[60px]">
-            <h4 class="ml-3">Mise à Jour SRB</h4>
-        </div>
-    </div>-->
-
-    <!--<div class="col-span-3  md:h-full p-4"> -->
-          <ul class="grid grid-cols-2 sm:grid-cols-3 sm:gap-6 md:grid-cols-3 gap-6 p-2  ">
-               <li class="card card-1 bg-white rounded-[20px] shadow-md animate__animated animate__zoomIn">
-                   <div class="h-48  flex flex-col justify-center items-center">
-
-                        <div class="card__icon flex items-center "><i class="fa fa-wrench " aria-hidden="true"></i></div>
-                        <h2 class="card__title text-white ">Logistiques</h2>
-
-                   </div>
-                </li>
+                </div>
+             </li>  
+             </a>
 
                <li class="card card-2 bg-white rounded-[20px] shadow-md animate__animated animate__zoomIn">
                 <div class="h-48  flex flex-col justify-center items-center">
@@ -109,10 +80,6 @@
 
                </div>
                 </li>
+        </ul>
 
-
-
-          </ul>
-
-   <!--</div>-->
-<!--</div>-->
+          <router-outlet></router-outlet>

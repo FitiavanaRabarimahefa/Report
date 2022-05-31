@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-//pdfMake.vfs= pdfFonts.pdfMake.vfs;
 pdfMake.vfs=pdfFonts.pdfMake.vfs;
+
+
 
 @Component({
   selector: 'app-pdf-baaf',
@@ -16,6 +17,21 @@ export class PdfBAAFComponent implements OnInit {
   ngOnInit(): void {
   }
 
+ tab = [
+       {
+         "produit":"ciment",
+         "realisation":"maison",
+         "valeurCible":45,
+          "pourcentage":50
+      },
+
+      {
+        "produit":"brique",
+        "realisation":"mur",
+        "valeurCible":90,
+         "pourcentage":50
+     },
+  ]
   genererPdf(){
   const pdfDefinition:any={
        header:{ text: 'Réalisations du Bureau des Affaires Administratives et Financières', style: 'header'},
@@ -23,11 +39,13 @@ export class PdfBAAFComponent implements OnInit {
           {
             table: {
               widths: [100, '*', '*', 200],
-             
+
               body: [
-                [{text:'PRODUIT',alignment:'center'},{text:'REALISATION',alignment:'center'},{text:'VALEUR CIBLE',alignment:'center'},{text:'PORCENTAGE DE REALISATION',alignment:'center'}],
-               
-               
+                [{text:'PRODUIT',alignment:'center'},{text:'REALISATION',alignment:'center'},{text:'VALEUR CIBLE',alignment:'center'},{text:'POURCENTAGE DE REALISATION',alignment:'center'}],
+                ...this.tab.map(el =>{
+                  return  [{text:el.produit,alignment:'center'},{text:el.realisation,alignment:'center'},{text:el.valeurCible,alignment:'center'},{text:el.pourcentage,alignment:'center'}]
+                })
+
               ]
           },
            }
@@ -39,11 +57,11 @@ export class PdfBAAFComponent implements OnInit {
               fontSize:15,
               decoration:'underline'
             },
-           
+
          }
      }
-     
-    
+
+
      const pdf = pdfMake.createPdf(pdfDefinition);
      pdf.open();
   }
@@ -54,7 +72,7 @@ export class PdfBAAFComponent implements OnInit {
   {
        text : 'PRODUIT',
        style:'tableHeader'
-  } 
+  }
 ],
 [
   {
@@ -66,11 +84,11 @@ export class PdfBAAFComponent implements OnInit {
   {
        text : 'VALEUR CIBLE',
        style:'tableHeader'
-  } 
+  }
 ],
 [
 {
      text : 'POURCENTAGE DE REALISATION',
      style:'tableHeader'
-} 
+}
 ],*/

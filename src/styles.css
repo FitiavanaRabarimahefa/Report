@@ -4,3 +4,7 @@
 @import 'tailwindcss/utilities';
 @import "~font-awesome/css/font-awesome.css";
 @import "~animate.css/animate.min.css";
+
+button:disabled{
+  opacity: 0.5;
+}

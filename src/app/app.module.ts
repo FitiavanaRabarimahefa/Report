@@ -11,6 +11,7 @@ import { ReportActivityComponent } from './report-activity/report-activity.compo
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PdfBAAFComponent } from './pdf-baaf/pdf-baaf.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PdfBAAFComponent } from './pdf-baaf/pdf-baaf.component';
     ReportListComponent,
     RegisterComponent,
     ReportActivityComponent,
-    PdfBAAFComponent
+    PdfBAAFComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
