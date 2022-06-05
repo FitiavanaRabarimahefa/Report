@@ -35,7 +35,7 @@ const routes: Routes = [
 
     ]
   },
-  { path:'report-activity',
+  { path:'report-activity/:id',
     component:ReportActivityComponent,
   },
   {

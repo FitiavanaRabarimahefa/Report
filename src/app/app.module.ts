@@ -8,10 +8,11 @@ import { LocalComponent } from './local/local.component';
 import { ReportListComponent } from './report-list/report-list.component';
 import { RegisterComponent } from './register/register.component';
 import { ReportActivityComponent } from './report-activity/report-activity.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PdfBAAFComponent } from './pdf-baaf/pdf-baaf.component';
 import { AdminComponent } from './admin/admin.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AdminComponent } from './admin/admin.component';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    CarouselModule
+    CarouselModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

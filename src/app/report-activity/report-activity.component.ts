@@ -1,8 +1,18 @@
+import { SendjsonserviceService } from './../sendjsonservice/sendjsonservice.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceBAAFService } from './../serviceBAAF/service-baaf.service';
 import { JsonService } from './../jsonService/json.service';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import data from '../files/report.json';
+import { FormGroup, NgForm, NgModel } from '@angular/forms';
+
+
+interface editReport{
+  id:String,
+  produit:String,
+  realisation:String,
+  valeurCible:String,
+  pourcentageRealisation:String,
+}
 
 interface report{
   produit:String,
@@ -18,6 +28,14 @@ const EMPTY_MODEL:report={
   pourcentageRealisation:''
 }
 
+const EMPTY_MODEL_json:editReport={
+  id:'',
+  produit:'',
+  realisation:'',
+  valeurCible:'',
+  pourcentageRealisation:''
+}
+
 
 @Component({
   selector: 'app-report-activity',
@@ -26,20 +44,35 @@ const EMPTY_MODEL:report={
 })
 export class ReportActivityComponent implements OnInit {
 
-listReport:{produit:string,realisation:string,valeurCible:string,pourcentage:string}=data;
+  visibleAddList='block';
+  visibleEditList='none';
+
+
 
 addReport:report={...EMPTY_MODEL};
+editJsonReport:editReport={...EMPTY_MODEL_json};
+
+
 
   constructor(private addjsonReport:ServiceBAAFService,
-    private getServicejson:JsonService
+    private getServicejson:JsonService,
+    private router:Router,
+    private route:ActivatedRoute,
+    private editJsonService:SendjsonserviceService
 
     ) { }
     TableauReport:any=[];
+    Tmp:any=[];
+    id='';
+
+
   ngOnInit(): void {
+
       this.getServicejson.getData().subscribe({
         next:(res:any)=>{
-         console.log(res);
-         this.TableauReport.push(res);
+         console.log(JSON.parse(res));
+         this.TableauReport=JSON.parse(res);
+         this.Tmp=this.TableauReport.filter(x=>!!x);
 
         },
         error:(err)=>{
@@ -47,14 +80,6 @@ addReport:report={...EMPTY_MODEL};
         }
       })
   }
-
- // produit:string="";
-  //realisation:string="";
-  //valeurCible:string="";
- // pourcentageRealisation:string="";
-
-
-// TableauReport=[];
 selectedRegion:string='';
 selectedcirfin:string='';
 selectedMonth:string='';
@@ -77,17 +102,59 @@ monthValue(event:any){
 sendReport(addReport:report,reportForm:NgForm){
   this.addjsonReport.addReport(addReport).subscribe({
       next:(res:any)=>{
-      //this.TableauReport.push(res);
-        // console.log(this.TableauReport);
+        console.log(res);
+        if (res){
+          this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+          this.router.onSameUrlNavigation='reload';
+        }
          reportForm.reset();
+
       },
       error:(err)=>{
            console.log(err);
       }
   })
-  /*this.TableauReport.push(reportForm.value);
-  const jsonData=JSON.stringify(reportForm.value);
-  localStorage.setItem('listReport',jsonData);*/
-}
+};
+validateEditReport(reportForm:NgForm){
+  //console.log(reportForm.value);
 
+  this.visibleAddList="block";
+  this.visibleEditList="none";
+
+  this.route.paramMap.subscribe(params   => {
+    this.id = params.get('id');
+  });
+
+  this.editJsonReport.id=this.id;
+  this.editJsonReport.produit=reportForm.value.produit;
+  this.editJsonReport.realisation=reportForm.value.realisation;
+  this.editJsonReport.valeurCible=reportForm.value.valeurCible;
+  this.editJsonReport.pourcentageRealisation=reportForm.value.pourcentage;
+
+  this.editJsonService.editJson(this.editJsonReport).subscribe({
+    next:(res:any)=>{
+        reportForm.reset();
+        console.log(res);
+    },
+    error:(err)=>{
+      console.log(err);
+    }
+  })
+
+};
+
+editData(id,reportForm:NgForm){
+  this.visibleEditList='block';
+  this.visibleAddList='none';
+  reportForm.controls['produit'].setValue(this.TableauReport[id-1].produit);
+  reportForm.controls['realisation'].setValue(this.TableauReport[id-1].realisation);
+  reportForm.controls['valeurCible'].setValue(this.TableauReport[id-1].valeurCible);
+  reportForm.controls['pourcentage'].setValue(this.TableauReport[id-1].pourcentageRealisation);
+};
+deleteData(){
+    alert("deleteData");
+};
+sendData(){
+    alert("sendData")
+}
 }

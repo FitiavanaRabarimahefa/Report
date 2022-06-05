@@ -71,7 +71,7 @@
           <div class="sm:grid sm:grid-cols-1 mt-8 sm:gap-2 md:grid-rows-2 md:grid-cols-2 md:gap-2 ">
                  <div>
                    <label for="produit" class="text-gray-700 text-sm font-bold ">Votre produit</label><br>
-                   <input type="text" name="produit" class="shadow appearance-none border w-full rounded h-8 px-2 " required [(ngModel)]="addReport.produit">
+                   <input type="text" name="produit" class="shadow appearance-none border w-full rounded h-8 px-2 "  required [(ngModel)]="addReport.produit">
                 </div>
                 <div>
                   <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre réalisation</label>
@@ -83,38 +83,34 @@
                 </div>
                 <div>
                   <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre  pourcentage de réalistation</label>
-                  <input type="text" name="pourcentage" class="shadow appearance-none border w-full h-8 rounded px-2 " required  [(ngModel)]="addReport.pourcentageRealisation" >
+                  <input type="text" name="pourcentage" class="shadow appearance-none border w-full h-8 rounded px-2 " required  [(ngModel)]="addReport.pourcentageRealisation">
                 </div>
              </div>
-             <button class="w-36 h-10  float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2" (click)="sendReport(addReport,reportForm)">Ajouter aux listes</button>
+             <button class="w-36 h-10 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2" [style.display]="visibleAddList" (click)="sendReport(addReport,reportForm)">Ajouter aux listes</button>
+             <button class="w-36 h-10  float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2" [style.display]="visibleEditList" (click)="validateEditReport(reportForm)">Valider modification</button>
         </form>
        </div>
   </div>
 
-  <div class="bg-white md:h-full">
+  <div class="bg-white w-full h-[300px] overflow-y-scroll">
    <table class="table-auto w-full h-auto bg-white shadow-xl p-2 sm:grid grid-cols-1">
-      <tr class=" md:grid grid-cols-5 md:h-8">
-        <td class="border border-gray-300  items-center  text-gray-700 text-sm font-bold ">PRODUIT</td>
-        <td class="border border-gray-300  items-center text-gray-700 text-sm font-bold ">REALISATION</td>
-        <td class="border border-gray-300  items-center text-gray-700 text-sm font-bold ">VALEUR CIBLE</td>
-        <td class="border border-gray-300  items-center text-gray-700 text-sm font-bold ">POURCENTAGE DE REALISATION</td>
-        <td class="border border-gray-300  items-center text-gray-700 text-sm font-bold ">MODIFICATION</td>
+      <tr class=" md:grid grid-cols-6 md:h-10">
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">PRODUIT</td>
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">REALISATION</td>
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">VALEUR CIBLE</td>
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">POURCENTAGE DE REALISATION</td>
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">MODIFICATION</td>
       </tr>
-      <tr class=" md:grid grid-cols-5 md:h-8" *ngFor="let item of TableauReport">
-        <td class="border border-gray-300 items-center  text-gray-700 text-sm font-bold ">{{item.produit}}</td>
-        <td class="border border-gray-300 items-center text-gray-700 text-sm font-bold ">{{item.realisation}}</td>
-        <td class="border border-gray-300 items-center text-gray-700 text-sm font-bold ">{{item.valeurCible}}</td>
-        <td class="border border-gray-300 items-center text-gray-700 text-sm font-bold ">{{item.pourcentageRealisation}}</td>
-        <td class="border border-gray-300 items-center text-gray-700 text-sm font-bold ">modification</td>
-
-      </tr>
-
-
-
-
-    </table>
+       <tr class=" md:grid grid-cols-6 md:h-10" *ngFor="let item of Tmp">
+            <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold ">{{item.produit}}</td>
+            <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold ">{{item.realisation}}</td>
+            <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold ">{{item.valeurCible}}</td>
+            <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold col-span-2 ">{{item.pourcentageRealisation}}</td>
+            <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold ">
+              <i class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true" (click)="editData(item.id,reportForm)" [routerLink]="['/report-activity',item.id]"></i>
+              <i class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true" (click)="deleteData()"></i>
+              <i class="fa fa-paper-plane text-cyan-500 hover:scale-125" (click)="sendData()"></i>
+            </td>
+         </tr>
+</table>
    </div>
-   <button class="w-36 h-10 bg-cyan-500 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold">Génerer Pdf</button>
-
-</div>
-
