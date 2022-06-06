@@ -1,3 +1,5 @@
+import { SaveReportService } from './../saveReportService/save-report.service';
+import { DeleteJsonServiceService } from './../deleteJsonService/delete-json-service.service';
 import { SendjsonserviceService } from './../sendjsonservice/sendjsonservice.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceBAAFService } from './../serviceBAAF/service-baaf.service';
@@ -5,6 +7,17 @@ import { JsonService } from './../jsonService/json.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, NgForm, NgModel } from '@angular/forms';
 
+
+interface identification{
+  id:String,
+}
+
+interface Sendreport{
+  produit:String,
+  realisation:String,
+  valeurCible:String,
+  pourcentageRealisation:String,
+}
 
 interface editReport{
   id:String,
@@ -36,6 +49,18 @@ const EMPTY_MODEL_json:editReport={
   pourcentageRealisation:''
 }
 
+const EMPTY_MODEL_id:identification={
+  id:'',
+}
+
+const EMPTY_MODEL_SEND:Sendreport={
+  produit:'',
+  realisation:'',
+  valeurCible:'',
+  pourcentageRealisation:''
+}
+
+
 
 @Component({
   selector: 'app-report-activity',
@@ -50,7 +75,9 @@ export class ReportActivityComponent implements OnInit {
 
 
 addReport:report={...EMPTY_MODEL};
+sendJson:Sendreport={...EMPTY_MODEL_SEND};
 editJsonReport:editReport={...EMPTY_MODEL_json};
+identifiant:identification={...EMPTY_MODEL_id};
 
 
 
@@ -58,7 +85,9 @@ editJsonReport:editReport={...EMPTY_MODEL_json};
     private getServicejson:JsonService,
     private router:Router,
     private route:ActivatedRoute,
-    private editJsonService:SendjsonserviceService
+    private editJsonService:SendjsonserviceService,
+    private deleteJsonService:DeleteJsonServiceService,
+    private saveJsonService:SaveReportService,
 
     ) { }
     TableauReport:any=[];
@@ -123,6 +152,7 @@ validateEditReport(reportForm:NgForm){
 
   this.route.paramMap.subscribe(params   => {
     this.id = params.get('id');
+
   });
 
   this.editJsonReport.id=this.id;
@@ -151,10 +181,33 @@ editData(id,reportForm:NgForm){
   reportForm.controls['valeurCible'].setValue(this.TableauReport[id-1].valeurCible);
   reportForm.controls['pourcentage'].setValue(this.TableauReport[id-1].pourcentageRealisation);
 };
-deleteData(){
-    alert("deleteData");
+deleteData(id){
+   this.identifiant.id=id;
+  this.deleteJsonService.deleteJson(this.identifiant).subscribe({
+      next:(res:any)=>{
+            console.log(res);
+      },
+      error:(err:any)=>{
+        console.log(err);
+      }
+    })
 };
-sendData(){
-    alert("sendData")
+sendData(id){
+    this.sendJson.produit=this.TableauReport[id-1].produit;
+    this.sendJson.realisation=this.TableauReport[id-1].realisation;
+    this.sendJson.valeurCible=this.TableauReport[id-1].valeurCible;
+    this.sendJson.pourcentageRealisation=this.TableauReport[id-1].pourcentageRealisation;
+
+    console.log(this.sendJson)
+
+      this.saveJsonService.sendJson(this.sendJson).subscribe({
+        next:(res:any)=>{
+             console.log(res);
+        },
+        error:(err:any)=>{
+                console.log(err);
+
+        }
+      })
 }
 }
