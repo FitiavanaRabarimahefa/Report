@@ -107,9 +107,9 @@
             <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold ">{{item.valeurCible}}</td>
             <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold col-span-2 ">{{item.pourcentageRealisation}}</td>
             <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold ">
-              <i class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true" (click)="editData(item.id,reportForm)" [routerLink]="['/report-activity',item.id]"></i>
-              <i class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true" (click)="deleteData(item.id)"></i>
-              <i class="fa fa-paper-plane text-cyan-500 hover:scale-125" (click)="sendData(item.id)"></i>
+              <i role="button" class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true" (click)="editData(item.id,reportForm)" [routerLink]="['/report-activity',item.id]"></i>
+              <i role="button" class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true" (click)="deleteData(item.id)"></i>
+              <i role="button"  class="fa fa-paper-plane text-cyan-500 hover:scale-125" (click)="sendData(item.id)"></i>
             </td>
          </tr>
 </table>

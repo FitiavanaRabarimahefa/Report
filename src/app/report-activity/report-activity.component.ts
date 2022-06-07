@@ -6,6 +6,9 @@ import { ServiceBAAFService } from './../serviceBAAF/service-baaf.service';
 import { JsonService } from './../jsonService/json.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, NgForm, NgModel } from '@angular/forms';
+import socketIo from 'socket.io-client';
+
+//const socket=io('http://localhost:8080');
 
 
 interface identification{
@@ -97,7 +100,13 @@ identifiant:identification={...EMPTY_MODEL_id};
 
   ngOnInit(): void {
 
-      this.getServicejson.getData().subscribe({
+   const socket=socketIo('http://localhost:8080');
+   socket.on('data1',(data)=>{
+    this.TableauReport=JSON.parse(data);
+    this.Tmp=this.TableauReport.filter(x=>!!x);
+   });
+
+     /* this.getServicejson.getData().subscribe({
         next:(res:any)=>{
          console.log(JSON.parse(res));
          this.TableauReport=JSON.parse(res);
@@ -107,10 +116,11 @@ identifiant:identification={...EMPTY_MODEL_id};
         error:(err)=>{
             return err;
         }
-      })
+      })*/
+
   }
 selectedRegion:string='';
-selectedcirfin:string='';
+ selectedcirfin:string='';
 selectedMonth:string='';
 
 changeValue(event:any){
