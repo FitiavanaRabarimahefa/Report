@@ -8,7 +8,7 @@
 
    <div class="grid grid-cols-1 md:grid-cols-2 animate__animated animate__fadeInDown animate-faster">
           <div class="h-[98%] bg-white flex justify-center items-center"><img src="../../assets/3081783.jpg" alt="3081783" class="animate__animated animate__zoomIn animate__infinite infinite animate__delay-0.5s	0.5s animate__slow	2s" ></div>
-               <div class="h-[98%] w-[95%] p-10 flex  items-center bg-white">
+               <div class="h-[98%] w-auto  flex  items-center bg-white">
                       <form  #register="ngForm" class=" rounded px-8 pt-6 pb-8 m-5 w-96 shadow-2xl" >
                          <div class="mb-5">
                               <label class="block text-gray-700 text-sm font-bold " for="username">
@@ -16,21 +16,29 @@
                               </label>
                               <input class="shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="matricule" type="Number" placeholder="exemple:24532"  required  [(ngModel)]="newUser.IM" name="IM" #IM="ngModel">
                          </div>
-                         <div class="mb-5">
-                              <label class="block text-gray-700 text-sm font-bold " for="password">
-                                Votre mot de passe
+                         <div class="mb-5 ">
+                              <label class="block text-gray-700 text-sm font-bold " for="region">
+                                Votre Région
                               </label>
-                              <input class="shadow appearance-none border  rounded w-full py-2 px-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" required  minlength="6"    [(ngModel)]="newUser.Password" name="Password" #Pwd="ngModel">
+                              <input class="shadow appearance-none border  rounded w-full py-2 px-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="region" type="text" placeholder="" required     [(ngModel)]="newUser.Region" name="Region" #Region="ngModel">
                           </div>
-
-                            <div class="mb-5">
+                          <div class="mb-5">
+                            <label class="block text-gray-700 text-sm font-bold " for="email">
+                              Votre email
+                            </label>
+                            <input class="shadow appearance-none border  rounded w-full py-2 px-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="" required [(ngModel)]="newUser.Mail" name="Mail" #Mail="ngModel">
+                        </div>
+                          <div class="mb-5">
+                            <label class="block text-gray-700 text-sm font-bold " for="password">
+                              Votre Mot de Passe
+                            </label>
+                            <input class="shadow appearance-none border  rounded w-full py-2 px-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" required  minlength="6"    [(ngModel)]="newUser.Password" name="Password" #Pwd="ngModel">
+                        </div>
+                           <div class="mb-5">
                                  <button class="w-full h-10 bg-green-700 border rounded-r-lg rounded-l-lg text-white" type="submit"  (click)="validation(newUser)">Enregistrer</button>
                                 <a [routerLink]="['']" routerLinkActive="router-link-active"  ><button class="w-full h-10 bg-blue-600 border rounded-r-lg rounded-l-lg text-white mt-4" >Retour</button></a>
                             </div>
                    </form>
                </div>
-
-
-
-
+</div>
 </div>

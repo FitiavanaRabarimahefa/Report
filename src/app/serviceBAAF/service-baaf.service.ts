@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 const apiUrl = "http://localhost:8080/api/mensualReport";
 
 interface reportBaaf{
+    region:String,
+    cirfinValue:String,
+    mois:String,
     produit:String,
     realisation:String,
     valeurCible:String,

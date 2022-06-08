@@ -31,27 +31,28 @@ export class LoginComponent implements OnInit {
   Auth(UserVerification: VerificationUser) {
     this.ServiceLogin.login(UserVerification).subscribe({
       next: (res: any) => {
-        console.log(res.token);
-         this.succes=res;
-       console.log(this.succes);
-       if((this.succes!="Votre champ est vide") && (this.succes!="Ereur authentification Mot de passe invalide" )) {
-         const lien=['acceuil']
-         this.authmessage=true;
+         this.succes=res.success;
+         if(this.succes!=""){
+           localStorage.setItem("token",res.token);
+           localStorage.setItem("Region",res.Region);
+           const data=localStorage.getItem("Region");
+           //console.log(data);
+         }
 
-         setInterval(() => {
+         /*setInterval(() => {
            this.delay -= 1;
            if(this.delay == 0){
              this.route.navigate(lien);
              clearInterval();
            }
 
-         }, 2000);
-     }
+         }, 2000);*/
+
       },
       error: (err) => {
         console.error('Login error', err.error.error);
       },
     });
   }
-  
+
 }

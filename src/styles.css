@@ -8,3 +8,6 @@
 button:disabled{
   opacity: 0.5;
 }
+button:active{
+  transform: translateY(2px);
+}

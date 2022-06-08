@@ -6,6 +6,8 @@ const apiUrl = "http://localhost:8080/api/users/register";
 
 interface User {
   IM:Number,
+  Mail:String,
+  Region:String,
   Password:String
 }
 

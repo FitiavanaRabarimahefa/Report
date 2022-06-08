@@ -3,11 +3,15 @@ import { RegisterService } from '../registerservice/register.service';
 
 interface UserRegister{
   IM:Number,
+  Mail:String,
+  Region:String,
   Password:String
 }
 
 const EMPTY_Model:UserRegister={
   IM:0,
+  Mail:'',
+  Region:'',
   Password:'',
 }
 @Component({

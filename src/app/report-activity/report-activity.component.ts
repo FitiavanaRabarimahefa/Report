@@ -31,6 +31,9 @@ interface editReport{
 }
 
 interface report{
+  region:String,
+  cirfinValue:String,
+  mois:String,
   produit:String,
   realisation:String,
   valeurCible:String,
@@ -38,6 +41,9 @@ interface report{
 }
 
 const EMPTY_MODEL:report={
+  region:'',
+  cirfinValue:'',
+  mois:'',
   produit:'',
   realisation:'',
   valeurCible:'',
@@ -84,7 +90,8 @@ identifiant:identification={...EMPTY_MODEL_id};
 
 
 
-  constructor(private addjsonReport:ServiceBAAFService,
+  constructor(
+    private addjsonReport:ServiceBAAFService,
     private getServicejson:JsonService,
     private router:Router,
     private route:ActivatedRoute,
@@ -100,10 +107,18 @@ identifiant:identification={...EMPTY_MODEL_id};
 
   ngOnInit(): void {
 
+    const storage=localStorage.getItem("Region");
+    console.log(storage);
+
    const socket=socketIo('http://localhost:8080');
    socket.on('data1',(data)=>{
+    console.log(JSON.parse(data));
     this.TableauReport=JSON.parse(data);
-    this.Tmp=this.TableauReport.filter(x=>!!x);
+    console.log(this.TableauReport.length);
+    function myFunction(value) {
+      return value=!!value && value.region==storage;
+    }
+    this.Tmp=this.TableauReport.filter(myFunction);
    });
 
      /* this.getServicejson.getData().subscribe({
@@ -125,24 +140,26 @@ selectedMonth:string='';
 
 changeValue(event:any){
     this.selectedRegion=event.target.value;
+    this.addReport.region=this.selectedRegion;
     console.log(this.selectedRegion)
 }
 
 cirfinValue(event:any){
   this.selectedcirfin=event.target.value;
+  this.addReport.cirfinValue=this.selectedcirfin;
   console.log(this.selectedcirfin)
 }
 
 monthValue(event:any){
   this.selectedMonth=event.target.value;
+  this.addReport.mois=this.selectedMonth;
   console.log(this.selectedMonth)
 }
 
 sendReport(addReport:report,reportForm:NgForm){
-  this.addjsonReport.addReport(addReport).subscribe({
+this.addjsonReport.addReport(addReport).subscribe({
       next:(res:any)=>{
-        console.log(res);
-        if (res){
+       if (res){
           this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
           this.router.onSameUrlNavigation='reload';
         }
@@ -174,6 +191,7 @@ validateEditReport(reportForm:NgForm){
   this.editJsonService.editJson(this.editJsonReport).subscribe({
     next:(res:any)=>{
         reportForm.reset();
+        this.router.navigate(['report-activity/:id']);
         console.log(res);
     },
     error:(err)=>{
@@ -192,6 +210,8 @@ editData(id,reportForm:NgForm){
   reportForm.controls['pourcentage'].setValue(this.TableauReport[id-1].pourcentageRealisation);
 };
 deleteData(id){
+   //const tpmId= this.TableauReport.indexOf(this.TableauReport[id]);
+  //console.log(tpmId);
    this.identifiant.id=id;
   this.deleteJsonService.deleteJson(this.identifiant).subscribe({
       next:(res:any)=>{
