@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../registerservice/register.service';
+import {NgToastService} from 'ng-angular-popup'
 
 interface UserRegister{
   IM:Number,
@@ -26,7 +27,8 @@ export class RegisterComponent implements OnInit {
  success=''
 
   constructor(
-    private ServiceRegister:RegisterService
+    private ServiceRegister:RegisterService,
+    private toast:NgToastService
   ) { }
 
   ngOnInit(): void {
@@ -36,8 +38,14 @@ export class RegisterComponent implements OnInit {
     console.log(newUser);
     this.ServiceRegister.registration(newUser).subscribe(
       res =>{
-          this.success=res;
-         console.log('register success',this.success);
+          if(res.success){
+            this.toast.success({detail:"Authentification succes",summary:res.success,duration:2000});
+
+          }else if(res.error){
+            this.toast.error({detail:"Authentification succes",summary:res.error,duration:2000});
+
+          }
+         
       },
       err =>{
               console.log('Erreur enregistrement',err);

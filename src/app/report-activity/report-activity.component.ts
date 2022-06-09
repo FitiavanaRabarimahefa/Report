@@ -163,7 +163,7 @@ this.addjsonReport.addReport(addReport).subscribe({
           this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
           this.router.onSameUrlNavigation='reload';
         }
-         reportForm.reset();
+       reportForm.reset();
 
       },
       error:(err)=>{

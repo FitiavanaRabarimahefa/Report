@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PdfBAAFComponent } from './pdf-baaf/pdf-baaf.component';
 import { AdminComponent } from './admin/admin.component';
-import{NgToastModule} from 'ng-angular-popup';
+import {NgToastModule} from 'ng-angular-popup';
 
 @NgModule({
   declarations: [

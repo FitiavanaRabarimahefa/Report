@@ -1,6 +1,7 @@
 import { AuthService } from './../authservice/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {NgToastService} from 'ng-angular-popup';
 
 interface VerificationUser {
   IM: Number;
@@ -20,37 +21,45 @@ const EMPTY_MODEL: VerificationUser = {
 export class LoginComponent implements OnInit {
   UserVerification: VerificationUser = { ...EMPTY_MODEL };
 
-  constructor(private ServiceLogin: AuthService, private route: Router) {}
+  constructor(private ServiceLogin: AuthService, private route: Router,private toast:NgToastService) {}
 
   ngOnInit(): void {}
 
   succes = {};
   authmessage = false;
-  delay = 6;
+  delay =3;
 
   Auth(UserVerification: VerificationUser) {
     this.ServiceLogin.login(UserVerification).subscribe({
       next: (res: any) => {
+        console.log(res);
          this.succes=res.success;
-         if(this.succes!=""){
+         if(res.success){
            localStorage.setItem("token",res.token);
            localStorage.setItem("Region",res.Region);
-           const data=localStorage.getItem("Region");
-           //console.log(data);
-         }
-
-         /*setInterval(() => {
+           this.toast.success({detail:"Authentification succes",summary:res.success,duration:2000});
+          setInterval(() => {
            this.delay -= 1;
+           const lien=['acceuil'];
            if(this.delay == 0){
              this.route.navigate(lien);
              clearInterval();
            }
 
-         }, 2000);*/
+         },800);
+
+           //console.log(data);
+        }else if(res.error){
+          this.toast.error({detail:"Erreur d'authentification ",summary:res.error,duration:2000})
+
+         }
+
 
       },
       error: (err) => {
         console.error('Login error', err.error.error);
+        //this.toast.error({detail:"Erreur d'authentification ",summary:err.error,duration:2000})
+
       },
     });
   }
