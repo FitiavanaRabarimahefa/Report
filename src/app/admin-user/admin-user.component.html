@@ -1,0 +1,24 @@
+ <div class="grid justify-center items-center m-14 animate__animated  animate__fadeInDownBig">
+ <div class="sm:grid grid-cols-1 sm:divide-x  md:grid-cols-2    bg-white shadow-xl ">
+
+      <div class="bg-white p-2 grid-rows-3 justify-center items-center">
+        <div class="flex justify-center items-center">
+          <h2 class="block text-cyan-700 text-xl font-bold ">Voir la liste des rapports</h2>
+        </div>
+        <img src="../../assets/task-vectezy.jpg" width="450" class="animate__animated animate__zoomIn animate__infinite infinite animate__delay-0.5s	0.5s animate__slow	2s">
+        <div class="flex justify-center">
+           <button type="button" class="w-[80%] h-10 bg-green-700 border rounded-r-lg rounded-l-lg text-white">Accéder aux rapports</button>
+        </div>
+      </div>
+
+      <div class=" bg-white p-2 grid-rows-3 justify-center items-center">
+        <div class="flex justify-center items-center">
+          <h2 class="block text-cyan-700 text-xl font-bold ">Voir la liste des demandes d'adhésions</h2>
+        </div>
+          <img src="../../assets/addUser.jpg" width="450" class="animate__animated animate__zoomIn animate__infinite infinite animate__delay-0.5s	0.5s animate__slow	2s">
+          <div class="flex justify-center" [routerLink]="['/list-user']" routerLinkActive="router-link-active" >
+            <button type="button" class="w-[80%] h-10 bg-green-700 border rounded-r-lg rounded-l-lg text-white">Voire la liste </button>
+          </div>
+      </div>
+ </div>
+</div>

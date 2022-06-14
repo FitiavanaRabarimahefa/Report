@@ -46,12 +46,11 @@
               </select>
              </div>
 
-
              <div class="bg-white flex justify-around">
               <div class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
               </div>
-              <select class="w-full h-[40px] text-gray-700 text-sm font-bold border-2 border-cyan-500 "(change)="monthValue($event)">
+              <select class="w-full h-[40px] text-gray-700 text-sm font-bold border-2 border-cyan-500 " (change)="monthValue($event)">
                 <option disabled selected value="">Choisir le Mois</option>
                 <option value="Janvier">Janvier</option>
                 <option value="Février">Février</option>
@@ -114,3 +113,4 @@
          </tr>
 </table>
    </div>
+</div>

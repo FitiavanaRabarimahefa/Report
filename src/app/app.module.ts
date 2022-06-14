@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PdfBAAFComponent } from './pdf-baaf/pdf-baaf.component';
 import { AdminComponent } from './admin/admin.component';
 import {NgToastModule} from 'ng-angular-popup';
+import { AdminUserComponent } from './admin-user/admin-user.component';
+import { ListUserComponent } from './list-user/list-user.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import {NgToastModule} from 'ng-angular-popup';
     RegisterComponent,
     ReportActivityComponent,
     PdfBAAFComponent,
-    AdminComponent
+    AdminComponent,
+    AdminUserComponent,
+    ListUserComponent
   ],
   imports: [
     BrowserModule,

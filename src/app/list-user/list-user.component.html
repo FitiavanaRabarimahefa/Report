@@ -1,0 +1,28 @@
+<div class="grid grid-rows-3 gap-2 p-8 w-full h-full ">
+  <div class="flex justify-center">
+    <h1 class="block text-gray-700 text-sm font-bold">Liste des demandes d'adhésions</h1>
+  </div>
+  <div class="row-span-2 bg-white shadow-xl h-full">
+    <table class="table-auto w-full h-auto bg-white shadow-xl p-2 sm:grid grid-cols-1">
+      <tr class=" md:grid grid-cols-5 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">IM</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">Adresse
+          Email</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">Région de travail
+        </td>
+        <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold ">
+          Mofification</td>
+      </tr>
+      <tr class=" md:grid grid-cols-5 md:h-10" *ngFor="let item of tabList">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold">{{item.IM}}</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">{{item.Mail}}</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">{{item.Region}}</td>
+        <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold ">
+          <i role="button" class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true" (click)="delete(item.IM)"></i>
+          <i role="button" class="fa fa-check text-green-700 hover:scale-125" (click)="validate(item.Mail)"  ></i>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../registerservice/register.service';
 import {NgToastService} from 'ng-angular-popup'
+import { NgForm } from '@angular/forms';
 
 interface UserRegister{
   IM:Number,
@@ -34,18 +35,19 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
- validation(newUser:UserRegister):void{
+ validation(newUser:UserRegister,register:NgForm):void{
     console.log(newUser);
     this.ServiceRegister.registration(newUser).subscribe(
       res =>{
           if(res.success){
-            this.toast.success({detail:"Authentification succes",summary:res.success,duration:2000});
+            this.toast.success({ detail: "Authentification succes", summary: res.success, duration: 2000 });
+            register.reset();
 
           }else if(res.error){
             this.toast.error({detail:"Authentification succes",summary:res.error,duration:2000});
 
           }
-         
+
       },
       err =>{
               console.log('Erreur enregistrement',err);

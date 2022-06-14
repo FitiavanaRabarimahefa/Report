@@ -1,3 +1,4 @@
+import { ListUserComponent } from './list-user/list-user.component';
 import { AdminComponent } from './admin/admin.component';
 import { ReportActivityComponent } from './report-activity/report-activity.component';
 import { ReportListComponent } from './report-list/report-list.component';
@@ -7,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PdfBAAFComponent } from './pdf-baaf/pdf-baaf.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
 
 
 const routes: Routes = [
@@ -39,12 +41,20 @@ const routes: Routes = [
     component:ReportActivityComponent,
   },
   {
-    path:'pdf-BAAF',
+    path:'pdf-baaf',
     component:PdfBAAFComponent
   },
   {
     path:'admin',
     component:AdminComponent
+  },
+  {
+    path:'admin-user',
+    component:AdminUserComponent
+  },
+  {
+    path:'list-user',
+    component:ListUserComponent
   }
 
 

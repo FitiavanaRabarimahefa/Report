@@ -1,12 +1,6 @@
-<div *ngIf=" success !== '' " class=" container bg-green-300 mx-auto   flex justify-center items-center   animate__animated animate__fadeInDownBig">
-  <p class="items-center">
-      <i class="fa fa-check" style="font-size:35px;color:green"></i>
-       Succès de votre inscriptionvous pouvez vous authentifier maintenant)
-  </p>
-</div>
-<div id="contenu" class="h-96  md:p-16 md:bg-gradient-to-tl from-blue-600 to-green-600 flex justify-center items-center md:fixed">
 
-   <div class="grid grid-cols-1 md:grid-cols-2 animate__animated animate__fadeInDown animate-faster">
+<div id="contenu" class="h-96  md:p-16 md:bg-gradient-to-tl from-blue-600 to-green-600 flex justify-center items-center md:fixed">
+  <div class="grid grid-cols-1 md:grid-cols-2 animate__animated animate__fadeInDown animate-faster">
           <div class="h-[98%] bg-white flex justify-center items-center"><img src="../../assets/3081783.jpg" alt="3081783" class="animate__animated animate__zoomIn animate__infinite infinite animate__delay-0.5s	0.5s animate__slow	2s" ></div>
                <div class="h-[98%] w-auto  flex  items-center bg-white">
                       <form  #register="ngForm" class=" rounded px-8 pt-6 pb-8 m-5 w-96 shadow-2xl" >
@@ -35,8 +29,8 @@
                             <input class="shadow appearance-none border  rounded w-full py-2 px-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" required  minlength="6"    [(ngModel)]="newUser.Password" name="Password" #Pwd="ngModel">
                         </div>
                            <div class="mb-5">
-                                 <button class="w-full h-10 bg-green-700 border rounded-r-lg rounded-l-lg text-white" type="submit"  (click)="validation(newUser)">Enregistrer</button>
-                                <a [routerLink]="['']" routerLinkActive="router-link-active"  ><button class="w-full h-10 bg-blue-600 border rounded-r-lg rounded-l-lg text-white mt-4" >Retour</button></a>
+                                 <button class="w-full h-10 bg-green-700 border rounded-r-lg rounded-l-lg text-white" type="submit"  (click)="validation(newUser,register)">Enregistrer</button>
+                                <a [routerLink]="['']" routerLinkActive="router-link-active"  ><button class="w-full h-10 bg-blue-600 border rounded-r-lg rounded-l-lg text-white mt-4">Retour</button></a>
                             </div>
                    </form>
                </div>
