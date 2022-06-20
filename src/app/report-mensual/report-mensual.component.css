@@ -1,0 +1,14 @@
+h1 {
+   font-size:25px;
+   font-style: italic;
+
+}
+input{
+  outline-style: none;
+}
+textarea{
+  outline-style: none;
+}
+i {
+  font-size: 20px;
+}

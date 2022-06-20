@@ -15,6 +15,9 @@ import { AdminComponent } from './admin/admin.component';
 import {NgToastModule} from 'ng-angular-popup';
 import { AdminUserComponent } from './admin-user/admin-user.component';
 import { ListUserComponent } from './list-user/list-user.component';
+import { ViewReportComponent } from './view-report/view-report.component';
+import { PdfReportMensualComponent } from './pdf-report-mensual/pdf-report-mensual.component';
+import { ReportMensualComponent } from './report-mensual/report-mensual.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { ListUserComponent } from './list-user/list-user.component';
     PdfBAAFComponent,
     AdminComponent,
     AdminUserComponent,
-    ListUserComponent
+    ListUserComponent,
+    ViewReportComponent,
+    PdfReportMensualComponent,
+    ReportMensualComponent
   ],
   imports: [
     BrowserModule,

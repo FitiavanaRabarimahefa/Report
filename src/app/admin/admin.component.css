@@ -1,9 +1,9 @@
-
-.map path{
+.map path {
   fill: #a4ced2;
-  stroke:#FFF;
-  stroke-width:1px;
+  stroke: #FFF;
+  stroke-width: 1px;
 }
-.map  path:hover{
-  fill:maroon;
+
+.map path:active {
+transform: translateY(2px);
 }

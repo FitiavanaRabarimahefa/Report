@@ -9,6 +9,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PdfBAAFComponent } from './pdf-baaf/pdf-baaf.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
+import { ViewReportComponent } from './view-report/view-report.component';
+import { ReportMensualComponent } from './report-mensual/report-mensual.component';
 
 
 const routes: Routes = [
@@ -55,6 +57,14 @@ const routes: Routes = [
   {
     path:'list-user',
     component:ListUserComponent
+  },
+  {
+    path: 'view-report',
+    component:ViewReportComponent
+  },
+  {
+    path: 'report-mensual',
+    component:ReportMensualComponent
   }
 
 

@@ -16,6 +16,8 @@ interface identification{
 }
 
 interface Sendreport{
+  region:String,
+  nom_rapport:String,
   produit:String,
   realisation:String,
   valeurCible:String,
@@ -31,6 +33,7 @@ interface editReport{
 }
 
 interface report{
+  nameReport:String,
   region:String,
   cirfinValue:String,
   mois:String,
@@ -40,8 +43,9 @@ interface report{
   pourcentageRealisation:String,
 }
 
-const EMPTY_MODEL:report={
-  region:'',
+const EMPTY_MODEL: report = {
+  region: '',
+  nameReport:'',
   cirfinValue:'',
   mois:'',
   produit:'',
@@ -62,7 +66,9 @@ const EMPTY_MODEL_id:identification={
   id:'',
 }
 
-const EMPTY_MODEL_SEND:Sendreport={
+const EMPTY_MODEL_SEND: Sendreport = {
+  region:'',
+  nom_rapport:'',
   produit:'',
   realisation:'',
   valeurCible:'',
@@ -103,10 +109,11 @@ identifiant:identification={...EMPTY_MODEL_id};
     TableauReport:any=[];
     Tmp:any=[];
     id='';
+  nameReport = "Réalisations du Bureau des Affaires Administratives et Financières";
+
 
 
   ngOnInit(): void {
-
     const storage=localStorage.getItem("Region");
     console.log(storage);
 
@@ -120,20 +127,7 @@ identifiant:identification={...EMPTY_MODEL_id};
     }
     this.Tmp=this.TableauReport.filter(myFunction);
    });
-
-     /* this.getServicejson.getData().subscribe({
-        next:(res:any)=>{
-         console.log(JSON.parse(res));
-         this.TableauReport=JSON.parse(res);
-         this.Tmp=this.TableauReport.filter(x=>!!x);
-
-        },
-        error:(err)=>{
-            return err;
-        }
-      })*/
-
-  }
+}
 selectedRegion:string='';
  selectedcirfin:string='';
 selectedMonth:string='';
@@ -156,7 +150,8 @@ monthValue(event:any){
   console.log(this.selectedMonth)
 }
 
-sendReport(addReport:report,reportForm:NgForm){
+  sendReport(addReport: report, reportForm: NgForm) {
+ this.addReport.nameReport = this.nameReport;
 this.addjsonReport.addReport(addReport).subscribe({
       next:(res:any)=>{
        if (res){
@@ -222,7 +217,9 @@ deleteData(id){
       }
     })
 };
-sendData(id){
+  sendData(id) {
+    this.sendJson.nom_rapport = this.nameReport;
+    this.sendJson.region=this.TableauReport[id-1].region,
     this.sendJson.produit=this.TableauReport[id-1].produit;
     this.sendJson.realisation=this.TableauReport[id-1].realisation;
     this.sendJson.valeurCible=this.TableauReport[id-1].valeurCible;
