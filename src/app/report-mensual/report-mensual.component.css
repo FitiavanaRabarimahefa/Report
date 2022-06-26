@@ -12,3 +12,6 @@ textarea{
 i {
   font-size: 20px;
 }
+i:active {
+  transform: translateY(2px);
+}

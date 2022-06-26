@@ -16,7 +16,10 @@ interface identification{
 }
 
 interface Sendreport{
-  region:String,
+  region: String,
+  numero: String,
+  mois:String,
+  cirfinValue:String,
   nom_rapport:String,
   produit:String,
   realisation:String,
@@ -33,7 +36,8 @@ interface editReport{
 }
 
 interface report{
-  nameReport:String,
+  nameReport: String,
+  numero:String,
   region:String,
   cirfinValue:String,
   mois:String,
@@ -45,6 +49,7 @@ interface report{
 
 const EMPTY_MODEL: report = {
   region: '',
+  numero:'',
   nameReport:'',
   cirfinValue:'',
   mois:'',
@@ -67,7 +72,10 @@ const EMPTY_MODEL_id:identification={
 }
 
 const EMPTY_MODEL_SEND: Sendreport = {
-  region:'',
+  region: '',
+  numero: '',
+  mois:'',
+  cirfinValue:'',
   nom_rapport:'',
   produit:'',
   realisation:'',
@@ -105,7 +113,10 @@ identifiant:identification={...EMPTY_MODEL_id};
     private deleteJsonService:DeleteJsonServiceService,
     private saveJsonService:SaveReportService,
 
-    ) { }
+  ) {
+    const storageRegion = localStorage.getItem("Region");
+    this.addReport.region = storageRegion;
+     }
     TableauReport:any=[];
     Tmp:any=[];
     id='';
@@ -128,15 +139,15 @@ identifiant:identification={...EMPTY_MODEL_id};
     this.Tmp=this.TableauReport.filter(myFunction);
    });
 }
-selectedRegion:string='';
+//selectedRegion:string='';
  selectedcirfin:string='';
 selectedMonth:string='';
 
-changeValue(event:any){
-    this.selectedRegion=event.target.value;
-    this.addReport.region=this.selectedRegion;
-    console.log(this.selectedRegion)
-}
+// changeValue(event:any){
+//     this.selectedRegion=event.target.value;
+//     this.addReport.region=this.selectedRegion;
+//     console.log(this.selectedRegion)
+// }
 
 cirfinValue(event:any){
   this.selectedcirfin=event.target.value;
@@ -219,6 +230,9 @@ deleteData(id){
 };
   sendData(id) {
     this.sendJson.nom_rapport = this.nameReport;
+    this.sendJson.numero = this.TableauReport[id-1].numero;
+    this.sendJson.mois = this.TableauReport[id-1].mois;
+    this.sendJson.cirfinValue = this.TableauReport[id-1].cirfin;
     this.sendJson.region=this.TableauReport[id-1].region,
     this.sendJson.produit=this.TableauReport[id-1].produit;
     this.sendJson.realisation=this.TableauReport[id-1].realisation;

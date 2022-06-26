@@ -18,6 +18,12 @@ import { ListUserComponent } from './list-user/list-user.component';
 import { ViewReportComponent } from './view-report/view-report.component';
 import { PdfReportMensualComponent } from './pdf-report-mensual/pdf-report-mensual.component';
 import { ReportMensualComponent } from './report-mensual/report-mensual.component';
+import { ReportActivityAllListComponent } from './report-activity-all-list/report-activity-all-list.component';
+import { AdminDashboardReportComponent } from './admin-dashboard-report/admin-dashboard-report.component';
+import { AdminReportListComponent } from './admin-report-list/admin-report-list.component';
+import { AdminReportActivityAllListComponent } from './admin-report-activity-all-list/admin-report-activity-all-list.component';
+import { CRGPComponent } from './crgp/crgp.component';
+import { AdminFaitMarquantComponent } from './admin-fait-marquant/admin-fait-marquant.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +39,13 @@ import { ReportMensualComponent } from './report-mensual/report-mensual.componen
     ListUserComponent,
     ViewReportComponent,
     PdfReportMensualComponent,
-    ReportMensualComponent
+    ReportMensualComponent,
+    ReportActivityAllListComponent,
+    AdminDashboardReportComponent,
+    AdminReportListComponent,
+    AdminReportActivityAllListComponent,
+    CRGPComponent,
+    AdminFaitMarquantComponent
   ],
   imports: [
     BrowserModule,

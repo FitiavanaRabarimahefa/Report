@@ -11,6 +11,10 @@ import { PdfBAAFComponent } from './pdf-baaf/pdf-baaf.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
 import { ViewReportComponent } from './view-report/view-report.component';
 import { ReportMensualComponent } from './report-mensual/report-mensual.component';
+import { ReportActivityAllListComponent } from './report-activity-all-list/report-activity-all-list.component';
+import { AdminDashboardReportComponent } from './admin-dashboard-report/admin-dashboard-report.component';
+import { CRGPComponent } from './crgp/crgp.component';
+import { AdminFaitMarquantComponent } from './admin-fait-marquant/admin-fait-marquant.component';
 
 
 const routes: Routes = [
@@ -39,6 +43,7 @@ const routes: Routes = [
 
     ]
   },
+
   { path:'report-activity/:id',
     component:ReportActivityComponent,
   },
@@ -47,7 +52,7 @@ const routes: Routes = [
     component:PdfBAAFComponent
   },
   {
-    path:'admin',
+    path:'admin-report-mensual',
     component:AdminComponent
   },
   {
@@ -63,8 +68,24 @@ const routes: Routes = [
     component:ViewReportComponent
   },
   {
-    path: 'report-mensual',
+    path: 'report-mensual/:id',
     component:ReportMensualComponent
+  },
+  {
+    path: 'report-activity-list',
+    component:ReportActivityAllListComponent
+  },
+  {
+    path: 'admin-dashboard',
+    component:AdminDashboardReportComponent
+  },
+  {
+      path: 'CRGP',
+      component:CRGPComponent
+  },
+  {
+    path: 'admin-fait',
+    component:AdminFaitMarquantComponent
   }
 
 

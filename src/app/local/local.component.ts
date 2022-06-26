@@ -13,14 +13,27 @@ export class LocalComponent implements OnInit {
 
   ngOnInit(): void {
   }
-visibilityReport='block';
+visibilityReport='none';
 visibilityTwo='none';
+visibilityAllReport = 'block';
 
 ShowReport(){
-  this.visibilityReport='block';
+  this.visibilityReport = 'block';
+  this.visibilityAllReport = 'none';
+  this.visibilityTwo='none'
 }
 ShowLogin(){
   this.visibilityTwo='block';
-  this.visibilityReport='none'
+  this.visibilityReport = 'none'
+  this.visibilityAllReport = 'none';
 }
+
+  ShowAllReport() {
+    this.visibilityAllReport = 'block';
+    this.visibilityTwo = 'none';
+    this.visibilityReport = 'none';
+}
+
+
+
 }

@@ -1,4 +1,4 @@
-<div class="grid grid-rows-2 gap-4 w-full h-full  pt- pr-2 pl-2 fixed">
+<div class="grid grid-rows-2 gap-4 w-full h-full  pt- pr-2 pl-2 md:fixed ">
 <div class="bg-white h-full md:flex md:justify-center items-center md:px-2">
     <div class="w-full bg-white shadow-2xl p-4 lg:w-full ">
         <div class="flex justify-center items-center">
@@ -9,7 +9,7 @@
           <div class=" w-full flex justify-around">
             <div
               class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
             </div>
              <input type="text" name="numero" placeholder="Numéro de service" class="w-full h-[40px]  placeholder:text-gray-700 text-sm font-bold border-2 border-cyan-500 shadow appearance-none" [(ngModel)]="addToJson.numero" >
           </div>
@@ -59,13 +59,11 @@
           </div>
           <div>
             <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre observations particulières</label>
-            <textarea class="w-full h-[100px] shadow appearance-none border rounded px-2 overflow-y-scroll" name="observation" required [(ngModel)]="addToJson.observations"></textarea>
+            <textarea class="w-full h-[100px] shadow appearance-none border rounded px-2 overflow-y-scroll" name="observations" required [(ngModel)]="addToJson.observations"></textarea>
           </div>
         </div>
-        <button
-          class="w-36 h-10 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2" (click)="AddJson(addToJson,reportForm)">Ajouter aux listes</button>
-        <button
-          class="w-36 h-10  float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2">Valider modification</button>
+        <button class="w-36 h-10 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2" [style.display]="visibleAddList" (click)="AddJson(addToJson,reportForm)">Ajouter aux listes</button>
+        <button class="w-36 h-10  float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2"  [style.display]="visibleEditList" (click)="ValidateModification(reportForm)">Valider modification</button>
       </form>
     </div>
   </div>
@@ -78,14 +76,16 @@
         <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">MODIFICATION</td>
       </tr>
       <tr class=" md:grid grid-cols-5 md:h-auto " *ngFor="let item of Tmp">
-        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold col-span-2 overflow-y-scroll h-auto">{{item.faits}}</td>
-        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold col-span-2 overflow-y-scroll h-auto ">{{item.observations}}</td>
+        <td class="border border-gray-300 md: text-gray-700 text-sm font-bold col-span-2 overflow-y-scroll   h-32">{{item.faits}}</td>
+        <td class="border border-gray-300 md: text-gray-700 text-sm font-bold col-span-2 overflow-y-scroll  h-32 ">{{item.observations}}</td>
          <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold ">
-          <i role="button" class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true" (click)="modification()"></i>
+          <i role="button" class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true" (click)="modification(item.id,reportForm)" [routerLink]="['/report-mensual',item.id]"></i>
           <i role="button" class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true" (click)="deleteJson(item.id)"></i>
-          <i role="button" class="fa fa-paper-plane text-cyan-500 hover:scale-125" (click)="sendToMongo()"></i>
+          <i role="button" class="fa fa-paper-plane text-cyan-500 hover:scale-125" (click)="sendToMongo(item.id)"></i>
         </td>
       </tr>
     </table>
   </div>
 </div>
+
+

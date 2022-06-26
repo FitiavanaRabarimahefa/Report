@@ -4,7 +4,7 @@
             <h1 class=" animate__animated animate__zoomOut animate__infinite	infinite animate__delay-0.1s	0.5s animate__slow	1s">DGFAG</h1>
           </div>
 
-          <div role="button" class="report-activity w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%]  bg-white rounded-r-full flex flex-row items-center animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow	1s">
+          <div role="button" class="report-activity w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%]  bg-white rounded-r-full flex flex-row items-center animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow	1s" (click)="ShowAllReport()">
                 <img src="../../assets/photo1.png" class="md:w-[60px] h-[60px]">
                 <h4 class="ml-3">Rapports d'Activités</h4>
 
@@ -34,5 +34,6 @@
        <div class="col-span-3 md:w-full md:h-full">
            <app-report-list [style.display]="visibilityReport"></app-report-list>
            <app-login [style.display]="visibilityTwo"></app-login>
+           <app-report-activity-all-list [style.display]="visibilityAllReport"></app-report-activity-all-list>
         </div>
 </div>
