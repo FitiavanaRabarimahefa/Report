@@ -134,7 +134,7 @@ identifiant:identification={...EMPTY_MODEL_id};
     this.TableauReport=JSON.parse(data);
     console.log(this.TableauReport.length);
     function myFunction(value) {
-      return value=!!value && value.region==storage;
+      return value=!!value && value.region==storage && value.name_Report=="Réalisations du Bureau des Affaires Administratives et Financières";
     }
     this.Tmp=this.TableauReport.filter(myFunction);
    });

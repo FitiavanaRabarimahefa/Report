@@ -24,6 +24,10 @@ import { AdminReportListComponent } from './admin-report-list/admin-report-list.
 import { AdminReportActivityAllListComponent } from './admin-report-activity-all-list/admin-report-activity-all-list.component';
 import { CRGPComponent } from './crgp/crgp.component';
 import { AdminFaitMarquantComponent } from './admin-fait-marquant/admin-fait-marquant.component';
+import { PatrimoineEtatComponent } from './patrimoine-etat/patrimoine-etat.component';
+import { ExecutionBudgetaireComponent } from './execution-budgetaire/execution-budgetaire.component';
+import { CentreInformatiqueComponent } from './centre-informatique/centre-informatique.component';
+import { FinanceLocalesComponent } from './finance-locales/finance-locales.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,11 @@ import { AdminFaitMarquantComponent } from './admin-fait-marquant/admin-fait-mar
     AdminReportListComponent,
     AdminReportActivityAllListComponent,
     CRGPComponent,
-    AdminFaitMarquantComponent
+    AdminFaitMarquantComponent,
+    PatrimoineEtatComponent,
+    ExecutionBudgetaireComponent,
+    CentreInformatiqueComponent,
+    FinanceLocalesComponent
   ],
   imports: [
     BrowserModule,

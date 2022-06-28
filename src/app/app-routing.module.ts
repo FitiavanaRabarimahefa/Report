@@ -15,6 +15,10 @@ import { ReportActivityAllListComponent } from './report-activity-all-list/repor
 import { AdminDashboardReportComponent } from './admin-dashboard-report/admin-dashboard-report.component';
 import { CRGPComponent } from './crgp/crgp.component';
 import { AdminFaitMarquantComponent } from './admin-fait-marquant/admin-fait-marquant.component';
+import { PatrimoineEtatComponent } from './patrimoine-etat/patrimoine-etat.component';
+import { ExecutionBudgetaireComponent } from './execution-budgetaire/execution-budgetaire.component';
+import { CentreInformatiqueComponent } from './centre-informatique/centre-informatique.component';
+import { FinanceLocalesComponent } from './finance-locales/finance-locales.component';
 
 
 const routes: Routes = [
@@ -86,10 +90,23 @@ const routes: Routes = [
   {
     path: 'admin-fait',
     component:AdminFaitMarquantComponent
-  }
-
-
-
+  },
+  {
+    path: 'patrimoine-etat',
+    component:PatrimoineEtatComponent
+  },
+{
+  path: 'execution-budgetaire',
+  component:ExecutionBudgetaireComponent
+},
+{
+  path: 'centre-informatique',
+  component:CentreInformatiqueComponent
+  },
+  {
+    path: 'finance-locale',
+    component:FinanceLocalesComponent
+}
 ];
 
 @NgModule({

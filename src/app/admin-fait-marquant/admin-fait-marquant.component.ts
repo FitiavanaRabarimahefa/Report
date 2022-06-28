@@ -49,47 +49,1869 @@ export class AdminFaitMarquantComponent implements OnInit {
     })
   }
 
-  getVF() { }
+  getVF() {
+     function myFunction(value) {
+         return value.region=="Vatovavy-Fitovinany"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
 
-  getVakinankaratra() { }
+      };
+      return response;
+    }, [])
 
-  getSofia() { }
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
 
-  getSava() { }
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
 
-  getMenabe() { }
+            ]
+          },
 
-  getMelaky() { }
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
 
-  getItasy() { }
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
 
-  getIhorombe() { }
 
-  getHM() { }
+  getVakinankaratra() {
+     function myFunction(value) {
+         return value.region=="Vakinankaratra"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
 
-  getDiana() { }
+      };
+      return response;
+    }, [])
 
-  getBongolava() { }
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
 
-  getBoeny() { }
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
 
-  getBetsiboka() { }
+            ]
+          },
 
-  getAntsinanana() { }
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
 
-  getAntsimoAntsinanana() { }
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
 
-  getAntsimoAndrefana() { }
 
-  getAnosy() { }
+  getSofia() {
 
-  getAndroy() { }
+     function myFunction(value) {
+         return value.region=="Sofia"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
 
-  getAnalanjirofo() { }
+      };
+      return response;
+    }, [])
 
-  getAnalamanga() { }
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getSava() {
+     function myFunction(value) {
+         return value.region=="Sava"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getMenabe() {
+     function myFunction(value) {
+         return value.region=="Menabe"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getMelaky() {
+     function myFunction(value) {
+         return value.region=="Melaky"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getItasy() {
+     function myFunction(value) {
+         return value.region=="Itasy"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getIhorombe() {
+     function myFunction(value) {
+         return value.region=="Ihorombe"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getHM() {
+     function myFunction(value) {
+         return value.region=="Haute Matsiatra"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getDiana() {
+     function myFunction(value) {
+         return value.region=="Diana"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getBongolava() {
+     function myFunction(value) {
+         return value.region=="Bongolava"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getBoeny() {
+     function myFunction(value) {
+         return value.region=="Boeny"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getBetsiboka() {
+     function myFunction(value) {
+         return value.region=="Betsiboka"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getAntsinanana() {
+     function myFunction(value) {
+         return value.region=="Antsinanana"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getAntsimoAntsinanana() {
+     function myFunction(value) {
+         return value.region=="Antsimo-Antsinanana"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getAntsimoAndrefana() {
+     function myFunction(value) {
+         return value.region=="Antsimo-Andrefana"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+   }
+
+
+  getAnosy() {
+     function myFunction(value) {
+         return value.region=="Anosy"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getAndroy() {
+     function myFunction(value) {
+         return value.region=="Androy"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
+
+  getAnalanjirofo() {
+     function myFunction(value) {
+         return value.region=="Analanjirofo"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+   }
+
+
+  getAnalamanga() {
+     function myFunction(value) {
+         return value.region=="Analamanga"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
+
 
   getAmoroniMania() {
+
     function myFunction(value) {
          return value.region=="Amoron i Mania"
      }
@@ -180,7 +2002,98 @@ export class AdminFaitMarquantComponent implements OnInit {
     const pdf = pdfMake.createPdf(pdfDefinition);
     pdf.open();
   }
+  
 
-  getAlaotraMangoro(){}
+  getAlaotraMangoro() {
+     function myFunction(value) {
+         return value.region=="Alaotra-Mangoro"
+     }
+    this.tmp = this.tabReportMongo.filter(myFunction);
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({faits: [elem.faits],observations:[elem.observations], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
+      else {
+        response[index].faits.push(elem.faits);
+        response[index].observations.push(elem.observations);
+
+      };
+      return response;
+    }, [])
+
+    this.newTab = filtred;
+    const d = new Date(this.newTab[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+                {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+      ...this.newTab.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+       }),
+        {
+          text: 'RAPPORT D’ACTIVITES MENSUEL ', alignment: 'center', margin: [5, 30, 10, 20],
+          style: 'title_rapport'
+        },
+        {
+          table: {
+            widths: [170, 350],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'center',
+            body: [
+               ...this.newTab.map(el => {
+                return [{ text: 'MOIS DES ACTIVITES RAPPORTEES', alignment: 'center' }, { text:el.mois+'-'+d.getFullYear(),alignment:'center'}];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Faits marquants', alignment: 'center' }, { text: el.faits }];
+              }),
+              ...this.tmp.map(el => {
+                return [{ text: 'Observations particulières', alignment: 'center' }, { text: el.observations }];
+              })
+
+            ]
+          },
+
+        },
+       ...this.newTab.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
+
+      ],
+         styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        }
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
 
 }
