@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetReportMongoService } from '../get-report-mongo-service/get-report-mongo.service';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-import { ThisReceiver } from '@angular/compiler';
+
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -2267,7 +2267,7 @@ export class AdminComponent implements OnInit {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
            } else {
-               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
           }
 
               }),

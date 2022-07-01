@@ -11,8 +11,7 @@
               class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
               <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
             </div>
-            <input type="text" name="numero" placeholder="Numéro chrono"
-              class="w-full h-[40px]  placeholder:text-gray-700 text-sm font-bold border-2 border-cyan-500 shadow appearance-none outline-none">
+            <input type="text" name="numero" placeholder="Numéro chrono" class="w-full h-[40px]  placeholder:text-gray-700 text-sm font-bold border-2 border-cyan-500 shadow appearance-none outline-none" required [(ngModel)]="addToJson.numero">
           </div>
 
           <div class="bg-white flex justify-around ">
@@ -53,45 +52,44 @@
             </select>
           </div>
         </div>
-        <div class="sm:grid sm:grid-cols-1 mt-8 sm:gap-2 md:grid-rows-2 md:grid-cols-2 md:gap-2 ">
+        <div class="sm:grid sm:grid-cols-1 mt-8 sm:gap-2 md:grid-rows-1 md:grid-cols-3 md:gap-2 ">
           <div>
             <label for="produit" class="text-gray-700 text-sm font-bold ">Votre produit</label><br>
-            <select class="w-full h-8  shadow rounded border outline-none  " (change)="monthValue($event)">
-              <option disabled selected value=""></option>
-              <option value="Ordres de routes visées manuellement">Ordres de routes visées manuellement</option>
-              <option value="Ordre de routes visées sur SIIGTA">Ordre de routes visées sur SIIGTA</option>
-              <option value="Bons Spécial de Transport (BST) délivrés">Bons Spécial de Transport (BST) délivrés</option>
-              <option value="Quitus matière délivrés">Quitus matière délivrés</option>
-              <option value="Quitus logements délivrés">Quitus logements délivrés</option>
-              <option value="Bâtiments et logements administratifs recensés">Bâtiments et logements administratifs recensés</option>
-              <option value="Bail visés">Bail visés</option>
-              <option value="Devis estimatifs d’entretien des bâtiments administratifs visés">Devis estimatifs d’entretien des bâtiments administratifs visés</option>
-              <option value="Véhicules administratifs recensés">Véhicules administratifs recensés</option>
-              <option value="Véhicules administratifs réparés et entretenus">Véhicules administratifs réparés et entretenus</option>
-              <option value="Bons de commande d’achat de pièces détachées visés">Bons de commande d’achat de pièces détachées visés</option>
-              <option value="Bagages visés">Bagages visés</option>
-              <option value="Attestation de conformité de voiture de location délivrés">Attestation de conformité de voiture de location délivrés</option>
+            <select class="w-full h-8  shadow rounded border outline-none" (change)="productValue($event)">
+              <option #opt0 disabled selected value=""></option>
+              <option #opt1 value="Ordres de routes visées manuellement">Ordres de routes visées manuellement</option>
+              <option #opt2 value="Ordre de routes visées sur SIIGTA">Ordre de routes visées sur SIIGTA</option>
+              <option #opt3  value="Bons Spécial de Transport (BST) délivrés">Bons Spécial de Transport (BST) délivrés</option>
+              <option #opt4 value="Quitus matière délivrés">Quitus matière délivrés</option>
+              <option #opt5 value="Quitus logements délivrés">Quitus logements délivrés</option>
+              <option #opt6 value="Bâtiments et logements administratifs recensés">Bâtiments et logements administratifs recensés</option>
+              <option #opt7 value="Bail visés">Bail visés</option>
+              <option #opt8 value="Devis estimatifs d’entretien des bâtiments administratifs visés">Devis estimatifs d’entretien des bâtiments administratifs visés</option>
+              <option #opt9 value="Véhicules administratifs recensés">Véhicules administratifs recensés</option>
+              <option #opt10 value="Véhicules administratifs réparés et entretenus">Véhicules administratifs réparés et entretenus</option>
+              <option #opt11 value="Bons de commande d’achat de pièces détachées visés">Bons de commande d’achat de pièces détachées visés</option>
+              <option #opt12 value="Bagages visés">Bagages visés</option>
+              <option #opt13 value="Attestation de conformité de voiture de location délivrés">Attestation de conformité de voiture de location délivrés</option>
            </select>
           </div>
           <div>
             <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre réalisation</label>
-            <input type="text" name="realisation" class="shadow appearance-none border w-full h-8 outline-none rounded px-2" required>
+            <input type="text" name="realisation" class="shadow appearance-none border w-full h-8 outline-none rounded px-2" required [(ngModel)]="addToJson.realisation">
           </div>
           <div>
             <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre valeur cible</label>
-            <input type="text" name="valeurCible" class="shadow appearance-none border w-full outline-none h-8 rounded px-2 "
-              required>
+            <input type="text" name="valeurCible" class="shadow appearance-none border w-full outline-none h-8 rounded px-2 " required [(ngModel)]="addToJson.valeurCible">
           </div>
-          <div>
+          <!-- <div>
             <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre pourcentage de réalistation</label>
             <input type="text" name="pourcentage" class="shadow appearance-none border w-full outline-none h-8 rounded px-2 "
               required>
-          </div>
+          </div> -->
         </div>
         <button
-          class="w-36 h-10 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2">Ajouter aux listes</button>
+          class="w-36 h-10 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2" [style.display]="visibleAddList" (click)="SaveToJson(addToJson,reportForm)">Ajouter aux listes</button>
         <button
-          class="w-36 h-10  float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2">Valider modification</button>
+          class="w-36 h-10  float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2" [style.display]="visibleEditList" (click)="validateModification(reportForm)">Valider modification</button>
       </form>
     </div>
   </div>
@@ -106,16 +104,18 @@
           POURCENTAGE DE REALISATION</td>
         <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">MODIFICATION</td>
       </tr>
-      <tr class=" md:grid grid-cols-6 md:h-auto">
-        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold "></td>
-        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold "></td>
-        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold "></td>
-        <td
-          class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold col-span-2 "></td>
+      <tr class=" md:grid grid-cols-6 md:h-auto" *ngFor="let item of Tmp">
+        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold "> {{item.produit}}</td>
+        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold ">{{item.realisation}}</td>
+        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold "> {{item.valeurCible}}</td>
+        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold col-span-2 "> {{item.pourcentageRealisation}}</td>
         <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold ">
-          <i role="button" class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true"></i>
-          <i role="button" class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true"></i>
-          <i role="button" class="fa fa-paper-plane text-cyan-500 hover:scale-125"></i>
+          <i role="button" class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true"
+            (click)="editData(item.id,reportForm,opt1,opt2,opt3,opt4,opt5,opt6,opt7,opt8,opt9,opt10,opt11,opt12,opt13)" [routerLink]="['/patrimoine-etat',item.id]"
+            routerLinkActive="router-link-active"></i>
+          <i role="button" class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true"
+            (click)="deleteData(item.id)"></i>
+          <i role="button" class="fa fa-paper-plane text-cyan-500 hover:scale-125" (click)="sendMongo(item.id)"></i>
         </td>
       </tr>
     </table>

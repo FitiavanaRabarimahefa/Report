@@ -92,19 +92,19 @@ const routes: Routes = [
     component:AdminFaitMarquantComponent
   },
   {
-    path: 'patrimoine-etat',
+    path: 'patrimoine-etat/:id',
     component:PatrimoineEtatComponent
   },
 {
-  path: 'execution-budgetaire',
+  path: 'execution-budgetaire/:id',
   component:ExecutionBudgetaireComponent
 },
 {
-  path: 'centre-informatique',
+  path: 'centre-informatique/:id',
   component:CentreInformatiqueComponent
   },
   {
-    path: 'finance-locale',
+    path: 'finance-locale/:id',
     component:FinanceLocalesComponent
 }
 ];
