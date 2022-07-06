@@ -15,7 +15,8 @@ export class LocalComponent implements OnInit {
   }
 visibilityReport='none';
 visibilityTwo='none';
-visibilityAllReport = 'block';
+  visibilityAllReport = 'block';
+
 
 ShowReport(){
   this.visibilityReport = 'block';

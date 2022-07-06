@@ -19,6 +19,7 @@ import { PatrimoineEtatComponent } from './patrimoine-etat/patrimoine-etat.compo
 import { ExecutionBudgetaireComponent } from './execution-budgetaire/execution-budgetaire.component';
 import { CentreInformatiqueComponent } from './centre-informatique/centre-informatique.component';
 import { FinanceLocalesComponent } from './finance-locales/finance-locales.component';
+import { AdminPatrimoineComponent } from './admin-patrimoine/admin-patrimoine.component';
 
 
 const routes: Routes = [
@@ -106,7 +107,11 @@ const routes: Routes = [
   {
     path: 'finance-locale/:id',
     component:FinanceLocalesComponent
-}
+  },
+  {
+    path: 'admin-patrimoine',
+    component:AdminPatrimoineComponent
+  }
 ];
 
 @NgModule({

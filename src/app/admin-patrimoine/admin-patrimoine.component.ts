@@ -1,26 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { GetReportMongoService } from '../get-report-mongo-service/get-report-mongo.service';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-
+import { GetReportMongoService } from '../get-report-mongo-service/get-report-mongo.service';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-admin-patrimoine',
+  templateUrl: './admin-patrimoine.component.html',
+  styleUrls: ['./admin-patrimoine.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminPatrimoineComponent implements OnInit {
 
   constructor(private getReportService: GetReportMongoService) { }
-  tabReportMongo: any = [];
+   tabReportMongo: any = [];
   tabRegion: any = [];
   tmp: any = [];
   newTab = [];
   newTabRegion:any= [];
-
-
 
 
   ngOnInit(): void {
@@ -29,28 +26,15 @@ export class AdminComponent implements OnInit {
         if (res.success) {
           this.tabReportMongo = res.success;
            function myFunction(value) {
-             return  value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+             return  value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat";
            }
           this.tmp = this.tabReportMongo.filter(myFunction);
-
-      const filtred = this.tmp.reduce((response, elem) => {
-      const index = response.findIndex((r) => r.region === elem.region)
-      if (index === -1) response.push({ produit: [elem.produit],valeurCible:[elem.valeurCible],realisation:[elem.realisation],pourcentageRealisation:[elem.pourcentageRealisation], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois})
-      else {
-         response[index].produit.push(elem.produit);
-        response[index].valeurCible.push(elem.valeurCible);
-        response[index].realisation.push(elem.realisation);
-        response[index].pourcentageRealisation.push(elem.pourcentageRealisation);
-
-      };
-      return response;
-     }, [])
-
-         for (let i = 0; i <= this.tmp.length; i++){
+          console.log(this.tmp);
+           for (let i = 0; i <= this.tmp.length; i++){
             this.tabRegion.push(this.tmp[i].region);
 
           }
-      }
+         }
       },
       error: (err: any) => {
 
@@ -58,9 +42,10 @@ export class AdminComponent implements OnInit {
     })
   }
 
+
   getVF() {
       function myFunction(value) {
-         return value.region=="Vatovavy-Fitovinany" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+         return value.region=="Vatovavy-Fitovinany" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -113,7 +98,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -163,7 +148,7 @@ export class AdminComponent implements OnInit {
   getVakinankaratra() {
 
      function myFunction(value) {
-              return value.region=="Vakinankaratra" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Vakinankaratra" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -216,7 +201,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -267,7 +252,7 @@ export class AdminComponent implements OnInit {
 
   getSofia() {
      function myFunction(value) {
-              return value.region=="Sofia" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Sofia" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -320,7 +305,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -370,7 +355,7 @@ export class AdminComponent implements OnInit {
 
   getSava() {
      function myFunction(value) {
-              return value.region=="Sava" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Sava" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -423,7 +408,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -474,7 +459,7 @@ export class AdminComponent implements OnInit {
   getMenabe() {
 
      function myFunction(value) {
-              return value.region=="Menabe" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Menabe" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -527,7 +512,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -577,7 +562,7 @@ export class AdminComponent implements OnInit {
 
   getIhorombe() {
      function myFunction(value) {
-              return value.region=="Ihorombe" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Ihorombe" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -630,7 +615,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -680,7 +665,7 @@ export class AdminComponent implements OnInit {
 
   getHM() {
     function myFunction(value) {
-              return value.region=="Haute Matsiatra" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Haute Matsiatra" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -733,7 +718,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -783,7 +768,7 @@ export class AdminComponent implements OnInit {
 
   getDiana() {
      function myFunction(value) {
-              return value.region=="Diana" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Diana" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -836,7 +821,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -886,7 +871,7 @@ export class AdminComponent implements OnInit {
 
   getBoeny() {
      function myFunction(value) {
-              return value.region=="Boeny" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Boeny" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -939,7 +924,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -989,7 +974,7 @@ export class AdminComponent implements OnInit {
 
   getBetsiboka() {
      function myFunction(value) {
-              return value.region=="Betsiboka" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Betsiboka" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1042,7 +1027,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1092,7 +1077,7 @@ export class AdminComponent implements OnInit {
 
   getAntsinanana() {
      function myFunction(value) {
-              return value.region=="Antsinanana" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Antsinanana" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1145,7 +1130,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1194,7 +1179,7 @@ export class AdminComponent implements OnInit {
 
   getAntsimoAntsinanana() {
        function myFunction(value) {
-              return value.region=="Antsimo-Antsinanana" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Antsimo-Antsinanana" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1247,7 +1232,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1297,7 +1282,7 @@ export class AdminComponent implements OnInit {
 
   getAntsimoAndrefana() {
      function myFunction(value) {
-              return value.region=="Antsimo-Andrefana" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Antsimo-Andrefana" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1350,7 +1335,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1400,7 +1385,7 @@ export class AdminComponent implements OnInit {
 
   getAnosy() {
      function myFunction(value) {
-              return value.region=="Anosy" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Anosy" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1453,7 +1438,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1504,7 +1489,7 @@ export class AdminComponent implements OnInit {
   getAndroy() {
 
      function myFunction(value) {
-              return value.region=="Androy" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Androy" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1557,7 +1542,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1606,7 +1591,7 @@ export class AdminComponent implements OnInit {
 
   getAnalanjirofo() {
      function myFunction(value) {
-              return value.region=="Analanjirofo" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Analanjirofo"&& value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1659,7 +1644,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1708,7 +1693,7 @@ export class AdminComponent implements OnInit {
 
   getAnalamanga() {
      function myFunction(value) {
-              return value.region=="Analamanga" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Analamanga"&& value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1761,7 +1746,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1811,7 +1796,7 @@ export class AdminComponent implements OnInit {
 
   getAmoroniMania() {
      function myFunction(value) {
-              return value.region=="Amoron i Mania" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Amoron i Mania" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1864,7 +1849,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1914,7 +1899,7 @@ export class AdminComponent implements OnInit {
 
   getAlaotraMangoro() {
      function myFunction(value) {
-              return value.region=="Alaotra-Mangoro" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Alaotra-Mangoro"&& value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1967,7 +1952,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -2017,7 +2002,7 @@ export class AdminComponent implements OnInit {
 
   getItasy() {
     function myFunction(value) {
-              return value.region=="Itasy" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Itasy" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -2070,7 +2055,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -2120,7 +2105,7 @@ export class AdminComponent implements OnInit {
   getMelaky() {
 
        function myFunction(value) {
-              return value.region=="Melaky" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Melaky" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -2173,7 +2158,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -2224,7 +2209,7 @@ export class AdminComponent implements OnInit {
 
   getBongolava() {
        function myFunction(value) {
-              return value.region=="Bongolava" && value.nom_rapport=="Réalisations du Bureau des Affaires Administratives et Financières";
+              return value.region=="Bongolava" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
 
@@ -2281,7 +2266,7 @@ export class AdminComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -2326,7 +2311,6 @@ export class AdminComponent implements OnInit {
     const pdf = pdfMake.createPdf(pdfDefinition);
     pdf.open();
   }
-
 
 
 

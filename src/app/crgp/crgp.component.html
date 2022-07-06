@@ -1,0 +1,219 @@
+<div class="grid grid-rows-1 gap-4 w-full h-full  pr-2 pl-2 ">
+  <div class="bg-white h-full  md:justify-center items-center md:px-2 md:pt-4">
+    <div class="w-full h-auto bg-white shadow-2xl lg:w-full ">
+      <div class="flex justify-center items-center">
+        <h1 class="text-gray-700 text-sm font-bold">COMPTE-RENDU DU CLUB REGIONAL DE LA GESTION PUBLIQUE</h1>
+      </div>
+      <form #reportForm="ngForm" class="pt-4">
+        <div class="grid grid-cols-1 gap-2 md:grid-cols-4 md:gap-2 ">
+          <div class=" w-full flex justify-around">
+            <div
+              class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
+              <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
+            </div>
+            <input type="text" name="numero" placeholder="Numéro chrono"
+              class="w-full h-[40px]  placeholder:text-gray-700 text-sm font-bold border-2 border-cyan-500 shadow appearance-none outline-none"
+              required [(ngModel)]="addToJson.numero">
+          </div>
+
+          <div class=" w-full flex justify-around">
+            <div
+              class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
+              <i class="fa fa-map" aria-hidden="true"></i>
+            </div>
+            <input type="text" name="lieu" placeholder="Votre lieu" class="w-full h-[40px]  placeholder:text-gray-700 text-sm font-bold border-2 border-cyan-500 shadow appearance-none outline-none"
+              required [(ngModel)]="addToJson.lieu">
+          </div>
+
+          <div class="bg-white flex justify-around ">
+            <div
+              class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
+              <i class="fa fa-location-arrow" aria-hidden="true"></i>
+            </div>
+            <select class="w-full h-[40px] text-gray-700 text-sm font-bold border-2 border-cyan-500 "
+              (change)="cirfinValue($event)">
+              <option disabled selected value="">Choisir si CIRFIN</option>
+              <option value="Moramanga">Moramanga</option>
+              <option value="Marolambo">Marolambo</option>
+              <option value="Nosy-Be">Nosy Be</option>
+              <option value="Sainte-Marie">Sainte Marie</option>
+            </select>
+          </div>
+
+          <div class="bg-white flex justify-around">
+            <div
+              class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+            </div>
+            <select class="w-full h-[40px] text-gray-700 text-sm font-bold border-2 border-cyan-500 "
+              (change)="monthValue($event)">
+              <option disabled selected value="">Choisir le Mois</option>
+              <option value="Janvier">Janvier</option>
+              <option value="Février">Février</option>
+              <option value="Mars">Mars</option>
+              <option value="Avril">Avril</option>
+              <option value="Mai">Mai</option>
+              <option value="Juin">Juin</option>
+              <option value="Juillet">Juillet</option>
+              <option value="Août">Août</option>
+              <option value="Septembr">Septembre</option>
+              <option value="Octobre">Octobre</option>
+              <option value="Novembre">Novembre</option>
+              <option value="Décembre">Décembre</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pt-6">
+          <div class="flex justify-center">
+            <h2 class="text-gray-700 text-sm font-bold">ORDRE DU JOUR</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-5 mt-4">
+            <div class="">
+              <input id="first" type="checkbox" [disabled]="enableCheckbox[0]" name="first"
+                value="Formation Circulaire d'Exécution Budgétaire LFI" ngModel
+                (change)="onChange($event, reportForm,'first')">
+              <label class="text-gray-700 text-sm font-bold" for="first"> Formation Circulaire d'Exécution Budgétaire
+                LFI</label>
+            </div>
+            <div class="">
+              <input id="second" type="checkbox" name="second" [disabled]="enableCheckbox[1]" type="checkbox"
+                value="Dialogue de gestion pour l'exécution budgétaire" ngModel
+                (change)="onChange($event, reportForm,'second')">
+              <label class="text-gray-700 text-sm font-bold" for="second"> Dialogue de gestion pour l'exécution
+                budgétaire</label>
+            </div>
+            <div class="">
+              <input id="third" type="checkbox" name="third" [disabled]="enableCheckbox[2]"
+                value="Formation Circulaire d'Exécution Budgétaire LFR" ngModel
+                (change)="onChange($event, reportForm,'third')">
+              <label class="text-gray-700 text-sm font-bold" for="third"> Formation Circulaire d'Exécution Budgétaire
+                LFR</label>
+            </div>
+            <div class="">
+              <input id="fourth" type="checkbox" name="fourth" [disabled]="enableCheckbox[3]"
+                value="Dialogue de gestion sur la clôture de gestion" ngModel
+                (change)="onChange($event, reportForm,'fourth')">
+              <label class="text-gray-700 text-sm font-bold" for="fourth"> Dialogue de gestion sur la clôture de
+                gestion</label>
+            </div>
+            <div class="">
+              <input id="fifth" type="checkbox" name="fifth" [disabled]="enableCheckbox[4]" value="Autres" ngModel
+                (change)="onChange($event, reportForm,'fifth')">
+              <label class="text-gray-700 text-sm font-bold" for="fifth"> Autres</label>
+              <input name="other" ngModel [disabled]="disableInputOther" class="w-full p-1" type="text" placeholder="Préciser">
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6">
+          <div class="flex justify-center">
+            <h2 class="text-gray-700 text-sm font-bold">LES PARTICIPANTS</h2>
+          </div>
+          <div class="flex justify-center mt-4 pl-4">
+            <input class="w-[50%] h-10 border-2 pb-1 shadow appearance-none rounded" type="text"
+              placeholder="Nom du participant" name="participant" required ngModel>
+            <button class="w-36 h-10  bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+              (click)="AddParticipant(reportForm)">Ajouter</button>
+            <button class="w-36 h-10  bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+              (click)="onModifyParticipant(reportForm)">Modifier</button>
+
+          </div>
+
+          <div class="flex justify-center mt-4 ">
+            <table class="table-auto w-[60%] h-auto bg-white shadow-xl  sm:grid grid-cols-1">
+              <tr class=" md:grid grid-cols-4 md:h-10">
+                <td class="col-span-3 border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold">
+                  Noms des participants</td>
+                <td class="border border-gray-300 md:flex justify-evenly text-gray-700 text-sm font-bold">modification
+                </td>
+              </tr>
+              <tr class=" md:grid grid-cols-4 md:h-10" *ngFor="let item of tabParticipant, let j = index">
+                <td class="col-span-3 border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold">
+                  {{item}}</td>
+                <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold">
+                  <i role="button" (click)="onEditParticipant(reportForm,j)"
+                    class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true"></i>
+                  <i role="button" (click)="onDeleteParticipant(reportForm,j)"
+                    class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true"></i>
+                  <i role="button" class="fa fa-check text-cyan-600 hover:scale-125" aria-hidden="true"></i>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="pt-6">
+          <div class="flex justify-center">
+            <h2 class="text-gray-700 text-sm font-bold">OBSERVATION PARTICULIERE</h2>
+          </div>
+
+          <div class="flex justify-center mt-4 pl-4">
+            <textarea class="w-[60%] h-40 border border-gray-300" name="observation" required
+              [(ngModel)]="addToJson.observation"></textarea>
+
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label for="produit" class="text-gray-700 text-sm font-bold ">THEMES EVOQUES</label><br>
+              <textarea class="w-full h-40 shadow appearance-none border rounded px-2" name="theme" required
+                ngModel></textarea>
+            </div>
+
+            <div>
+              <label for="produit" class="text-gray-700 text-sm font-bold ">PROBLEMES RENCONTRES</label><br>
+              <textarea class="w-full h-40 shadow appearance-none border rounded px-2" name="probleme" required
+                ngModel></textarea>
+            </div>
+
+            <div>
+              <label for="produit" class="text-gray-700 text-sm font-bold ">SOLUTIONS PROPOSEES</label><br>
+              <textarea class="w-full h-40 shadow appearance-none border rounded px-2" name="solution" required
+                ngModel></textarea>
+            </div>
+            <button
+              class="w-36 h-10 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+              (click)="AddToList(reportForm)">Ajouter aux listes</button>
+              <button class="w-36 h-10 float-right bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+                (click)="onModifyReportCrgp(reportForm)">Modifier</button>
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+                  <button class="w-36 h-10 float-right bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"(click)="SaveMongo(reportForm)">MongoDB</button>
+  </div>
+
+  <div class="bg-white w-full h-[300px] overflow-y-scroll">
+    <table class="table-auto w-full h-auto bg-white shadow-xl p-2 sm:grid grid-cols-1">
+      <tr class=" md:grid grid-cols-7 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">THEMES
+          EVOQUES</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">PROBLEMES
+          RENCONTRES</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">SOLUTIONS
+          PROPOSEES</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">MODIFICATION</td>
+      </tr>
+
+      <tr class=" md:grid grid-cols-7 md:h-10" *ngFor="let item of this.tabEvaluation;let k=index">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">
+          {{item.theme}}</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">
+          {{item.probleme}}</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">
+          {{item.solution}}</td>
+        <td class="border border-gray-300 md:flex justify-evenly text-gray-700 text-sm font-bold ">
+          <i role="button" (click)="onEditingReportCrgp(reportForm,k)" class="fa fa-pencil text-green-900 hover:scale-125"
+            aria-hidden="true"></i>
+          <i role="button" (click)="onDeleteReportCrgp(reportForm,k)" class="fa fa-trash text-red-600 hover:scale-125"
+            aria-hidden="true"></i>
+          <i role="button" class="fa fa-check text-cyan-600 hover:scale-125" aria-hidden="true"></i>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</div>

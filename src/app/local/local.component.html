@@ -10,10 +10,10 @@
 
           </div>
 
-          <div role="button" class="report-CRGP w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow	1s">
+         <a [routerLink]="['/CRGP']" routerLinkActive="router-link-active" > <div role="button" class="report-CRGP w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow	1s">
             <img src="../../assets/photo2.png" class="md:w-[60px] h-[60px]">
-            <h4 class="ml-3">Compte Rendu CRGB</h4>
-         </div>
+            <h4 class="ml-3">Compte Rendu CRGP</h4>
+         </div></a>
 
         <div role="button" class="report-formation w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center  animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow	1s" (click)="ShowLogin()" >
             <img src="../../assets/photo3.png" class="md:w-[60px] h-[60px]">
@@ -35,5 +35,6 @@
            <app-report-list [style.display]="visibilityReport"></app-report-list>
            <app-login [style.display]="visibilityTwo"></app-login>
            <app-report-activity-all-list [style.display]="visibilityAllReport"></app-report-activity-all-list>
+
         </div>
 </div>
