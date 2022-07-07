@@ -85,7 +85,12 @@ enableCheckbox:boolean[] = [false,false,false,false,false];
   constructor(
     private serviceSaveToJson: CrgpServiceService,
     private serviceToMongo: SaveToMongoService
-  ) { }
+  ) {
+    const storageRegion = localStorage.getItem("Region");
+    this.addToMongo.region = storageRegion;
+
+
+   }
 
   ngOnInit(): void {
   }
@@ -269,14 +274,18 @@ monthValue(event:any){
     //form.reset();
   }
   SaveMongo(form: NgForm) {
-  this.dailyOrder.splice(this.dailyOrder.indexOf('Autres'),1);
-    this.dailyOrder.push(form.value['other']);
-    
+   const indice = this.dailyOrder.indexOf('Autres')
+      if(indice != -1){
+          this.dailyOrder.splice(this.dailyOrder.indexOf('Autres'),1);
+          this.dailyOrder.push(form.value['other']);
+        this.addToMongo.ordreJour = this.dailyOrder;
+      } else {
+        this.addToMongo.ordreJour = this.dailyOrder;
+      }
+
   this.addToMongo.nom_rapport="CRGP";
   this.addToMongo.lieu = form.value.lieu;
-  this.addToMongo.region = "Melaky";
   this.addToMongo.numero = form.value.numero;
-  this.addToMongo.ordreJour = this.dailyOrder;
   this.addToMongo.participant = this.tabParticipant;
   this.addToMongo.observation = form.value.observation;
   this.addToMongo.evaluation = this.tabEvaluation;

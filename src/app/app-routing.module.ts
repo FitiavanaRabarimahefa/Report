@@ -20,6 +20,10 @@ import { ExecutionBudgetaireComponent } from './execution-budgetaire/execution-b
 import { CentreInformatiqueComponent } from './centre-informatique/centre-informatique.component';
 import { FinanceLocalesComponent } from './finance-locales/finance-locales.component';
 import { AdminPatrimoineComponent } from './admin-patrimoine/admin-patrimoine.component';
+import { AdminCrgpComponent } from './admin-crgp/admin-crgp.component';
+import { AdminExecutionComponent } from './admin-execution-budgetaire/admin-execution/admin-execution.component';
+import { AdminCentreInformatiqueComponent } from './admin-centre-informatique/admin-centre-informatique.component';
+import { AdminFinanceLocalesComponent } from './admin-finance-locales/admin-finance-locales.component';
 
 
 const routes: Routes = [
@@ -111,7 +115,24 @@ const routes: Routes = [
   {
     path: 'admin-patrimoine',
     component:AdminPatrimoineComponent
-  }
+  },
+  {
+    path: 'admin-crgp',
+    component:AdminCrgpComponent
+  },
+  {
+    path: 'admin-execution-budgetaire',
+    component:AdminExecutionComponent
+  },
+   {
+    path: 'admin-centre-informatique',
+     component: AdminCentreInformatiqueComponent
+  },
+  {
+    path: 'admin-finance-locales',
+    component: AdminFinanceLocalesComponent
+   }
+
 ];
 
 @NgModule({

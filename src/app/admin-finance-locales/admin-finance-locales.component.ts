@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { GetReportMongoService } from '../get-report-mongo-service/get-report-mongo.service';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-import { GetReportMongoService } from '../get-report-mongo-service/get-report-mongo.service';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
-  selector: 'app-admin-patrimoine',
-  templateUrl: './admin-patrimoine.component.html',
-  styleUrls: ['./admin-patrimoine.component.css']
+  selector: 'app-admin-finance-locales',
+  templateUrl: './admin-finance-locales.component.html',
+  styleUrls: ['./admin-finance-locales.component.css']
 })
-export class AdminPatrimoineComponent implements OnInit {
+export class AdminFinanceLocalesComponent implements OnInit {
 
   constructor(private getReportService: GetReportMongoService) { }
-   tabReportMongo: any = [];
+
+  tabReportMongo: any = [];
   tabRegion: any = [];
   tmp: any = [];
   newTab = [];
@@ -21,12 +22,12 @@ export class AdminPatrimoineComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getReportService.getData().subscribe({
+       this.getReportService.getData().subscribe({
       next: (res: any) => {
         if (res.success) {
           this.tabReportMongo = res.success;
            function myFunction(value) {
-             return  value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat";
+             return  value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN";
            }
           this.tmp = this.tabReportMongo.filter(myFunction);
           console.log(this.tmp);
@@ -45,7 +46,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getVF() {
       function myFunction(value) {
-         return value.region=="Vatovavy-Fitovinany" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+         return value.region=="Vatovavy-Fitovinany" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -92,7 +93,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
               }),
         {
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -142,7 +143,7 @@ export class AdminPatrimoineComponent implements OnInit {
   getVakinankaratra() {
 
      function myFunction(value) {
-              return value.region=="Vakinankaratra" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Vakinankaratra" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -195,7 +196,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -246,7 +247,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getSofia() {
      function myFunction(value) {
-              return value.region=="Sofia" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Sofia" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -299,7 +300,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -349,7 +350,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getSava() {
      function myFunction(value) {
-              return value.region=="Sava" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Sava" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -402,7 +403,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -453,7 +454,7 @@ export class AdminPatrimoineComponent implements OnInit {
   getMenabe() {
 
      function myFunction(value) {
-              return value.region=="Menabe" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Menabe" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -506,7 +507,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -556,7 +557,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getIhorombe() {
      function myFunction(value) {
-              return value.region=="Ihorombe" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Ihorombe" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -609,7 +610,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -659,7 +660,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getHM() {
     function myFunction(value) {
-              return value.region=="Haute Matsiatra" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Haute Matsiatra" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -712,7 +713,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -762,7 +763,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getDiana() {
      function myFunction(value) {
-              return value.region=="Diana" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Diana" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -815,7 +816,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -865,7 +866,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getBoeny() {
      function myFunction(value) {
-              return value.region=="Boeny" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Boeny" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -918,7 +919,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -968,7 +969,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getBetsiboka() {
      function myFunction(value) {
-              return value.region=="Betsiboka" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Betsiboka" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1021,7 +1022,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1071,7 +1072,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getAntsinanana() {
      function myFunction(value) {
-              return value.region=="Antsinanana" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Antsinanana" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1124,7 +1125,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1173,7 +1174,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getAntsimoAntsinanana() {
        function myFunction(value) {
-              return value.region=="Antsimo-Antsinanana" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Antsimo-Antsinanana" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1226,7 +1227,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1276,7 +1277,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getAntsimoAndrefana() {
      function myFunction(value) {
-              return value.region=="Antsimo-Andrefana" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Antsimo-Andrefana" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1329,7 +1330,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1379,7 +1380,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getAnosy() {
      function myFunction(value) {
-              return value.region=="Anosy" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Anosy" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1432,7 +1433,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1483,7 +1484,7 @@ export class AdminPatrimoineComponent implements OnInit {
   getAndroy() {
 
      function myFunction(value) {
-              return value.region=="Androy" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Androy" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1536,7 +1537,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1585,7 +1586,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getAnalanjirofo() {
      function myFunction(value) {
-              return value.region=="Analanjirofo"&& value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Analanjirofo"&& value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1638,7 +1639,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1687,7 +1688,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getAnalamanga() {
      function myFunction(value) {
-              return value.region=="Analamanga"&& value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Analamanga"&& value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1740,7 +1741,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1790,7 +1791,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getAmoroniMania() {
      function myFunction(value) {
-              return value.region=="Amoron i Mania" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Amoron i Mania" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1843,7 +1844,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1893,7 +1894,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getAlaotraMangoro() {
      function myFunction(value) {
-              return value.region=="Alaotra-Mangoro"&& value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Alaotra-Mangoro"&& value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -1946,7 +1947,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -1996,7 +1997,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getItasy() {
     function myFunction(value) {
-              return value.region=="Itasy" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Itasy" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -2049,7 +2050,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -2099,7 +2100,7 @@ export class AdminPatrimoineComponent implements OnInit {
   getMelaky() {
 
        function myFunction(value) {
-              return value.region=="Melaky" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Melaky" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
    const filtred = this.tmp.reduce((response, elem) => {
@@ -2152,7 +2153,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -2203,7 +2204,7 @@ export class AdminPatrimoineComponent implements OnInit {
 
   getBongolava() {
        function myFunction(value) {
-              return value.region=="Bongolava" && value.nom_rapport=="Réalisations de la Division Patrimoine de l’Etat"
+              return value.region=="Bongolava" && value.nom_rapport=="Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN"
      }
     this.tmp = this.tabReportMongo.filter(myFunction);
 
@@ -2260,7 +2261,7 @@ export class AdminPatrimoineComponent implements OnInit {
               }),
 
           ]*/
-          text: 'Réalisations de la Division Patrimoine de l’Etat', alignment: 'center', margin: [5, 20, 10, 20],
+          text: 'Réalisations de la Division Chargée des Finances Locales et Tutelle des EPN', alignment: 'center', margin: [5, 20, 10, 20],
           style: 'title_rapport'
         },
         // Tableau
@@ -2305,7 +2306,6 @@ export class AdminPatrimoineComponent implements OnInit {
     const pdf = pdfMake.createPdf(pdfDefinition);
     pdf.open();
   }
-
 
 
 }
