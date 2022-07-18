@@ -2,3 +2,18 @@ h1 {
   font-size: 24px;
   font-style: italic;
 }
+h2 {
+  font-family: "Gill Sans", sans-serif;
+}
+
+i {
+  font-size: 20px;
+}
+
+i:active {
+  transform: translateY(2px);
+}
+
+button:active {
+  transform: translateY(2px);
+}

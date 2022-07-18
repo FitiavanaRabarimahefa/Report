@@ -1,0 +1,24 @@
+<div id="contenu" class="h-full w-full p-5  md:bg-gradient-to-tl from-cyan-600 to-green-600 flex justify-center items-center md:fixed">
+      <div class="h-[80%] w-[95%]  bg-white shadow-lg p-4">
+           <h1 class="flex items-center justify-center text-gray-700 text-sm font-bold">Listes des rapports concernants les faits marquants</h1>
+          <table class="table-auto w-full h-auto bg-white shadow-xl mt-5 p-2 sm:grid grid-cols-1">
+            <tr class=" md:grid grid-cols-5 md:h-10">
+              <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">FAITS
+                MARQUANTS</td>
+              <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2">OBSERVATIONS
+                PARTICULIERES</td>
+              <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">MODIFICATION</td>
+            </tr>
+
+            <tr class=" md:grid grid-cols-5 md:h-auto " *ngFor="let item of Tmp">
+              <td class="border border-gray-300 md: text-gray-700 text-sm font-bold col-span-2">
+                {{item.faits}}</td>
+              <td class="border border-gray-300 md: text-gray-700 text-sm font-bold col-span-2 overflow-y-scroll  h-32 ">
+                {{item.observations}}</td>
+              <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold ">
+                <button class="w-24 h-10 rounded animate-pulse bg-cyan-700 text-white">Valider</button>
+              </td>
+            </tr>
+          </table>
+      </div>
+</div>

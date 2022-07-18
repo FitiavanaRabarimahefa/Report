@@ -6,5 +6,20 @@ h1 {
 h2
 {
   font-size:20px;
-  
+
+}
+h2 {
+  font-family: "Gill Sans", sans-serif;
+}
+
+i {
+  font-size: 20px;
+}
+
+i:active {
+  transform: translateY(2px);
+}
+
+button:active {
+  transform: translateY(2px);
 }

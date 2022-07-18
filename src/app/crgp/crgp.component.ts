@@ -101,6 +101,11 @@ selectedMonth: string = '';
 nameReport = "CRGP";
 
 
+  visibleAddPerson = "block";
+  visibleModifyPerson = "none";
+  visibleAddTab = "block";
+  visibleModifyTab="none"
+
 
   cirfinValue(event:any){
   this.selectedcirfin=event.target.value;
@@ -173,12 +178,17 @@ monthValue(event:any){
 
   }
 
-  onEditParticipant(form:NgForm, numero:number){
+  onEditParticipant(form: NgForm, numero: number) {
+  this.visibleAddPerson = "none";
+  this.visibleModifyPerson = "block";
+
     form.controls['participant'].setValue(this.tabParticipant[numero]);
     this.indexPartcipantModify = numero;
   }
 
-  onModifyParticipant(form:NgForm){
+  onModifyParticipant(form: NgForm) {
+    this.visibleAddPerson = "block";
+  this.visibleModifyPerson = "none";
     this.tabParticipant[this.indexPartcipantModify] = form.value['participant'];
 
   }
@@ -260,14 +270,18 @@ monthValue(event:any){
 
   }
 
-  onEditingReportCrgp(form:NgForm, indexEdit:number){
+  onEditingReportCrgp(form: NgForm, indexEdit: number) {
+ this.visibleAddTab = "none";
+ this.visibleModifyTab="block"
     form.controls['theme'].setValue(this.tabEvaluation[indexEdit].theme);
     form.controls['probleme'].setValue(this.tabEvaluation[indexEdit].probleme);
     form.controls['solution'].setValue(this.tabEvaluation[indexEdit].solution);
     this.indexEvaluationModify = indexEdit;
   }
 
-  onModifyReportCrgp(form:NgForm){
+  onModifyReportCrgp(form: NgForm) {
+ this.visibleAddTab = "block";
+ this.visibleModifyTab="none"
     this.tabEvaluation[this.indexEvaluationModify].theme = form.value['theme'];
     this.tabEvaluation[this.indexEvaluationModify].probleme = form.value['probleme'];
     this.tabEvaluation[this.indexEvaluationModify].solution = form.value['solution'];

@@ -3,12 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { ValidationService } from '../validation-service/validation.service';
 import { NgToastService} from 'ng-angular-popup';
 import { DeleteUserService } from '../delete-user-service/delete-user.service';
+import { SendAdminMailService } from '../service-admin-sendmail/send-admin-mail.service';
 
 interface search_mail {
   mail: String
 }
 interface identifiant {
   id:Number
+}
+
+
+interface mailUser{
+  mail: String;
 }
 
 const EMPTY_MODEL: search_mail = {
@@ -19,6 +25,11 @@ const EMPTY_MODEL_delete:identifiant = {
   id:0,
 };
 
+const EMPTY_MODEL_IF_ADMIN:mailUser = {
+  mail: '',
+};
+
+
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
@@ -26,14 +37,17 @@ const EMPTY_MODEL_delete:identifiant = {
 })
 export class ListUserComponent implements OnInit {
 
-  confirm_validation: search_mail = { ...EMPTY_MODEL }
+  confirm_validation: search_mail = { ...EMPTY_MODEL };
   apply_delete: identifiant = { ...EMPTY_MODEL_delete };
+  confirm_admin:mailUser={...EMPTY_MODEL_IF_ADMIN}
 
   constructor(
     private getInvitation: GetListInvitationService,
     private validate_mail: ValidationService,
+    private validateAdmin:SendAdminMailService,
     private deleteService:DeleteUserService,
-    private toast:NgToastService
+    private toast: NgToastService
+
   ) { }
   tabList:any=[];
 
@@ -56,25 +70,39 @@ export class ListUserComponent implements OnInit {
         if (res.success) {
           this.toast.success({ detail: "Suppression de compte ", summary: "le compte a été bien supprimer", duration: 2000 })
         }
-        
+
       }, error:(err: any)=>{
         return err;
       }
-      
+
     })
-    
+
   }
   validate(mail){
     this.confirm_validation.mail = mail;
     this.validate_mail.validation(this.confirm_validation).subscribe({
-      
+
       next: (res: any) => {
         if (res.success) {
           console.log(this.confirm_validation);
           this.toast.success({ detail: "Validation de compte ", summary: "Validation de compte avec succés", duration: 2000 })
         }
-        
+
       }, error: (err: any) => {
+        return err;
+      }
+    })
+  }
+
+  adminValidate(mail) {
+    this.confirm_admin.mail = mail;
+    this.validateAdmin.validateAdmin(this.confirm_admin).subscribe({
+      next: (res: any)=>{
+        if (res.success) {
+              this.toast.success({ detail: "Validation de compte ", summary: "Validation de compte avec succés", duration: 2000 })
+          }
+      },
+      error: (err: any)=>{
         return err;
       }
     })

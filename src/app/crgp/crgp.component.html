@@ -1,5 +1,5 @@
-<div class="grid grid-rows-1 gap-4 w-full h-full  pr-2 pl-2 ">
-  <div class="bg-white h-full  md:justify-center items-center md:px-2 md:pt-4">
+<div class="grid grid-rows-1 gap-4 w-full h-full  pr-2 pl-2  ">
+  <div class="bg-white h-full  md:justify-center items-center md:px-2 md:pt-4 ">
     <div class="w-full h-auto bg-white shadow-2xl lg:w-full ">
       <div class="flex justify-center items-center">
         <h1 class="text-gray-700 text-sm font-bold">COMPTE-RENDU DU CLUB REGIONAL DE LA GESTION PUBLIQUE</h1>
@@ -64,11 +64,11 @@
           </div>
         </div>
 
-        <div class="pt-6">
+        <div class="pt-9">
           <div class="flex justify-center">
             <h2 class="text-gray-700 text-sm font-bold">ORDRE DU JOUR</h2>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-5 mt-4">
+          <div class="grid grid-cols-1 md:grid-cols-5 mt-4 pt-5">
             <div class="">
               <input id="first" type="checkbox" [disabled]="enableCheckbox[0]" name="first"
                 value="Formation Circulaire d'Exécution Budgétaire LFI" ngModel
@@ -106,7 +106,7 @@
           </div>
         </div>
 
-        <div class="pt-6">
+        <div class="pt-9">
           <div class="flex justify-center">
             <h2 class="text-gray-700 text-sm font-bold">LES PARTICIPANTS</h2>
           </div>
@@ -114,9 +114,9 @@
             <input class="w-[50%] h-10 border-2 pb-1 shadow appearance-none rounded" type="text"
               placeholder="Nom du participant" name="participant" required ngModel>
             <button class="w-36 h-10  bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
-              (click)="AddParticipant(reportForm)">Ajouter</button>
+             [style.display]="visibleAddPerson" (click)="AddParticipant(reportForm)">Ajouter</button>
             <button class="w-36 h-10  bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
-              (click)="onModifyParticipant(reportForm)">Modifier</button>
+            [style.display]="visibleModifyPerson"  (click)="onModifyParticipant(reportForm)">Modifier</button>
 
           </div>
 
@@ -124,7 +124,7 @@
             <table class="table-auto w-[60%] h-auto bg-white shadow-xl  sm:grid grid-cols-1">
               <tr class=" md:grid grid-cols-4 md:h-10">
                 <td class="col-span-3 border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold">
-                  Noms des participants</td>
+                  Les participants</td>
                 <td class="border border-gray-300 md:flex justify-evenly text-gray-700 text-sm font-bold">modification
                 </td>
               </tr>
@@ -136,8 +136,7 @@
                     class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true"></i>
                   <i role="button" (click)="onDeleteParticipant(reportForm,j)"
                     class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true"></i>
-                  <i role="button" class="fa fa-check text-cyan-600 hover:scale-125" aria-hidden="true"></i>
-                </td>
+                 </td>
               </tr>
             </table>
           </div>
@@ -160,64 +159,67 @@
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-6">
             <div>
-              <label for="produit" class="text-gray-700 text-sm font-bold ">THEMES EVOQUES</label><br>
+              <label for="produit" class="text-gray-700 text-sm font-bold ">THEME EVOQUE</label><br>
               <textarea class="w-full h-40 shadow appearance-none border rounded px-2" name="theme" required
                 ngModel></textarea>
             </div>
 
             <div>
-              <label for="produit" class="text-gray-700 text-sm font-bold ">PROBLEMES RENCONTRES</label><br>
+              <label for="produit" class="text-gray-700 text-sm font-bold ">PROBLEME RENCONTRE</label><br>
               <textarea class="w-full h-40 shadow appearance-none border rounded px-2" name="probleme" required
                 ngModel></textarea>
             </div>
 
             <div>
-              <label for="produit" class="text-gray-700 text-sm font-bold ">SOLUTIONS PROPOSEES</label><br>
+              <label for="produit" class="text-gray-700 text-sm font-bold ">SOLUTION PROPOSEE</label><br>
               <textarea class="w-full h-40 shadow appearance-none border rounded px-2" name="solution" required
                 ngModel></textarea>
             </div>
-            <button
-              class="w-36 h-10 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
-              (click)="AddToList(reportForm)">Ajouter aux listes</button>
-              <button class="w-36 h-10 float-right bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
-                (click)="onModifyReportCrgp(reportForm)">Modifier</button>
           </div>
 
+            <div class="float-right">
+              <button class="w-36 h-10 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+               [style.display]="visibleAddTab" (click)="AddToList(reportForm)">Ajouter aux listes</button>
+              <button class="w-36 h-10 float-right bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+               [style.display]="visibleModifyTab" (click)="onModifyReportCrgp(reportForm)">Modifier</button>
+            </div>
         </div>
 
       </form>
+       <div class="w-full h-[350px] overflow-y-scroll">
+        <table class="table-auto w-full h-auto  p-2 sm:grid grid-cols-1">
+          <tr class=" md:grid grid-cols-7 md:h-10">
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">THEMES
+              EVOQUES</td>
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">PROBLEMES
+              RENCONTRES</td>
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">SOLUTIONS
+              PROPOSEES</td>
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">MODIFICATION</td>
+          </tr>
+
+          <tr class=" md:grid grid-cols-7 md:h-auto" *ngFor="let item of this.tabEvaluation;let k=index">
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">
+              {{item.theme}}</td>
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">
+              {{item.probleme}}</td>
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">
+              {{item.solution}}</td>
+            <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold ">
+              <i role="button" (click)="onEditingReportCrgp(reportForm,k)" class="fa fa-pencil text-green-900 hover:scale-125"
+                aria-hidden="true"></i>
+              <i role="button" (click)="onDeleteReportCrgp(reportForm,k)" class="fa fa-trash text-red-600 hover:scale-125"
+                aria-hidden="true"></i>
+              <i role="button" class="fa fa-check text-cyan-600 hover:scale-125" aria-hidden="true"></i>
+            </td>
+          </tr>
+
+        </table>
+      </div>
     </div>
-                  <button class="w-36 h-10 float-right bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"(click)="SaveMongo(reportForm)">MongoDB</button>
+
   </div>
-
-  <div class="bg-white w-full h-[300px] overflow-y-scroll">
-    <table class="table-auto w-full h-auto bg-white shadow-xl p-2 sm:grid grid-cols-1">
-      <tr class=" md:grid grid-cols-7 md:h-10">
-        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">THEMES
-          EVOQUES</td>
-        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">PROBLEMES
-          RENCONTRES</td>
-        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">SOLUTIONS
-          PROPOSEES</td>
-        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">MODIFICATION</td>
-      </tr>
-
-      <tr class=" md:grid grid-cols-7 md:h-10" *ngFor="let item of this.tabEvaluation;let k=index">
-        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">
-          {{item.theme}}</td>
-        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">
-          {{item.probleme}}</td>
-        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">
-          {{item.solution}}</td>
-        <td class="border border-gray-300 md:flex justify-evenly text-gray-700 text-sm font-bold ">
-          <i role="button" (click)="onEditingReportCrgp(reportForm,k)" class="fa fa-pencil text-green-900 hover:scale-125"
-            aria-hidden="true"></i>
-          <i role="button" (click)="onDeleteReportCrgp(reportForm,k)" class="fa fa-trash text-red-600 hover:scale-125"
-            aria-hidden="true"></i>
-          <i role="button" class="fa fa-check text-cyan-600 hover:scale-125" aria-hidden="true"></i>
-        </td>
-      </tr>
-
-    </table>
-  </div>
+  <button class="w-36 h-10 float-right bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+    (click)="SaveMongo(reportForm)">Envoyer à la base de donnée</button>
 </div>
+

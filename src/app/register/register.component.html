@@ -1,5 +1,4 @@
-
-<div id="contenu" class="h-96  md:p-16 md:bg-gradient-to-tl from-blue-600 to-green-600 flex justify-center items-center md:fixed">
+<div id="contenu" class="h-96  md:p-16 md:bg-gradient-to-tl from-white to-green-600 flex justify-center items-center md:fixed">
   <div class="grid grid-cols-1 md:grid-cols-2 animate__animated animate__fadeInDown animate-faster">
           <div class="h-[98%] bg-white flex justify-center items-center"><img src="../../assets/3081783.jpg" alt="3081783" class="animate__animated animate__zoomIn animate__infinite infinite animate__delay-0.5s	0.5s animate__slow	2s" ></div>
                <div class="h-[98%] w-auto  flex  items-center bg-white">
@@ -10,7 +9,7 @@
                               </label>
                               <input class="shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="matricule" type="Number" placeholder="exemple:245320" max="999999"  required  [(ngModel)]="newUser.IM" name="IM" #IM="ngModel">
                               <div class="avertissement" *ngIf="IM.invalid">
-                                 <i class="fa fa-alert"></i>votre IM contenir au plus 6 nombres
+                                 <i class="fa fa-alert"></i>votre IM doit contenir  6 chiffres
                               </div>
                          </div>
                          <div class="mb-5 ">
@@ -33,7 +32,7 @@
                         </div>
                            <div class="mb-5">
                                  <button class="w-full h-10 bg-green-700 border rounded-r-lg rounded-l-lg text-white" type="submit" [disabled]="IM.invalid" (click)="validation(newUser,register)">Enregistrer</button>
-                                <a [routerLink]="['']" routerLinkActive="router-link-active"  ><button class="w-full h-10 bg-blue-600 border rounded-r-lg rounded-l-lg text-white mt-4">Retour</button></a>
+                                <a [routerLink]="['']" routerLinkActive="router-link-active"  ><button class="w-full h-10 bg-red-600 border rounded-r-lg rounded-l-lg text-white mt-4">Retour</button></a>
                             </div>
                    </form>
                </div>

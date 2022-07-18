@@ -181,7 +181,7 @@ monthValue(event:any){
      this.visibleEditList='block';
      this.visibleAddList='none';
 
-    switch (this.TableauReport[id - 1].produit) {
+    switch (this.TableauReport[id-1].produit) {
       case "Ordres de routes visées manuellement": opt1.selected = true;
         break;
       case "Ordre de routes visées sur SIIGTA": opt2.selected = true;
@@ -269,7 +269,7 @@ monthValue(event:any){
     this.sendJson.realisation = this.TableauReport[id - 1].realisation;
     this.sendJson.produit = this.TableauReport[id-1].produit;
     this.sendJson.valeurCible = this.TableauReport[id - 1].valeurCible;
-    this.sendJson.pourcentageRealisation = this.TableauReport[id - 1].pourcentageRealisation;
+    this.sendJson.pourcentageRealisation = this.TableauReport[id-1].pourcentageRealisation;
 
     this.sendToMongoService.sendJson(this.sendJson).subscribe({
       next: (res: any) => {

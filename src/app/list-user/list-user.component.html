@@ -18,8 +18,9 @@
         <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2 ">{{item.Mail}}</td>
         <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold ">{{item.Region}}</td>
         <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold ">
-          <i role="button" class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true" (click)="delete(item.IM)"></i>
-          <i role="button" class="fa fa-check text-green-700 hover:scale-125" (click)="validate(item.Mail)"  ></i>
+          <i role="button" class="fa fa-trash text-red-600" aria-hidden="true" (click)="delete(item.IM)"></i>
+          <i role="button" class="fa fa-check text-green-700" (click)="validate(item.Mail)"></i>
+          <i role="button" class="fa fa-user text-blue-600 " (click)="adminValidate(item.Mail)"></i>
         </td>
       </tr>
 

@@ -1,0 +1,168 @@
+<div class="grid grid-rows-1 gap-4 w-full h-full  pt-2 pr-2 pl-2 ">
+  <div class="bg-white h-full md:flex md:justify-center items-center md:px-2">
+    <div class="w-full bg-white shadow-2xl lg:w-full ">
+      <div class="flex justify-center items-center">
+        <h1 class="text-gray-700 text-sm font-bold">COMPTE-RENDU DE FORMATION DISPENSEE</h1>
+      </div>
+      <form #reportForm="ngForm" class="pt-4">
+        <div class="grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-2 ">
+          <div class=" w-full flex justify-around">
+            <div
+              class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
+              <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
+            </div>
+            <input type="text" name="numero" placeholder="Numéro chrono"
+              class="w-full h-[40px]  placeholder:text-gray-700 text-sm font-bold border-2 border-cyan-500 shadow appearance-none" name="numero" required [(ngModel)]="addToJson.numero">
+          </div>
+
+          <div class="bg-white flex justify-around ">
+            <div
+              class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
+              <i class="fa fa-location-arrow" aria-hidden="true"></i>
+            </div>
+            <select class="w-full h-[40px] text-gray-700 text-sm font-bold border-2 border-cyan-500 "
+              (change)="cirfinValue($event)">
+              <option disabled selected value="">Choisir si CIRFIN</option>
+              <option value="Moramanga">Moramanga</option>
+              <option value="Marolambo">Marolambo</option>
+              <option value="Nosy-Be">Nosy Be</option>
+              <option value="Sainte-Marie">Sainte Marie</option>
+            </select>
+          </div>
+
+          <div class="bg-white flex justify-around">
+            <div
+              class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+            </div>
+            <select class="w-full h-[40px] text-gray-700 text-sm font-bold border-2 border-cyan-500 "
+              (change)="monthValue($event)">
+              <option disabled selected value="">Choisir le Mois</option>
+              <option value="Janvier">Janvier</option>
+              <option value="Février">Février</option>
+              <option value="Mars">Mars</option>
+              <option value="Avril">Avril</option>
+              <option value="Mai">Mai</option>
+              <option value="Juin">Juin</option>
+              <option value="Juillet">Juillet</option>
+              <option value="Août">Août</option>
+              <option value="Septembr">Septembre</option>
+              <option value="Octobre">Octobre</option>
+              <option value="Novembre">Novembre</option>
+              <option value="Décembre">Décembre</option>
+            </select>
+          </div>
+        </div>
+        <div class="sm:grid sm:grid-cols-1 mt-8 sm:gap-2 md:grid-rows-2 md:grid-cols-3 md:gap-2 ">
+          <div>
+            <label for="lieu" class="text-gray-700 text-sm font-bold ">Entrer le lieu</label>
+            <input type="text" name="lieu" class="shadow appearance-none border w-full h-8 rounded px-2" required [(ngModel)]="addToJson.lieu">
+          </div>
+          <div>
+            <label for="debut" class="text-gray-700 text-sm font-bold ">Date de début</label>
+            <input type="date" name="debut" class="shadow appearance-none border w-full h-8 rounded px-2" required [(ngModel)]="addToJson.debut">
+          </div>
+          <div>
+            <label for="fin" class="text-gray-700 text-sm font-bold ">Date pour la fin </label>
+            <input type="date" name="fin" class="shadow appearance-none border w-full h-8 rounded px-2 " required [(ngModel)]="addToJson.fin">
+          </div>
+          <div>
+            <label for="theme" class="text-gray-700 text-sm font-bold ">Votre Theme</label>
+            <input type="text" name="theme" class="shadow appearance-none border w-full h-8 rounded px-2" required [(ngModel)]="addToJson.theme">
+          </div>
+          <div>
+            <label for="sous-theme" class="text-gray-700 text-sm font-bold ">Votre sous theme</label>
+            <input type="text" name="sousTheme" class="shadow appearance-none border w-full h-8 rounded px-2" required [(ngModel)]="addToJson.sousTheme">
+          </div>
+          <div>
+            <label for="objectif" class="text-gray-700 text-sm font-bold ">Votre objectif</label>
+            <input type="text" name="objectif" class="shadow appearance-none border w-full h-8 rounded px-2 " required [(ngModel)]="addToJson.objectif">
+          </div>
+        </div>
+
+        <div class="pt-9">
+          <div class="flex justify-center">
+            <h2 class="text-gray-700 text-sm font-bold">LES FORMATEURS</h2>
+          </div>
+          <div class="flex justify-center items-center mt-4 pl-4">
+            <input class="w-[50%] h-10 border-2 pb-1 shadow appearance-none rounded" type="text" placeholder="formateur"
+              name="formateur" required ngModel>
+            <button class="w-36 h-10  bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+              [style.display]="visibleAddFormateur" (click)="AddFormateur(reportForm)">Ajouter</button>
+            <button class="w-36 h-10  bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+              [style.display]="visibleEditFormateur" (click)="onModifyFormateur(reportForm)">Modifier</button>
+
+          </div>
+
+          <div class="flex justify-center mt-4 ">
+            <table class="table-auto w-[60%] h-auto bg-white shadow-xl  sm:grid grid-cols-1">
+              <tr class=" md:grid grid-cols-4 md:h-10">
+                <td class="col-span-3 border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold">
+                  Les formateurs</td>
+                <td class="border border-gray-300 md:flex justify-evenly text-gray-700 text-sm font-bold">modification
+                </td>
+              </tr>
+              <tr class=" md:grid grid-cols-4 md:h-10" *ngFor="let item of tabFormateur;let i=index">
+                <td class="col-span-3 border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold">{{item}}</td>
+                <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold">
+                  <i role="button" class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true" (click)="onEditFormateur(reportForm,i)"></i>
+                  <i role="button" class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true" (click)="onDeleteFormateur(reportForm,i)"></i>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="pt-9">
+          <div class="flex justify-center">
+            <h2 class="text-gray-700 text-sm font-bold">LES PARTICIPANTS</h2>
+          </div>
+          <div class="md:flex justify-center items-center mt-4 pl-4">
+            <input class="w-full md:w-[50%] h-10 border-2 pb-1 shadow appearance-none rounded" type="text"
+              placeholder="participant" name="participant" required ngModel>
+            <button class="w-36 h-10  bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+              [style.display]="visibleAddParticipant" (click)="AddParticipant(reportForm)">Ajouter</button>
+            <button class="w-36 h-10  bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+              [style.display]="visibleEditParticipant" (click)="onModifyParticipant(reportForm)">Modifier</button>
+
+          </div>
+
+          <div class="flex justify-center mt-4 ">
+            <table class="table-auto w-[60%] h-auto bg-white shadow-xl  sm:grid grid-cols-1">
+              <tr class=" md:grid grid-cols-4 md:h-10">
+                <td class="col-span-3 border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold">
+                  Les participants</td>
+                <td class="border border-gray-300 md:flex justify-evenly text-gray-700 text-sm font-bold">modification
+                </td>
+              </tr>
+              <tr class=" md:grid grid-cols-4 md:h-10" *ngFor="let item of tabParticipant;let j=index">
+                <td class="col-span-3 border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold">{{item}}</td>
+                <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold">
+                  <i role="button" class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true" (click)="onEditParticipant(reportForm,j)"></i>
+                  <i role="button" class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true" (click)="onDeleteParticipant(reportForm,j)"></i>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="pt-6">
+          <div class="flex justify-center">
+            <h2 class="text-gray-700 text-sm font-bold">OBSERVATION PARTICULIERE</h2>
+          </div>
+
+          <div class="flex justify-center mt-4 pl-4">
+            <textarea class="w-[60%] h-40 border border-gray-300" name="observation" required [(ngModel)]="addToJson.observation"></textarea>
+          </div>
+        </div>
+        <button
+          class="w-36 h-10 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2"
+          [style.display]="visibleAddList" (click)="sendToSuperior(addToJson)">Envoyer au chef</button>
+        <button
+          class="w-36 h-10  float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2"
+          [style.display]="visibleViewList">Créer un aperçu</button>
+      </form>
+    </div>
+  </div>
+
+
+</div>

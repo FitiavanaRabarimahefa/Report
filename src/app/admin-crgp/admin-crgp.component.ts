@@ -13,9 +13,14 @@ export class AdminCrgpComponent implements OnInit {
 
   tabReportMongo: any = [];
   tabRegion: any = [];
+  tabTheme: any = [];
+  tabProbleme: any = [];
+  tabSolution: any = [];
   tmp: any = [];
   NbrEvaluation: number;
   NbrParticipant: any = [];
+
+
 
   constructor(private getDataMongo:GetdataService) { }
 
@@ -1381,9 +1386,19 @@ export class AdminCrgpComponent implements OnInit {
               [{ text: 'THEMES EVOQUES', alignment: 'center' }, { text: 'PROBLEMES RENCONTRES', alignment: 'center' }, { text: 'SOLUTIONS PROPOSEES', alignment: 'center' }],
 
 
-             ...this.tmp.map(item=> {
-                  return [{ text: item.evaluation[0].theme, alignment: 'center' }, { text: item.evaluation[0].probleme }, { text: item.evaluation[0].solution, alignment: 'center' }]
-              })
+              ...this.tmp.map(item => {
+                return [{ text: item.evaluation[0].theme, alignment: 'center' }, { text: item.evaluation[0].probleme }, { text: item.evaluation[0].solution, alignment: 'center' }]
+              }),
+
+              // this.tmp.forEach((item) => {
+              //   const theme = item.evaluation.theme;
+              //   const probleme = item.evaluation.probleme;
+              //   const solution = item.evaluation.solution;
+              //   this.tabTheme.push(theme);
+              //   this.tabProbleme.push(probleme);
+              //   this.tabSolution.push(solution);
+              //   return [`${this.tabTheme}`, `${this.tabProbleme}`,`${this.tabSolution}`];
+              // })
 
             ]
           },
@@ -2761,9 +2776,10 @@ export class AdminCrgpComponent implements OnInit {
               [{ text: 'THEMES EVOQUES', alignment: 'center' }, { text: 'PROBLEMES RENCONTRES', alignment: 'center' }, { text: 'SOLUTIONS PROPOSEES', alignment: 'center' }],
 
 
-             ...this.tmp.map(item=> {
-                  return [{ text: item.evaluation[0].theme, alignment: 'center' }, { text: item.evaluation[0].probleme }, { text: item.evaluation[0].solution, alignment: 'center' }]
+             ...this.tmp.evaluation.map(item=> {
+                  return [{ text: item.theme, alignment: 'center' }, { text: item.probleme }, { text: item.solution, alignment: 'center' }]
               })
+
 
             ]
           },

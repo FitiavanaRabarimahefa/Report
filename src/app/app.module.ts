@@ -33,6 +33,9 @@ import { AdminCrgpComponent } from './admin-crgp/admin-crgp.component';
 import { AdminExecutionComponent } from './admin-execution-budgetaire/admin-execution/admin-execution.component';
 import { AdminCentreInformatiqueComponent } from './admin-centre-informatique/admin-centre-informatique.component';
 import { AdminFinanceLocalesComponent } from './admin-finance-locales/admin-finance-locales.component';
+import { RapportFormationComponent } from './rapport-formation/rapport-formation.component';
+import { InterFaitComponent } from './inter-fait/inter-fait.component';
+import { InterBaafComponent } from './inter-baaf/inter-baaf.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import { AdminFinanceLocalesComponent } from './admin-finance-locales/admin-fina
     AdminCrgpComponent,
     AdminExecutionComponent,
     AdminCentreInformatiqueComponent,
-    AdminFinanceLocalesComponent
+    AdminFinanceLocalesComponent,
+    RapportFormationComponent,
+    InterFaitComponent,
+    InterBaafComponent
   ],
   imports: [
     BrowserModule,

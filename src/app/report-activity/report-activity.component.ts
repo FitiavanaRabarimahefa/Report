@@ -141,7 +141,10 @@ identifiant:identification={...EMPTY_MODEL_id};
 }
 //selectedRegion:string='';
  selectedcirfin:string='';
-selectedMonth:string='';
+  selectedMonth: string = '';
+  selectedProduct: string = '';
+  pourcentage: number=0;
+
 
 // changeValue(event:any){
 //     this.selectedRegion=event.target.value;
@@ -160,16 +163,27 @@ monthValue(event:any){
   this.addReport.mois=this.selectedMonth;
   console.log(this.selectedMonth)
 }
+  productValue(event: any) {
+    this.selectedProduct = event.target.value;
+    this.addReport.produit = event.target.value;
+    this.editJsonReport.produit = event.target.value;
+    console.log(this.selectedProduct)
+  }
 
   sendReport(addReport: report, reportForm: NgForm) {
- this.addReport.nameReport = this.nameReport;
-this.addjsonReport.addReport(addReport).subscribe({
+     function getPourcentage(a,b) {
+         return (a / b) * 100;
+    }
+    this.pourcentage = Math.round(getPourcentage(this.addReport.realisation, this.addReport.valeurCible));
+    this.addReport.pourcentageRealisation = this.pourcentage.toString();
+    this.addReport.nameReport = this.nameReport;
+    this.addjsonReport.addReport(addReport).subscribe({
       next:(res:any)=>{
        if (res){
           this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
           this.router.onSameUrlNavigation='reload';
         }
-       reportForm.reset();
+      // reportForm.reset();
 
       },
       error:(err)=>{
@@ -177,26 +191,34 @@ this.addjsonReport.addReport(addReport).subscribe({
       }
   })
 };
-validateEditReport(reportForm:NgForm){
+validateEditReport(reportForm:NgForm,opt){
   //console.log(reportForm.value);
 
   this.visibleAddList="block";
-  this.visibleEditList="none";
+  this.visibleEditList = "none";
+
+
 
   this.route.paramMap.subscribe(params   => {
     this.id = params.get('id');
 
   });
 
+     function getPourcentage(a,b) {
+         return (a / b) * 100;
+     }
+
+  this.pourcentage =Math.round(getPourcentage(reportForm.value.realisation,reportForm.value.valeurCible));
+
   this.editJsonReport.id=this.id;
-  this.editJsonReport.produit=reportForm.value.produit;
+  //this.editJsonReport.produit=reportForm.value.produit;
   this.editJsonReport.realisation=reportForm.value.realisation;
   this.editJsonReport.valeurCible=reportForm.value.valeurCible;
-  this.editJsonReport.pourcentageRealisation=reportForm.value.pourcentage;
+  this.editJsonReport.pourcentageRealisation=this.pourcentage.toString();
 
   this.editJsonService.editJson(this.editJsonReport).subscribe({
     next:(res:any)=>{
-        reportForm.reset();
+    //opt.selected = true;
         this.router.navigate(['report-activity/:id']);
         console.log(res);
     },
@@ -207,13 +229,19 @@ validateEditReport(reportForm:NgForm){
 
 };
 
-editData(id,reportForm:NgForm){
+editData(id,reportForm:NgForm,opt0,opt1,opt2){
   this.visibleEditList='block';
-  this.visibleAddList='none';
-  reportForm.controls['produit'].setValue(this.TableauReport[id-1].produit);
+  this.visibleAddList = 'none';
+
+  switch (this.TableauReport[id-1].produit) {
+    case "Taux d’exécution": opt0.selected = true;
+      break;
+    case "Nombre de dossiers envoyés au SPERS": opt1.selected = true;
+      break;
+    case "Nombre de dossiers de personnel traités localement": opt2.selected = true;
+  }
   reportForm.controls['realisation'].setValue(this.TableauReport[id-1].realisation);
   reportForm.controls['valeurCible'].setValue(this.TableauReport[id-1].valeurCible);
-  reportForm.controls['pourcentage'].setValue(this.TableauReport[id-1].pourcentageRealisation);
 };
 deleteData(id){
    //const tpmId= this.TableauReport.indexOf(this.TableauReport[id]);

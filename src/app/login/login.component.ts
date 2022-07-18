@@ -35,18 +35,33 @@ export class LoginComponent implements OnInit {
         console.log(res);
          if(res.validation==false){
            this.toast.warning({detail:"Erreur d'authentification ",summary:"Votre compte n'a pas été encore valider",duration:2000})
-        }else if (res.validation==true) {
-          localStorage.setItem("token",res.token);
-          localStorage.setItem("Region",res.Region);
-          this.toast.success({detail:"Authentification succes",summary:res.success,duration:2000});
-            setInterval(() => {
-                  this.delay -= 1;
-                  const lien=['acceuil'];
-                  if(this.delay == 0){
-                   this.route.navigate(lien);
-                   clearInterval();
-                 }
-            },800);
+         } else if (res.validation == true) {
+           if (res.adminStatus == true) {
+             localStorage.setItem("token", res.token);
+             localStorage.setItem("Region", res.Region);
+             this.toast.success({ detail: "Authentification succes", summary: res.success, duration: 2000 });
+             setInterval(() => {
+               this.delay -= 1;
+               const lien = ['inter-fait'];
+               if (this.delay == 0) {
+                 this.route.navigate(lien);
+                 clearInterval();
+               }
+             }, 800);
+
+           } else {
+             localStorage.setItem("token", res.token);
+             localStorage.setItem("Region", res.Region);
+             this.toast.success({ detail: "Authentification succes", summary: res.success, duration: 2000 });
+             setInterval(() => {
+               this.delay -= 1;
+               const lien = ['acceuil'];
+               if (this.delay == 0) {
+                 this.route.navigate(lien);
+                 clearInterval();
+               }
+             }, 800);
+           }
         }else{
           this.toast.error({detail:"Erreur d'authentification ",summary:res.error,duration:2000})
         }
