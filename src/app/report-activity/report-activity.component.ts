@@ -242,7 +242,8 @@ editData(id,reportForm:NgForm,opt0,opt1,opt2){
   }
   reportForm.controls['realisation'].setValue(this.TableauReport[id-1].realisation);
   reportForm.controls['valeurCible'].setValue(this.TableauReport[id-1].valeurCible);
-};
+  };
+  
 deleteData(id){
    //const tpmId= this.TableauReport.indexOf(this.TableauReport[id]);
   //console.log(tpmId);

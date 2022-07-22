@@ -27,6 +27,10 @@ import { AdminFinanceLocalesComponent } from './admin-finance-locales/admin-fina
 import { RapportFormationComponent } from './rapport-formation/rapport-formation.component';
 import { InterFaitComponent } from './inter-fait/inter-fait.component';
 import { InterBaafComponent } from './inter-baaf/inter-baaf.component';
+import { InterPatrimoineComponent } from './inter-patrimoine/inter-patrimoine.component';
+import { InterExecutionBudgetaireComponent } from './inter-execution-budgetaire/inter-execution-budgetaire.component';
+import { InterCentreInformatiqueComponent } from './inter-centre-informatique/inter-centre-informatique.component';
+import { InterFinanceLocaleComponent } from './inter-finance-locale/inter-finance-locale.component';
 
 
 const routes: Routes = [
@@ -146,6 +150,22 @@ const routes: Routes = [
   {
     path: 'inter-baaf',
     component:InterBaafComponent
+  },
+  {
+    path: 'inter-patrimoine',
+    component:InterPatrimoineComponent
+  },
+  {
+    path: 'inter-execution-budgetaire',
+    component:InterExecutionBudgetaireComponent
+  },
+  {
+    path: 'inter-centre-informatique',
+    component:InterCentreInformatiqueComponent
+  },
+  {
+    path: 'inter-finance-locale',
+    component:InterFinanceLocaleComponent
   }
 
 ];

@@ -1,0 +1,33 @@
+<div id="contenu"
+  class="h-full w-full p-5  md:bg-gradient-to-tl from-cyan-600 to-green-600 flex justify-center items-center md:fixed ">
+  <div class="h-[80%] w-[95%]  bg-white shadow-lg p-4 overflow-y-scroll">
+    <h1 class="flex items-center justify-center text-gray-700 text-sm font-bold">Réalisations de la Division Patrimoine de l’Etat</h1>
+    <table class="table-auto w-full h-auto bg-white shadow-xl mt-5 p-2 sm:grid grid-cols-1">
+      <tr class=" md:grid grid-cols-6 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold">PRODUIT</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold">REALISATION</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold">VALEUR CIBLE</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2">POURCENTAGE
+          REALISATION</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold">VALIDATION</td>
+      </tr>
+
+      <tr class=" md:grid grid-cols-6 md:h-auto " *ngFor="let item of Tmp;let id=index">
+        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold">
+          {{item.produit}}</td>
+        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold">
+          {{item.realisation}}</td>
+        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold">
+          {{item.valeurCible}}</td>
+        <td
+          class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold col-span-2">
+          {{item.pourcentageRealisation}}</td>
+        <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold p-4 ">
+          <button class="w-24 h-10 rounded animate-pulse bg-cyan-700 text-white"[style.display]="visibilitybtn" (click)="sendData(item.id)">Valider</button>
+          <button class="w-24 h-10 rounded animate-pulse bg-green-700 text-white" *ngIf="statusSend===true"><i class="fa fa-check"></i></button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+

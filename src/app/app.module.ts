@@ -36,6 +36,10 @@ import { AdminFinanceLocalesComponent } from './admin-finance-locales/admin-fina
 import { RapportFormationComponent } from './rapport-formation/rapport-formation.component';
 import { InterFaitComponent } from './inter-fait/inter-fait.component';
 import { InterBaafComponent } from './inter-baaf/inter-baaf.component';
+import { InterPatrimoineComponent } from './inter-patrimoine/inter-patrimoine.component';
+import { InterExecutionBudgetaireComponent } from './inter-execution-budgetaire/inter-execution-budgetaire.component';
+import { InterCentreInformatiqueComponent } from './inter-centre-informatique/inter-centre-informatique.component';
+import { InterFinanceLocaleComponent } from './inter-finance-locale/inter-finance-locale.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +73,11 @@ import { InterBaafComponent } from './inter-baaf/inter-baaf.component';
     AdminFinanceLocalesComponent,
     RapportFormationComponent,
     InterFaitComponent,
-    InterBaafComponent
+    InterBaafComponent,
+    InterPatrimoineComponent,
+    InterExecutionBudgetaireComponent,
+    InterCentreInformatiqueComponent,
+    InterFinanceLocaleComponent
   ],
   imports: [
     BrowserModule,

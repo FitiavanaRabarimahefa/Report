@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
              this.toast.success({ detail: "Authentification succes", summary: res.success, duration: 2000 });
              setInterval(() => {
                this.delay -= 1;
-               const lien = ['inter-fait'];
+               const lien = ['inter-patrimoine'];
                if (this.delay == 0) {
                  this.route.navigate(lien);
                  clearInterval();
