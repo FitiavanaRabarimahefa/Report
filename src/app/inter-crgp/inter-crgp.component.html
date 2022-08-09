@@ -1,0 +1,78 @@
+<div id="contenu"
+  class="h-full w-full p-5  md:bg-gradient-to-tl from-cyan-600 to-green-600 flex justify-center items-center md:fixed ">
+  <div class="h-[80%] w-[95%]  bg-white shadow-lg p-4 overflow-y-scroll">
+    <h1 class="flex items-center justify-center text-gray-700 text-sm font-bold">Réalisations du Centre Informatique
+      Régional</h1>
+
+    <table class="table-auto w-full h-auto bg-white shadow-xl mt-5 p-2 sm:grid grid-cols-1" *ngIf="Tmp.length!=0">
+       <tr class=" md:grid grid-cols-3 md:h-10">
+          <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Ordre du jour</td>
+          <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+            *ngFor="let item of Tmp">
+            <p>{{item.ordreJour}}</p>
+          </td>
+        </tr>
+
+        <tr class=" md:grid grid-cols-3 md:h-10">
+          <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Lieu
+          </td>
+          <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2" *ngFor="let item of Tmp">{{item.lieu}}</td>
+        </tr>
+
+        <tr class=" md:grid grid-cols-3 md:h-10">
+          <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Participant(s)
+          </td>
+          <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+            *ngFor="let item of Tmp">
+            <p>{{item.participant}}</p>
+          </td>
+        </tr>
+
+          <tr class=" md:grid grid-cols-3 md:h-10">
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Nombre de participant(s)
+            </td>
+            <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+              *ngFor="let item of Tmp">
+              <p>{{item.participant.length}}</p>
+            </td>
+          </tr>
+
+            <tr class=" md:grid grid-cols-3 md:h-10">
+              <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Observations particulieres
+              </td>
+              <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+                *ngFor="let item of Tmp">
+                <p>{{item.observation}}</p>
+              </td>
+            </tr>
+
+            <tr class=" md:grid grid-cols-3 md:h-10">
+              <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Thème Evoqué</td>
+              <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+                *ngFor="let item of Tmp">
+                <p>{{item.evaluation[0].theme}}</p>
+              </td>
+            </tr>
+
+            <tr class=" md:grid grid-cols-3 md:h-10">
+              <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Problemes Rencontres
+              </td>
+              <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+                *ngFor="let item of Tmp">
+                <p>{{item.evaluation[0].probleme}}</p>
+              </td>
+            </tr>
+
+            <tr class=" md:grid grid-cols-3 md:h-10">
+              <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Solutions Proposées</td>
+              <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+                *ngFor="let item of Tmp">
+                <p>{{item.evaluation[0].solution}}</p>
+              </td>
+            </tr>
+        </table>
+        <button class="w-36 h-10 mt-4 float-right bg-blue-600 border rounded-r-lg rounded-l-lg text-white text-sm font-bold" *ngIf="Tmp.length!=0">Valider</button>
+  </div>
+
+</div>
+
