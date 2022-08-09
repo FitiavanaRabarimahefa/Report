@@ -1,7 +1,10 @@
 <div class="grid grid-rows-2 gap-4 w-full h-full  pt-2 pr-2 pl-2 ">
   <div class="bg-white h-full md:flex md:justify-center items-center md:px-2">
     <div class="w-full bg-white shadow-2xl p-4 lg:w-full ">
-       <form #reportForm="ngForm">
+        <div class="flex justify-center items-center">
+          <h1 class="text-gray-700 text-sm font-bold">Réalisations du Bureau des Affaires Administratives et Financières</h1>
+        </div>
+       <form #reportForm="ngForm" class="mt-6">
          <div class="grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-2 ">
              <div class=" w-full flex justify-around">
               <div class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
@@ -88,10 +91,10 @@
             <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold ">{{item.realisation}}</td>
             <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold ">{{item.valeurCible}}</td>
             <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold col-span-2 ">{{item.pourcentageRealisation}}</td>
-            <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold ">
+            <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold p-4 ">
               <i role="button" class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true" (click)="editData(item.id,reportForm,opt0,opt1,opt2)" [routerLink]="['/report-activity',item.id]"></i>
               <i role="button" class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true" (click)="deleteData(item.id)"></i>
-              <i role="button"  class="fa fa-paper-plane text-cyan-500 hover:scale-125" (click)="sendData(item.id)"></i>
+              <!-- <i role="button"  class="fa fa-paper-plane text-cyan-500 hover:scale-125" (click)="sendData(item.id)"></i> -->
             </td>
          </tr>
 </table>

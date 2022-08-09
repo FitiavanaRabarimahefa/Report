@@ -87,9 +87,9 @@
           <div class="flex justify-center items-center mt-4 pl-4">
             <input class="w-[50%] h-10 border-2 pb-1 shadow appearance-none rounded" type="text" placeholder="formateur"
               name="formateur" required ngModel>
-            <button class="w-36 h-10  bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+            <button class="w-36 h-10 ml-2 bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
               [style.display]="visibleAddFormateur" (click)="AddFormateur(reportForm)">Ajouter</button>
-            <button class="w-36 h-10  bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+            <button class="w-36 h-10 ml-2 bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
               [style.display]="visibleEditFormateur" (click)="onModifyFormateur(reportForm)">Modifier</button>
 
           </div>
@@ -120,9 +120,9 @@
           <div class="md:flex justify-center items-center mt-4 pl-4">
             <input class="w-full md:w-[50%] h-10 border-2 pb-1 shadow appearance-none rounded" type="text"
               placeholder="participant" name="participant" required ngModel>
-            <button class="w-36 h-10  bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+            <button class="w-36 h-10 ml-2 bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
               [style.display]="visibleAddParticipant" (click)="AddParticipant(reportForm)">Ajouter</button>
-            <button class="w-36 h-10  bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
+            <button class="w-36 h-10 ml-2 bg-blue-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold"
               [style.display]="visibleEditParticipant" (click)="onModifyParticipant(reportForm)">Modifier</button>
 
           </div>
@@ -155,14 +155,84 @@
           </div>
         </div>
         <button
-          class="w-36 h-10 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2"
-          [style.display]="visibleAddList" (click)="sendToSuperior(addToJson)">Envoyer au chef</button>
+          class="w-36 h-10 mb-2 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2"
+          [style.display]="visibleAddList" (click)="sendToSuperior(addToJson,reportForm)">Envoyer au chef</button>
         <button
-          class="w-36 h-10  float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2"
+          class="w-36 h-10 mb-2  float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold md:mt-2"
           [style.display]="visibleViewList">Créer un aperçu</button>
       </form>
     </div>
   </div>
 
+  <!-- apercu donnee-->
 
+  <div class="w-full h-auto  p-4">
+          <div class="flex items-center justify-center">
+            <h1 class="text-gray-600 text-sm font-bold">APERCU COMPTE-RENDU DE FORMATION DISPENSEE</h1>
+          </div>
+
+          <div class="bg-white w-full h-[300px] overflow-y-scroll mt-2">
+            <table class="table-auto w-full h-auto bg-white shadow-xl p-2 sm:grid grid-cols-1">
+              <tr class=" md:grid grid-cols-3 md:h-10">
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Theme</td>
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2" *ngFor="let item of Tmp">{{item.theme}}</td>
+              </tr>
+
+              <tr class=" md:grid grid-cols-3 md:h-10">
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Sous theme</td>
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2" *ngFor="let item of Tmp">{{item.sousTheme}}</td>
+              </tr>
+
+              <tr class=" md:grid grid-cols-3 md:h-10">
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Objectif</td>
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+                  *ngFor="let item of Tmp">{{item.objectif}}</td>
+              </tr>
+
+              <tr class=" md:grid grid-cols-3 md:h-10">
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Date</td>
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2" *ngFor="let item of Tmp">
+                  <p>{{item.debut}}</p>
+                  <p>/</p>
+                  <p>{{item.fin}}</p>
+                </td>
+              </tr>
+
+              <tr class=" md:grid grid-cols-3 md:h-10">
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Lieu</td>
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+                  *ngFor="let item of Tmp">{{item.lieu}}</td>
+              </tr>
+
+              <tr class=" md:grid grid-cols-3 md:h-10">
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Formateur(s)</td>
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+                  *ngFor="let item of Tmp">
+                  <p>{{item.formateur}}</p>
+                 </td>
+              </tr>
+
+              <tr class=" md:grid grid-cols-3 md:h-10">
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Participant(s)</td>
+                <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+                  *ngFor="let item of Tmp">
+                  <p>{{item.participant}}</p><br>
+                </td>
+              </tr>
+
+                <tr class=" md:grid grid-cols-3 md:h-10">
+                  <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Nombre participant</td>
+                  <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+                    *ngFor="let item of Tmp">{{item.participant.length}}</td>
+                </tr>
+
+                  <tr class=" md:grid grid-cols-3 md:h-10">
+                    <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Observation</td>
+                    <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+                      *ngFor="let item of Tmp">{{item.observation}}</td>
+                  </tr>
+
+            </table>
+          </div>
+  </div>
 </div>

@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import CrgpModel from '../models/crgpModels';
+
 
 const apiUrl = "http://localhost:8080/api/CRGPReport";
 
 interface crgpReport{
-  nameReport: String,
+  name_Report: String,
   numero: String,
   region: String,
   lieu: String,
@@ -14,7 +16,7 @@ interface crgpReport{
   participant: Array<String>,
   ordreJour: Array<String>,
   observation: String,
-  evaluation:Array<String>;
+  evaluation:Array<CrgpModel>;
 }
 
 @Injectable({
@@ -23,7 +25,7 @@ interface crgpReport{
 export class CrgpServiceService {
 
   constructor(private http: HttpClient) { }
-  saveToJson(data: crgpReport): Observable<any>{
+  saveToJson(data:crgpReport): Observable<any>{
     return this.http.post(`${apiUrl}`, data);
   }
 }

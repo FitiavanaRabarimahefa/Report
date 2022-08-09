@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import socketIo from 'socket.io-client';
 import { ServiceFormationJsonService } from '../service-formation-json/service-formation-json.service';
 
 
 interface formationJson{
-  nom_rapport: String,
+  name_Report: String,
   numero: String,
   region: String,
   lieu: String,
@@ -23,7 +24,7 @@ interface formationJson{
 
 const EMPTY_MODEL_JSON: formationJson={
 
-  nom_rapport:'',
+  name_Report:'',
   numero:'',
   region:'',
   lieu:'',
@@ -57,9 +58,24 @@ export class RapportFormationComponent implements OnInit {
      this.addToJson.region= storageRegion;
   }
 
-        addToJson:formationJson={...EMPTY_MODEL_JSON}
+  TableauReport:any=[];
+  Tmp:any=[];
+  addToJson:formationJson={...EMPTY_MODEL_JSON}
 
   ngOnInit(): void {
+    const storage=localStorage.getItem("Region");
+    console.log(storage);
+
+   const socket=socketIo('http://localhost:8080');
+   socket.on('data4',(data)=>{
+    console.log(JSON.parse(data));
+    this.TableauReport=JSON.parse(data);
+    console.log(this.TableauReport.length);
+    function myFunction(value) {
+      return value=!!value && value.region==storage && value.name_Report=="formation";
+    }
+    this.Tmp=this.TableauReport.filter(myFunction);
+   });
   }
 
   visibleAddFormateur = "block";
@@ -148,11 +164,12 @@ monthValue(event:any){
 
   }
 
-  sendToSuperior(addToJson: formationJson) {
-    this.addToJson.nom_rapport = "formation";
+  sendToSuperior(addToJson: formationJson,form:NgForm) {
+    this.addToJson.name_Report = "formation";
     this.serviceToJson.saveJson(addToJson).subscribe({
       next: (res: any) => {
-           if(res) console.log("okey")
+        if (res) console.log("okey");
+        form.reset();
       },
       error: (err: any) => {
         if(err) console.log("bad request")

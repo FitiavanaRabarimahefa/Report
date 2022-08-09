@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import CrgpModel from '../models/crgpModels';
 import { CrgpServiceService } from '../service-crgp-json/crgp-service.service';
 import { SaveToMongoService } from '../service_mongo_crgp/save-to-mongo.service';
+import socketIo from 'socket.io-client'
 
 
 
@@ -17,7 +18,7 @@ interface crgpReport{
   participant: Array<String>,
   ordreJour: Array<String>,
   observation: String,
-  evaluation:Array<String>,
+  evaluation:Array<CrgpModel>,
 }
 
 interface dataMongo{
@@ -88,11 +89,26 @@ enableCheckbox:boolean[] = [false,false,false,false,false];
   ) {
     const storageRegion = localStorage.getItem("Region");
     this.addToMongo.region = storageRegion;
-
-
-   }
+    this.addToJson.region=storageRegion
+  }
+  TableauReport:any=[];
+  Tmp:any=[];
 
   ngOnInit(): void {
+     const storage=localStorage.getItem("Region");
+    console.log(storage);
+
+   const socket=socketIo('http://localhost:8080');
+   socket.on('data3',(data)=>{
+    console.log(JSON.parse(data));
+    this.TableauReport=JSON.parse(data);
+    console.log(this.TableauReport.length);
+    function myFunction(value) {
+      return value=!!value && value.region==storage && value.name_Report=="CRGP";
+    }
+    this.Tmp=this.TableauReport.filter(myFunction);
+   });
+
   }
 
 
@@ -287,33 +303,33 @@ monthValue(event:any){
     this.tabEvaluation[this.indexEvaluationModify].solution = form.value['solution'];
     //form.reset();
   }
-  SaveMongo(form: NgForm) {
+  SaveJson(form: NgForm) {
    const indice = this.dailyOrder.indexOf('Autres')
       if(indice != -1){
           this.dailyOrder.splice(this.dailyOrder.indexOf('Autres'),1);
           this.dailyOrder.push(form.value['other']);
-        this.addToMongo.ordreJour = this.dailyOrder;
+        this.addToJson.ordreJour = this.dailyOrder;
       } else {
-        this.addToMongo.ordreJour = this.dailyOrder;
+        this.addToJson.ordreJour = this.dailyOrder;
       }
 
-  this.addToMongo.nom_rapport="CRGP";
-  this.addToMongo.lieu = form.value.lieu;
-  this.addToMongo.numero = form.value.numero;
-  this.addToMongo.participant = this.tabParticipant;
-  this.addToMongo.observation = form.value.observation;
-  this.addToMongo.evaluation = this.tabEvaluation;
+  this.addToJson.name_Report="CRGP";
+  this.addToJson.lieu= form.value.lieu;
+  this.addToJson.numero = form.value.numero;
+  this.addToJson.participant= this.tabParticipant;
+  this.addToJson.observation= form.value.observation;
+  this.addToJson.evaluation = this.tabEvaluation;
 
-  console.log(this.addToMongo);
-
-  this.serviceToMongo.Save(this.addToMongo).subscribe({
-    next: (res: any) => {
-       console.log("succes")
-    },
-    error: (err: any) => {
-      console.log(err)
-    }
+    this.serviceSaveToJson.saveToJson(this.addToJson).subscribe({
+      next: (res: any) => {
+        console.log(res);
+      },
+      error: (err: any) => {
+          console.log(err)
+      }
   })
+
+
 }
 
 

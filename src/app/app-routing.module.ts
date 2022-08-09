@@ -31,6 +31,7 @@ import { InterPatrimoineComponent } from './inter-patrimoine/inter-patrimoine.co
 import { InterExecutionBudgetaireComponent } from './inter-execution-budgetaire/inter-execution-budgetaire.component';
 import { InterCentreInformatiqueComponent } from './inter-centre-informatique/inter-centre-informatique.component';
 import { InterFinanceLocaleComponent } from './inter-finance-locale/inter-finance-locale.component';
+import { InterCrgpComponent } from './inter-crgp/inter-crgp.component';
 
 
 const routes: Routes = [
@@ -166,6 +167,10 @@ const routes: Routes = [
   {
     path: 'inter-finance-locale',
     component:InterFinanceLocaleComponent
+  },
+  {
+    path: 'inter-crgp',
+    component:InterCrgpComponent
   }
 
 ];

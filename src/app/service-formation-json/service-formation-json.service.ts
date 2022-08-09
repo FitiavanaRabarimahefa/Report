@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 const apiUrl = "http://localhost:8080/api/formationJson";
 
 interface formationJson{
-  nom_rapport: String,
+  name_Report: String,
   numero: String,
   region: String,
   lieu: String,
