@@ -1,8 +1,7 @@
 <div id="contenu"
   class="h-full w-full p-5  md:bg-gradient-to-tl from-cyan-600 to-green-600 flex justify-center items-center md:fixed ">
   <div class="h-[80%] w-[95%]  bg-white shadow-lg p-4 overflow-y-scroll">
-    <h1 class="flex items-center justify-center text-gray-700 text-sm font-bold">Réalisations du Centre Informatique
-      Régional</h1>
+    <h1 class="flex items-center justify-center text-gray-700 text-sm font-bold">Compte-Rendu Du Club Regional De La Gestion Publique</h1>
 
     <table class="table-auto w-full h-auto bg-white shadow-xl mt-5 p-2 sm:grid grid-cols-1" *ngIf="Tmp.length!=0">
        <tr class=" md:grid grid-cols-3 md:h-10">
@@ -71,7 +70,7 @@
               </td>
             </tr>
         </table>
-        <button class="w-36 h-10 mt-4 float-right bg-blue-600 border rounded-r-lg rounded-l-lg text-white text-sm font-bold" *ngIf="Tmp.length!=0">Valider</button>
+        <button class="w-36 h-10 mt-4 float-right bg-blue-600 border rounded-r-lg rounded-l-lg text-white text-sm font-bold" *ngFor="let item of Tmp" (click)="sendMongo(item.id)">Valider</button>
   </div>
 
 </div>
