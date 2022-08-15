@@ -25,8 +25,7 @@
         <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold p-4 ">
           <button class="w-24 h-10 rounded animate-pulse bg-cyan-700 text-white" [style.display]="visibilitybtn"
             (click)="sendData(item.id)">Valider</button>
-          <button class="w-24 h-10 rounded animate-pulse bg-green-700 text-white" *ngIf="statusSend===true"><i
-              class="fa fa-check"></i></button>
+          <button class="w-24 h-10 rounded animate-pulse bg-green-700 text-white" *ngIf="statusSend===true"><i class="fa fa-check"></i></button>
         </td>
       </tr>
     </table>

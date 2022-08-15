@@ -32,6 +32,7 @@ import { InterExecutionBudgetaireComponent } from './inter-execution-budgetaire/
 import { InterCentreInformatiqueComponent } from './inter-centre-informatique/inter-centre-informatique.component';
 import { InterFinanceLocaleComponent } from './inter-finance-locale/inter-finance-locale.component';
 import { InterCrgpComponent } from './inter-crgp/inter-crgp.component';
+import { InterFormationComponent } from './inter-formation/inter-formation.component';
 
 
 const routes: Routes = [
@@ -171,6 +172,10 @@ const routes: Routes = [
   {
     path: 'inter-crgp',
     component:InterCrgpComponent
+  },
+  {
+    path: 'inter-formation',
+    component:InterFormationComponent
   }
 
 ];

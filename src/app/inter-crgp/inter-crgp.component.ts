@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import socketIo from 'socket.io-client';
 import CrgpModel from '../models/crgpModels';
+import { DeleteCrgpService } from '../service-delete-crgp/delete-crgp.service';
 import { SaveToMongoService } from '../service_mongo_crgp/save-to-mongo.service';
 
 
@@ -18,6 +19,11 @@ interface dataMongo{
   evaluation:Array<CrgpModel>;
 }
 
+
+interface identidication{
+  id:String
+}
+
 const EMPTY_MODEL_CRGP: dataMongo={
   nom_rapport:'',
   numero:'',
@@ -31,6 +37,10 @@ const EMPTY_MODEL_CRGP: dataMongo={
   evaluation:[]
 }
 
+const EMPTY_MODEL_DELETE:identidication = {
+    id:''
+}
+
 
 
 @Component({
@@ -42,11 +52,16 @@ export class InterCrgpComponent implements OnInit {
 
   TableauReport:any=[];
   Tmp: any = [];
+  visibilitybtn = 'block';
+  statusSend: boolean;
+
 
   addMongo: dataMongo = { ...EMPTY_MODEL_CRGP };
+  IdDelete:identidication= { ...EMPTY_MODEL_DELETE };
 
   constructor(
-      private serviceSendMongo:SaveToMongoService
+    private serviceSendMongo: SaveToMongoService,
+    private serviceDeleteCRGP:DeleteCrgpService,
   ) {}
 
   ngOnInit(): void {
@@ -79,10 +94,26 @@ export class InterCrgpComponent implements OnInit {
 
     this.serviceSendMongo.Save(this.addMongo).subscribe({
       next: (res: any) => {
-        return res.send("okey");
+          this.visibilitybtn = 'none';
+          this.statusSend = true;
+
+        setTimeout(() => {
+            this.IdDelete.id = id;
+          console.log(this.IdDelete);
+             this.serviceDeleteCRGP.deleteCRGP(this.IdDelete).subscribe({
+               next: (res: any) => {
+                 console.log(res)
+               },
+               error: (err: any) => {
+                 console.log(err);
+               }
+            })
+          },200);
+
+
       },
       error: (err: any) => {
-
+        console.log(err);
       }
       })
   }

@@ -41,6 +41,7 @@ import { InterExecutionBudgetaireComponent } from './inter-execution-budgetaire/
 import { InterCentreInformatiqueComponent } from './inter-centre-informatique/inter-centre-informatique.component';
 import { InterFinanceLocaleComponent } from './inter-finance-locale/inter-finance-locale.component';
 import { InterCrgpComponent } from './inter-crgp/inter-crgp.component';
+import { InterFormationComponent } from './inter-formation/inter-formation.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { InterCrgpComponent } from './inter-crgp/inter-crgp.component';
     InterExecutionBudgetaireComponent,
     InterCentreInformatiqueComponent,
     InterFinanceLocaleComponent,
-    InterCrgpComponent
+    InterCrgpComponent,
+    InterFormationComponent
   ],
   imports: [
     BrowserModule,

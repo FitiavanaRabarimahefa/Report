@@ -1,0 +1,98 @@
+<div id="contenu"
+  class="h-full w-full p-5  md:bg-gradient-to-tl from-cyan-600 to-green-600 flex justify-center items-center md:fixed ">
+  <div class="h-[80%] w-[95%]  bg-white shadow-lg p-4 overflow-y-scroll">
+    <h1 class="flex items-center justify-center text-gray-700 text-sm font-bold">Compte-Rendu De Formation Dispensée</h1>
+
+    <table class="table-auto w-full h-auto bg-white shadow-xl mt-5 p-2 sm:grid grid-cols-1" *ngIf="Tmp.length!=0">
+      <tr class=" md:grid grid-cols-3 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Thème</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+          *ngFor="let item of Tmp">
+          <p>{{item.theme}}</p>
+        </td>
+      </tr>
+
+      <tr class=" md:grid grid-cols-3 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Sous-Thème
+        </td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+          *ngFor="let item of Tmp">{{item.sousTheme}}</td>
+      </tr>
+
+      <tr class=" md:grid grid-cols-3 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Objectif</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+          *ngFor="let item of Tmp">
+          <p>{{item.objectif}}</p>
+        </td>
+      </tr>
+
+      <tr class=" md:grid grid-cols-3 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Date de début</td>
+        <td class="border border-gray-300 md:flex justify-center  text-gray-700 text-sm font-bold col-span-2 "
+          *ngFor="let item of Tmp">
+          <p>{{item.debut}}</p>
+        </td>
+      </tr>
+
+      <tr class=" md:grid grid-cols-3 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">
+          Date de finalisation
+        </td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+          *ngFor="let item of Tmp">
+          <p>{{item.fin}}</p>
+        </td>
+      </tr>
+
+      <tr class=" md:grid grid-cols-3 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Lieu</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+          *ngFor="let item of Tmp">
+          <p>{{item.lieu}}</p>
+        </td>
+      </tr>
+
+      <tr class=" md:grid grid-cols-3 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Formateur(s)</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+          *ngFor="let item of Tmp">
+          <p>{{item.formateur}}</p>
+        </td>
+      </tr>
+
+      <tr class=" md:grid grid-cols-3 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Participant(s)</td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+          *ngFor="let item of Tmp">
+          <p>{{item.participant}}</p>
+        </td>
+      </tr>
+
+      <tr class=" md:grid grid-cols-3 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Nombre de Participants
+        </td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+          *ngFor="let item of Tmp">
+          <p>{{item.participant.length}}</p>
+        </td>
+      </tr>
+
+      <tr class=" md:grid grid-cols-3 md:h-10">
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-1">Observations Particulières
+        </td>
+        <td class="border border-gray-300 md:flex justify-center text-gray-700 text-sm font-bold col-span-2"
+          *ngFor="let item of Tmp">
+          <p>{{item.observation}}</p>
+        </td>
+      </tr>
+    </table>
+
+     <button class="w-36 h-10 mt-4 float-right bg-blue-600 border rounded-r-lg rounded-l-lg text-white text-sm font-bold"
+      [style.display]="visibilitybtn" *ngFor="let item of Tmp" (click)="sendMongo(item.id)">Valider</button>
+    <button class="w-24 h-10  mt-4 float-right rounded animate-pulse bg-green-700 text-white"
+      *ngIf="statusSend===true"><i class="fa fa-check"></i></button>
+  </div>
+
+</div>
+
