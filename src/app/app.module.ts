@@ -42,6 +42,9 @@ import { InterCentreInformatiqueComponent } from './inter-centre-informatique/in
 import { InterFinanceLocaleComponent } from './inter-finance-locale/inter-finance-locale.component';
 import { InterCrgpComponent } from './inter-crgp/inter-crgp.component';
 import { InterFormationComponent } from './inter-formation/inter-formation.component';
+import { AdminFormationComponent } from './admin-formation/admin-formation.component';
+import { InterLocalComponent } from './inter-local/inter-local.component';
+import { InterReportActivityComponent } from './inter-report-activity/inter-report-activity.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +84,10 @@ import { InterFormationComponent } from './inter-formation/inter-formation.compo
     InterCentreInformatiqueComponent,
     InterFinanceLocaleComponent,
     InterCrgpComponent,
-    InterFormationComponent
+    InterFormationComponent,
+    AdminFormationComponent,
+    InterLocalComponent,
+    InterReportActivityComponent
   ],
   imports: [
     BrowserModule,

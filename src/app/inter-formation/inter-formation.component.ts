@@ -98,8 +98,9 @@ export class InterFormationComponent implements OnInit {
     this.saveMongo.theme = this.TableauReport[id-1].theme;
     this.saveMongo.sousTheme = this.TableauReport[id-1].sousTheme;
     this.saveMongo.objectif = this.TableauReport[id-1].objectif;
-    this.saveMongo.participant = this.TableauReport[id - 1].participant;
-    this.saveMongo.observation = this.TableauReport[id - 1].observation;
+    this.saveMongo.formateur = this.TableauReport[id - 1].formateur;
+    this.saveMongo.participant = this.TableauReport[id-1].participant;
+    this.saveMongo.observation = this.TableauReport[id-1].observation;
 
     this.serviceMongo.saveMongo(this.saveMongo).subscribe({
       next: (res: any) => {

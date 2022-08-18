@@ -86,6 +86,18 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
+
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -179,6 +191,18 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
+
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -273,6 +297,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -366,6 +401,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -459,6 +505,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -552,6 +609,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -645,6 +713,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -738,6 +817,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -831,6 +921,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -924,6 +1025,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -1017,6 +1129,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -1110,6 +1233,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -1203,6 +1337,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -1296,6 +1441,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -1389,6 +1545,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -1482,6 +1649,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -1575,6 +1753,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -1668,6 +1857,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -1761,6 +1961,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -1854,6 +2065,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -1948,6 +2170,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
@@ -2002,7 +2235,7 @@ export class AdminFaitMarquantComponent implements OnInit {
     const pdf = pdfMake.createPdf(pdfDefinition);
     pdf.open();
   }
-  
+
 
   getAlaotraMangoro() {
      function myFunction(value) {
@@ -2041,6 +2274,17 @@ export class AdminFaitMarquantComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.tmp.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmp.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
       ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
                return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }

@@ -36,13 +36,26 @@ export class LoginComponent implements OnInit {
          if(res.validation==false){
            this.toast.warning({detail:"Erreur d'authentification ",summary:"Votre compte n'a pas été encore valider",duration:2000})
          } else if (res.validation == true) {
-           if (res.adminStatus == true) {
+           if (res.superAdmin == true) {
+               localStorage.setItem("token", res.token);
+               localStorage.setItem("Region", res.Region);
+             this.toast.success({ detail: "Authentification succes", summary: res.success, duration: 2000 });
+             setInterval(() => {
+               this.delay -= 1;
+               const lien = ['admin-user'];
+               if (this.delay == 0) {
+                 this.route.navigate(lien);
+                 clearInterval();
+               }
+             }, 800);
+
+           }else if (res.adminStatus == true) {
              localStorage.setItem("token", res.token);
              localStorage.setItem("Region", res.Region);
              this.toast.success({ detail: "Authentification succes", summary: res.success, duration: 2000 });
              setInterval(() => {
                this.delay -= 1;
-               const lien = ['inter-patrimoine'];
+               const lien = ['inter-local'];
                if (this.delay == 0) {
                  this.route.navigate(lien);
                  clearInterval();

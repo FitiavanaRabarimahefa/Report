@@ -33,6 +33,8 @@ import { InterCentreInformatiqueComponent } from './inter-centre-informatique/in
 import { InterFinanceLocaleComponent } from './inter-finance-locale/inter-finance-locale.component';
 import { InterCrgpComponent } from './inter-crgp/inter-crgp.component';
 import { InterFormationComponent } from './inter-formation/inter-formation.component';
+import { AdminFormationComponent } from './admin-formation/admin-formation.component';
+import { InterLocalComponent } from './inter-local/inter-local.component';
 
 
 const routes: Routes = [
@@ -142,6 +144,10 @@ const routes: Routes = [
     component: AdminFinanceLocalesComponent
   },
   {
+    path: 'admin-formation',
+    component:AdminFormationComponent
+  },
+  {
     path: 'rapport-formation',
     component:RapportFormationComponent
   },
@@ -176,6 +182,10 @@ const routes: Routes = [
   {
     path: 'inter-formation',
     component:InterFormationComponent
+  },
+  {
+    path: 'inter-local',
+    component:InterLocalComponent
   }
 
 ];

@@ -174,15 +174,12 @@ monthValue(event:any){
      function getPourcentage(a,b) {
          return (a / b) * 100;
     }
-    this.pourcentage = Math.round(getPourcentage(this.addReport.realisation, this.addReport.valeurCible));
-    this.addReport.pourcentageRealisation = this.pourcentage.toString();
+    this.pourcentage =getPourcentage(this.addReport.realisation, this.addReport.valeurCible);
+    this.addReport.pourcentageRealisation = this.pourcentage.toFixed(2).toString();
     this.addReport.nameReport = this.nameReport;
     this.addjsonReport.addReport(addReport).subscribe({
       next:(res:any)=>{
-       if (res){
-          this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
-          this.router.onSameUrlNavigation='reload';
-        }
+        return res;
       // reportForm.reset();
 
       },
@@ -208,13 +205,13 @@ validateEditReport(reportForm:NgForm,opt){
          return (a / b) * 100;
      }
 
-  this.pourcentage =Math.round(getPourcentage(reportForm.value.realisation,reportForm.value.valeurCible));
+  this.pourcentage =getPourcentage(reportForm.value.realisation,reportForm.value.valeurCible);
 
   this.editJsonReport.id=this.id;
   //this.editJsonReport.produit=reportForm.value.produit;
   this.editJsonReport.realisation=reportForm.value.realisation;
   this.editJsonReport.valeurCible=reportForm.value.valeurCible;
-  this.editJsonReport.pourcentageRealisation=this.pourcentage.toString();
+  this.editJsonReport.pourcentageRealisation=this.pourcentage.toFixed(2).toString();
 
   this.editJsonService.editJson(this.editJsonReport).subscribe({
     next:(res:any)=>{
@@ -243,7 +240,7 @@ editData(id,reportForm:NgForm,opt0,opt1,opt2){
   reportForm.controls['realisation'].setValue(this.TableauReport[id-1].realisation);
   reportForm.controls['valeurCible'].setValue(this.TableauReport[id-1].valeurCible);
   };
-  
+
 deleteData(id){
    //const tpmId= this.TableauReport.indexOf(this.TableauReport[id]);
   //console.log(tpmId);

@@ -14,17 +14,21 @@
 
     </div>
 
-   <a [routerLink]="['/admin-crgp']" routerLinkActive="router-link-active" ><div role="button"
-      class="report-CRGP w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow	1s">
-      <img src="../../assets/photo2.png" class="md:w-[60px] h-[60px]">
-      <h4 class="ml-3">Compte Rendu CRGP</h4>
-    </div></a>
+    <a [routerLink]="['/inter-crgp']" routerLinkActive="router-link-active">
+      <div role="button"
+        class="report-CRGP w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow	1s">
+        <img src="../../assets/photo2.png" class="md:w-[60px] h-[60px]">
+        <h4 class="ml-3">Compte Rendu CRGP</h4>
+      </div>
+    </a>
 
-   <a [routerLink]="['/admin-formation']" routerLinkActive="router-link-active" ><div role="button"
-      class="report-formation w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center  animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow	1s">
-      <img src="../../assets/photo3.png" class="md:w-[60px] h-[60px]">
-      <h4 class="ml-3">Rapports de Formation</h4>
-    </div></a>
+    <a [routerLink]="['/inter-formation']" routerLinkActive="router-link-active">
+      <div role="button"
+        class="report-formation w-full h-[80px] shadow-xl md:w-[85%] md:h-[50%] bg-white rounded-r-full flex flex-row items-center  animate__animated animate__slideInLeft animate__repeat-1 1 animate__delay-0.1s	0.5s animate__slow	1s">
+        <img src="../../assets/photo3.png" class="md:w-[60px] h-[60px]">
+        <h4 class="ml-3">Rapports de Formation</h4>
+      </div>
+    </a>
 
 
 
@@ -40,8 +44,8 @@
   </div>
 
   <div class="col-span-3 md:w-full md:h-full">
-      <app-admin-report-activity-all-list [style.display]="VisibleReportActivity"></app-admin-report-activity-all-list>
-      <app-admin-report-list [style.display]="VisibleReportList"></app-admin-report-list>
+    <app-inter-report-activity [style.display]="VisibleReportActivity"></app-inter-report-activity>
+    <app-admin-report-list [style.display]="VisibleReportList"></app-admin-report-list>
   </div>
 </div>
 

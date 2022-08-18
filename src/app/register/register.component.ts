@@ -35,10 +35,14 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
- validation(newUser:UserRegister,register:NgForm):void{
+  regionValue(event) {
+    this.newUser.Region = event.target.value;
+  }
+
+  validation(newUser: UserRegister, register: NgForm): void {
     console.log(newUser);
-    this.ServiceRegister.registration(newUser).subscribe(
-      res =>{
+    this.ServiceRegister.registration(newUser).subscribe({
+       next:(res:any) =>{
           if(res.success){
             this.toast.success({ detail: "Authentification succes", summary: res.success, duration: 2000 });
             register.reset();
@@ -49,10 +53,10 @@ export class RegisterComponent implements OnInit {
           }
 
       },
-      err =>{
+      error:(err:any) =>{
               console.log('Erreur enregistrement',err);
       }
-    )
+    })
 
   }
 }

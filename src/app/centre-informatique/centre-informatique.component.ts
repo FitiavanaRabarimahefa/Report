@@ -159,8 +159,8 @@ monthValue(event:any){
     function getPourcentage(a,b) {
          return (a / b) * 100;
     }
-    this.pourcentage = Math.round(getPourcentage(this.addToJson.realisation, this.addToJson.valeurCible));
-    this.addToJson.pourcentageRealisation = this.pourcentage.toString();
+    this.pourcentage =getPourcentage(this.addToJson.realisation, this.addToJson.valeurCible);
+    this.addToJson.pourcentageRealisation = this.pourcentage.toFixed(2).toString();
     this.addToJson.nameReport = this.nameReport;
 
     this.ServiceaddToJson.addReport(addToJson).subscribe({
@@ -209,12 +209,12 @@ monthValue(event:any){
          return (a / b) * 100;
         }
 
-     this.pourcentage = Math.round(getPourcentage(form.value.realisation,form.value.valeurCible));
+     this.pourcentage =getPourcentage(form.value.realisation,form.value.valeurCible);
 
     this.editJson.id = this.id;
     this.editJson.realisation = form.value.realisation;
     this.editJson.valeurCible = form.value.valeurCible;
-    this.editJson.pourcentageRealisation = this.pourcentage.toString();
+    this.editJson.pourcentageRealisation = this.pourcentage.toFixed(2).toString();
 
     this.editJsonService.editJson(this.editJson).subscribe({
       next: (res: any) => {

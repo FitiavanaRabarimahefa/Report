@@ -83,6 +83,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -106,7 +117,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation }, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center' }, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -180,6 +191,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -209,7 +231,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -284,6 +306,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -313,7 +346,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -387,6 +420,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -416,7 +460,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -491,6 +535,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -520,7 +575,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation }, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center' }, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -594,6 +649,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -623,7 +689,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -697,6 +763,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -726,7 +803,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -800,6 +877,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -829,7 +917,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -903,6 +991,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -932,7 +1031,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -1006,6 +1105,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -1035,7 +1145,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -1109,6 +1219,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -1138,7 +1259,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -1211,6 +1332,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -1240,7 +1372,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -1314,6 +1446,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -1343,7 +1486,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -1417,6 +1560,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -1446,7 +1600,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -1521,6 +1675,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -1550,7 +1715,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -1623,6 +1788,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -1652,7 +1828,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -1725,6 +1901,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -1754,7 +1941,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -1828,6 +2015,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -1857,7 +2055,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -1931,6 +2129,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -1960,7 +2169,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation }, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center' }, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -2034,6 +2243,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -2063,7 +2283,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -2137,6 +2357,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -2166,7 +2397,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
@@ -2245,6 +2476,17 @@ export class AdminFinanceLocalesComponent implements OnInit {
           text: 'DIRECTION DU BUDGET',
           style: 'header'
         },
+        ...this.newTab.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.newTab.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
 
         ...this.newTab.map(el => {
            if (el.cirfinValue == '') {
@@ -2274,7 +2516,7 @@ export class AdminFinanceLocalesComponent implements OnInit {
             body: [
               [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
               ...this.tmp.map(el => {
-                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
               }),
 
             ]
