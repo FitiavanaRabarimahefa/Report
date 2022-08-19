@@ -59,11 +59,11 @@
 
                 </div>
                 <div>
-                  <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre réalisation</label>
+                  <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre réalisation (en chiffre)</label>
                   <input type="text" name="realisation" class="shadow appearance-none border w-full h-8 rounded px-2" required [(ngModel)]="addReport.realisation">
                 </div>
                 <div>
-                  <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre valeur cible</label>
+                  <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre valeur cible (en chiffre)</label>
                   <input type="text" name="valeurCible" class="shadow appearance-none border w-full h-8 rounded px-2 " required [(ngModel)]="addReport.valeurCible">
                 </div>
                 <!-- <div>
@@ -90,7 +90,7 @@
             <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold ">{{item.produit}}</td>
             <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold ">{{item.realisation}}</td>
             <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold ">{{item.valeurCible}}</td>
-            <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold col-span-2 ">{{item.pourcentageRealisation}}</td>
+            <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold col-span-2 ">{{item.pourcentageRealisation}} %</td>
             <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold p-4 ">
               <i role="button" class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true" (click)="editData(item.id,reportForm,opt0,opt1,opt2)" [routerLink]="['/report-activity',item.id]"></i>
               <i role="button" class="fa fa-trash text-red-600 hover:scale-125" aria-hidden="true" (click)="deleteData(item.id)"></i>

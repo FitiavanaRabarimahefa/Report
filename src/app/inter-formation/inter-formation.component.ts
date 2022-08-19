@@ -106,8 +106,8 @@ export class InterFormationComponent implements OnInit {
       next: (res: any) => {
         if (res.success) {
 
-          this.visibilitybtn = 'none';
-          this.statusSend = true;
+          // this.visibilitybtn = 'none';
+          // this.statusSend = true;
 
           this.idDelete.id = id;
 
@@ -122,7 +122,7 @@ export class InterFormationComponent implements OnInit {
                       console.log(err)
                }
              })
-              this.statusSend = false;
+              // this.statusSend = false;
            },2000);
 
 

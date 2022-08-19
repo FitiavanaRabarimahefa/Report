@@ -90,8 +90,8 @@
 
      <button class="w-36 h-10 mt-4 float-right bg-blue-600 border rounded-r-lg rounded-l-lg text-white text-sm font-bold"
       [style.display]="visibilitybtn" *ngFor="let item of Tmp" (click)="sendMongo(item.id)">Valider</button>
-    <button class="w-24 h-10  mt-4 float-right rounded animate-pulse bg-green-700 text-white"
-      *ngIf="statusSend===true"><i class="fa fa-check"></i></button>
+    <!-- <button class="w-24 h-10  mt-4 float-right rounded animate-pulse bg-green-700 text-white"
+      *ngIf="statusSend===true"><i class="fa fa-check"></i></button> -->
 
       <div class="mt-12 py-5 m-4 grid grid-rows-2 bg-red-400 justify-center items-center " *ngIf="Tmp.length==0">
         <div class="mt-4 flex items-center justify-center">
@@ -106,7 +106,7 @@
             qu'ils sont envoyés par les régions. </p>
         </div>
       </div>
-      
+
   </div>
 
 </div>

@@ -91,8 +91,8 @@ export class InterFinanceLocaleComponent implements OnInit {
 
       this.saveMongoService.sendJson(this.sendJson).subscribe({
         next: (res: any) => {
-          this.visibilitybtn = 'none';
-          this.statusSend = true;
+          // this.visibilitybtn = 'none';
+          // this.statusSend = true;
 
           setTimeout(() => {
             this.identifiant.id = id;

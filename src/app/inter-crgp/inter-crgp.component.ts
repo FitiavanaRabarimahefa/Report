@@ -94,8 +94,8 @@ export class InterCrgpComponent implements OnInit {
 
     this.serviceSendMongo.Save(this.addMongo).subscribe({
       next: (res: any) => {
-          this.visibilitybtn = 'none';
-          this.statusSend = true;
+          // this.visibilitybtn = 'none';
+          // this.statusSend = true;
 
         setTimeout(() => {
             this.IdDelete.id = id;

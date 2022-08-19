@@ -74,8 +74,6 @@ export class InterBaafComponent implements OnInit {
   }
 
   validate(id) {
-    this.visibleSend = 'none';
-    this.visibileCheck = 'block';
 
     this.sendJson.nom_rapport = this.TableauReport[id-1].name_Report;
     this.sendJson.numero = this.TableauReport[id-1].numero;

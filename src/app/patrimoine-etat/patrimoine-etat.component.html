@@ -73,11 +73,11 @@
            </select>
           </div>
           <div>
-            <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre réalisation</label>
+            <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre réalisation (en chiffre)</label>
             <input type="text" name="realisation" class="shadow appearance-none border w-full h-8 outline-none rounded px-2" required [(ngModel)]="addToJson.realisation">
           </div>
           <div>
-            <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre valeur cible</label>
+            <label for="realisation" class="text-gray-700 text-sm font-bold ">Votre valeur cible (en chiffre)</label>
             <input type="text" name="valeurCible" class="shadow appearance-none border w-full outline-none h-8 rounded px-2 " required [(ngModel)]="addToJson.valeurCible">
           </div>
           <!-- <div>
@@ -108,7 +108,7 @@
         <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold "> {{item.produit}}</td>
         <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold ">{{item.realisation}}</td>
         <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold "> {{item.valeurCible}}</td>
-        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold col-span-2 "> {{item.pourcentageRealisation}}</td>
+        <td class="border border-gray-300 md:flex justify-center items-center text-gray-700 text-sm font-bold col-span-2 "> {{item.pourcentageRealisation}} %</td>
         <td class="border border-gray-300 md:flex justify-evenly items-center text-gray-700 text-sm font-bold p-4">
           <i role="button" class="fa fa-pencil text-green-900 hover:scale-125" aria-hidden="true"
             (click)="editData(item.id,reportForm,opt1,opt2,opt3,opt4,opt5,opt6,opt7,opt8,opt9,opt10,opt11,opt12,opt13)" [routerLink]="['/patrimoine-etat',item.id]"
