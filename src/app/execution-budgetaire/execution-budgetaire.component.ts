@@ -151,10 +151,11 @@ monthValue(event:any){
   console.log(this.selectedMonth)
 }
   productValue(event: any) {
+    this.editJson.produit = event.target.value;
     this.selectedProduct = event.target.value;
     this.addToJson.produit = event.target.value;
-    this.editJson.produit = event.target.value;
-    console.log(this.selectedProduct)
+
+    console.log(this.editJson.produit);
 
   }
 

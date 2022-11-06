@@ -2,9 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { GetReportMongoService } from '../get-report-mongo-service/get-report-mongo.service';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { SearchReportService } from '../service-search-report/search-report.service';
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+interface search{
+  region: String,
+  mois: string,
+  indice: number,
+  reportName:String,
+}
+
+const EMPTY_MODEL: search={
+  region:'',
+  mois:'',
+  indice:0,
+  reportName:'',
+}
 
 @Component({
   selector: 'app-admin',
@@ -13,14 +28,21 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private getReportService: GetReportMongoService) { }
+  constructor(
+    private getReportService: GetReportMongoService,
+    private getSearchService:SearchReportService
+  ) { }
   tabReportMongo: any = [];
   tabRegion: any = [];
   tmp: any = [];
   newTab = [];
-  newTabRegion:any= [];
+  newTabRegion: any = [];
+  visibilitySuccess = false;
+  visibilityError = false;
+  tabSearch = [];
+  tmpSearch = [];
 
-
+  newSearch: search = { ...EMPTY_MODEL };
 
 
   ngOnInit(): void {
@@ -2569,7 +2591,137 @@ export class AdminComponent implements OnInit {
     pdf.open();
   }
 
+  regionValue(event) {
+    this.newSearch.region = event.target.value;
+  }
+  monthValue(event) {
+    this.newSearch.mois = event.target.value;
+
+  }
+  getSearch(yearValue) {
+    this.newSearch.indice = yearValue;
+    this.newSearch.reportName = "Réalisations du Bureau des Affaires Administratives et Financières";
+
+    this.getSearchService.result(this.newSearch).subscribe({
+      next: (res: any) => {
+        if (res.result) {
+          this.visibilitySuccess = true;
+           this.tabSearch = res.result;
+   const filtred = this.tmp.reduce((response, elem) => {
+      const index = response.findIndex((r) => r.region === elem.region)
+      if (index === -1) response.push({produit: [elem.produit],valeurCible:[elem.valeurCible],realisation:[elem.realisation],pourcentageRealisation:[elem.pourcentageRealisation], region:elem.region,nameReport:elem.nom_rapport,numero:elem.numero,cirfinValue:elem.cirfinValue,date:elem.date,mois:elem.mois,indice:elem.indice})
+      else {
+        response[index].produit.push(elem.produit);
+        response[index].valeurCible.push(elem.valeurCible);
+        response[index].realisation.push(elem.realisation);
+        response[index].pourcentageRealisation.push(elem.pourcentageRealisation);
+      };
+      return response;
+    }, [])
+
+    this.tmpSearch = filtred;
+    console.log(this.tmpSearch)
+        } else if (res.error) {
+          this.visibilityError = true;
+        }
+      },
+      error:(err: any) => {
+
+      }
+    })
+  }
+  generatePdf() {
+     const d = new Date(this.tmpSearch[0].date);
+    const pdfDefinition: any = {
+      pageSize: 'A4',
+      content: [
+        {
+          text: 'SECRETARIAT GENERAL',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION GENERALE DES FINANCES ',
+          style: 'header'
+        },
+        {
+          text: 'ET DES AFFAIRES GENERALES',
+          style: 'header'
+        },
+        {
+          text: 'DIRECTION DU BUDGET',
+          style: 'header'
+        },
+         ...this.tmpSearch.map(el => {
+            return {text:'SERVICE REGIONAL DU BUDGET '+el.region,style:'header'}
+        }),
+
+        ...this.tmpSearch.map(el => {
+          if (el.cirfinValue != '') {
+               return {text:'CIRFIN-'+ el.cirfinValue,style:'header'}
+          } else {
+            return ''
+             }
+        }),
+
+        ...this.tmpSearch.map(el => {
+           if (el.cirfinValue == '') {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region,margin: [5, 30, 10, 20] }
+           } else {
+               return { text:'Numéro :'+ el.numero+'-'+d.getFullYear()+'/MEF/SG/DGFAG/DB/SRB-'+el.region+'/'+'CIRFIN-'+el.cirfinValue,margin: [5, 30, 10, 20] }
+          }
+
+              }),
+        {
+           /*: [
+                ...this.newTab.map(el => {
+                return { text:el.nameReport,alignment: 'center', margin: [5, 40, 10, 30],style: 'title_rapport' }
+              }),
+
+          ]*/
+          text: 'Réalisations du Bureau des Affaires Administratives et Financières', alignment: 'center', margin: [5, 20, 10, 20],
+          style: 'title_rapport'
+        },
+        // Tableau
+        {
+          table: {
+            widths: [150, 130, 110, 110],
+            heights: 45,
+            margin: [0, 20, 20, 0],
+            alignment: 'left',
+            body: [
+              [{ text: 'PRODUIT', alignment: 'center' }, { text: 'REALISATION', alignment: 'center' }, { text: 'VALEUR CIBLE', alignment: 'center' }, { text: 'POURCENTAGE DE REALISATION', alignment: 'center' }],
+              ...this.tabSearch.map(el => {
+                return [{ text: el.produit, alignment: 'center' }, { text: el.realisation,alignment:'center'}, { text: el.valeurCible, alignment: 'center' }, { text: el.pourcentageRealisation, alignment: 'center' }]
+              }),
+
+            ]
+          },
+
+        },
+
+        ...this.tmpSearch.map(el => {
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+ el.mois+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
+        }),
 
 
+      ],
+      styles: {
+        header: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'center'
+        },
+        title_rapport: {
+          fontSize: 12,
+          bold: true,
+          decoration: 'underline'
+        },
+
+
+      }
+    }
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
+  }
 
 }

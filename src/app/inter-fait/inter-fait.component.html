@@ -18,7 +18,7 @@
          </table>
          <div>
           <button class="w-24 h-10 mt-4 float-right rounded animate-pulse bg-cyan-700 text-white" *ngFor="let item of Tmp" (click)="validate(item.id)" [style.display]="visibleSend">Valider</button>
-          <button class="w-24 h-10  mt-4 float-right rounded animate-pulse bg-green-700 text-white" [style.display]="visibileCheck"><i class="fa fa-check"></i></button>
+          <!-- <button class="w-24 h-10  mt-4 float-right rounded animate-pulse bg-green-700 text-white" [style.display]="visibileCheck"><i class="fa fa-check"></i></button> -->
         </div>
 
         <div class="mt-12 py-5 m-4 grid grid-rows-2 bg-red-400 justify-center items-center " *ngIf="Tmp.length==0">

@@ -19,7 +19,13 @@ i {
 i:active {
   transform: translateY(2px);
 }
-
+input{
+  outline: none;
+}
+textarea{
+  outline: none;
+  resize: none;
+}
 button:active {
   transform: translateY(2px);
 }

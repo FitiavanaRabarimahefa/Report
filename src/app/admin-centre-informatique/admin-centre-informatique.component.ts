@@ -2528,7 +2528,7 @@ export class AdminCentreInformatiqueComponent implements OnInit {
         },
 
         ...this.newTab.map(el => {
-            return { text:'A  ' + el.region  +', le ' + d.getDate()+ el.mois,alignment: 'right',margin: [0, 60, 0, 0] }
+            return { text:'A  ' + el.region  +', le ' + d.getDate()+'-'+ el.mois+'-'+d.getFullYear(),alignment: 'right',margin: [0, 60, 0, 0] }
         }),
 
 

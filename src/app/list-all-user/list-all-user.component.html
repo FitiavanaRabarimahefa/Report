@@ -1,0 +1,68 @@
+<div class="grid grid-rows-3 gap-2 p-8 w-full h-full ">
+  <div class="row-span-1 bg-white shadow-xl w-full py-4">
+      <div class="ml-3">
+          <label class="block text-[12.96px] " for="username">
+            IM à rechercher
+          </label>
+          <div class="flex justify-start">
+            <Form>
+                <input
+                  class="shadow appearance-none border rounded w-80 py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   type="number" min="111111" max="999999"  name="IM" required ngModel #searchValue>
+                <button type="button" class="w-auto py-2 p-2 ml-2 rounded-md text-white bg-cyan-600" (click)="search(searchValue.value)">Rechercher</button>
+            </Form>
+          </div>
+          <!--tab search Result-->
+          <table class="table-auto  w-full h-auto bg-white shadow-xl p-2 sm:grid grid-cols-1" *ngIf="tabSearchResult.length!=0">
+            <tr class=" md:grid grid-cols-6 md:h-10 ">
+              <td class="border border-x-white md:flex justify-center text-cyan-600 text-[12.96px] ">IM</td>
+              <td class="border border-x-white md:flex justify-center text-cyan-600 first-line:text-[12.96px] col-span-2 ">Adresse
+                Email</td>
+              <td class="border border-x-white md:flex justify-center text-cyan-600 text-[12.96px] ">Région de travail
+              </td>
+              <td class="border border-x-white md:flex justify-evenly items-center text-cyan-600 text-[12.96px] col-span-2">
+                Modification</td>
+            </tr>
+            <tr class=" md:grid grid-cols-6 md:h-10" *ngFor="let item of tabSearchResult ; let k=index"
+              [ngStyle]="{'background-color':k%2==0?'':'white'}">
+              <td class="border border-x-white md:flex justify-center text-[12px]">{{item.IM}}</td>
+              <td class="border border-x-white md:flex justify-center text-[12px] col-span-2 ">
+                {{item.Mail}}</td>
+              <td class="border border-x-white md:flex justify-center text-[12px] ">{{item.Region}}</td>
+              <td class="border border-x-white md:flex justify-evenly text-[12px] col-span-2 ">
+                <button class="w-auto h-8 pl-5 pr-5 text-white rounded-md m-1 bg-[#FF0017] animate-pulse"
+                  (click)="deleteUser(item.IM)">Supprimer</button>
+              </td>
+            </tr>
+
+          </table>
+          <!---->
+
+      </div>
+  </div>
+  <div class="row-span-2 pl-2 pr-2 bg-white shadow-xl h-full">
+    <table class="table-auto  w-full h-auto  p-2 sm:grid grid-cols-1">
+      <tr class=" md:grid grid-cols-6 md:h-10 ">
+        <td class="border border-x-white md:flex justify-center text-cyan-600 text-[12.96px] ">IM</td>
+        <td class="border border-x-white md:flex justify-center text-cyan-600 first-line:text-[12.96px] col-span-2 ">Adresse
+          Email</td>
+        <td class="border border-x-white md:flex justify-center text-cyan-600 text-[12.96px] ">Région de travail
+        </td>
+        <td class="border border-x-white md:flex justify-evenly items-center text-cyan-600 text-[12.96px] col-span-2">
+          Modification</td>
+      </tr>
+      <tr class=" md:grid grid-cols-6 md:h-12" *ngFor="let item of tabUser ; let k=index" [ngStyle]="{'background-color':k%2==0?'':'white'}">
+        <td class="border border-x-white md:flex justify-center text-[12px]">{{item.IM}}</td>
+        <td class="border border-x-white md:flex justify-center text-[12px] col-span-2 ">
+          {{item.Mail}}</td>
+        <td class="border border-x-white md:flex justify-center text-[12px] ">{{item.Region}}</td>
+        <td class="border border-x-white md:flex justify-evenly text-[12px] col-span-2">
+            <button  class="w-auto h-8 pl-5 pr-5 text-white rounded-md m-1 bg-[#FF0017] animate-pulse" (click)="deleteUser(item.IM)">Supprimer</button>
+        </td>
+      </tr>
+
+    </table>
+
+  </div>
+</div>
+

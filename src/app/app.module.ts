@@ -45,6 +45,8 @@ import { InterFormationComponent } from './inter-formation/inter-formation.compo
 import { AdminFormationComponent } from './admin-formation/admin-formation.component';
 import { InterLocalComponent } from './inter-local/inter-local.component';
 import { InterReportActivityComponent } from './inter-report-activity/inter-report-activity.component';
+import { ChartComponent } from './chart/chart.component';
+import { ListAllUserComponent } from './list-all-user/list-all-user.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,9 @@ import { InterReportActivityComponent } from './inter-report-activity/inter-repo
     InterFormationComponent,
     AdminFormationComponent,
     InterLocalComponent,
-    InterReportActivityComponent
+    InterReportActivityComponent,
+    ChartComponent,
+    ListAllUserComponent
   ],
   imports: [
     BrowserModule,

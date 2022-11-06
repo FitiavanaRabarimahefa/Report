@@ -35,6 +35,8 @@ import { InterCrgpComponent } from './inter-crgp/inter-crgp.component';
 import { InterFormationComponent } from './inter-formation/inter-formation.component';
 import { AdminFormationComponent } from './admin-formation/admin-formation.component';
 import { InterLocalComponent } from './inter-local/inter-local.component';
+import { ChartComponent } from './chart/chart.component';
+import { ListAllUserComponent } from './list-all-user/list-all-user.component';
 
 
 const routes: Routes = [
@@ -102,6 +104,10 @@ const routes: Routes = [
   {
       path: 'CRGP',
       component:CRGPComponent
+  },
+  {
+    path: 'stat',
+    component:ChartComponent
   },
   {
     path: 'admin-fait',
@@ -186,6 +192,10 @@ const routes: Routes = [
   {
     path: 'inter-local',
     component:InterLocalComponent
+  },
+  {
+    path: 'all-user',
+    component:ListAllUserComponent
   }
 
 ];
