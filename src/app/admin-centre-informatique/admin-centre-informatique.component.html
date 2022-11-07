@@ -90,7 +90,7 @@
             <i class="fa fa-map" aria-hidden="true"></i>
           </div>
           <select
-            class=" w-full h-[40px]  text-gray-700 text-sm font-bold  border-2 border-cyan-500  focus:outline-none focus:shadow-outline">
+            class=" w-full h-[40px]  text-gray-700 text-sm font-bold  border-2 border-cyan-500  focus:outline-none focus:shadow-outline" (change)="regionValue($event)">
             <option disabled selected value="">Nom de la région</option>
             <option value="Antsinanana">Antsinanana</option>
             <option value="Antsimo-Antsinanana">Antsimo-Antsinanana</option>
@@ -124,7 +124,7 @@
             <i class="fa fa-calendar" aria-hidden="true"></i>
           </div>
           <select
-            class=" w-full h-[40px]  text-gray-700 text-sm font-bold  border-2 border-cyan-500  focus:outline-none focus:shadow-outline">
+            class=" w-full h-[40px]  text-gray-700 text-sm font-bold  border-2 border-cyan-500  focus:outline-none focus:shadow-outline" (change)="monthValue($event)">
             <option disabled selected value="">Mois du rapport</option>
             <option value="Janvier">Janvier</option>
             <option value="Février">Février</option>
@@ -146,14 +146,32 @@
             class="w-[40px] h-[40px] bg-cyan-500 text-white rounded-tl-xl rounded-bl-xl flex justify-center  items-center text-xl">
             <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
           </div>
-          <input type="text" name="numero" placeholder="L'année du rapport"
+          <input type="text" name="numero" placeholder="L'année du rapport" required ngModel #year
             class="w-full h-[40px]  placeholder:text-gray-700 text-sm font-bold border-2 border-cyan-500 shadow appearance-none">
         </div>
 
         <button
-          class="w-auto h-10 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold ">Recherche</button>
+          class="w-auto h-10 float-right bg-green-600 border rounded-r-lg rounded-l-lg text-gray-700 text-sm font-bold " (click)="getSearch(year.value)">Recherche</button>
       </div>
 
+    </div>
+    <!---- resultat recherche-->
+    <div class="w-[90%] h-[80%] mx-auto  bg-gradient-to-tl shadow-md">
+      <h2 class="md:text-gray-700 text-sm font-bold flex justify-center items-center">Résultat de votre recherche</h2>
+      <div class="mt-4 mr-4 ml-4 grid grid-cols-3" *ngIf="visibilitySuccess==true">
+        <div class=" h-auto col-span-2 bg-[#a4ced2] flex items-center justify-center" *ngFor="let item of tmpSearch">
+          <h2 class="md:text-gray-700 text-sm font-bold flex justify-center items-center">{{item.nameReport}} ({{item.mois}}
+            {{item.indice}})</h2>
+        </div>
+        <div class=" h-auto col-span-1 bg-cyan-600 flex items-center justify-center">
+          <button class="bg-green-600 text-gray-700  text-sm font-bold m-4 p-4 rounded"
+            (click)="generatePdf()">Visualiser</button>
+        </div>
+      </div>
+      <!--recherche introuvable-->
+      <!-- <div class="mt-4 mr-4 ml-4 w-[95%] py-4 bg-red-500 " *ngIf="visibilityError==true">
+                          <h2 class="md:text-gray-700 text-sm font-bold flex justify-center items-center">Résultat de recherche introuvable</h2>
+                      </div> -->
     </div>
 
 

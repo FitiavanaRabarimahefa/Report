@@ -3,6 +3,8 @@ import { GetReportMongoService } from '../get-report-mongo-service/get-report-mo
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { SearchReportService } from '../service-search-report/search-report.service';
+import { NgToastService } from 'ng-angular-popup';
+
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -30,7 +32,8 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private getReportService: GetReportMongoService,
-    private getSearchService:SearchReportService
+    private getSearchService: SearchReportService,
+    private toast:NgToastService
   ) { }
   tabReportMongo: any = [];
   tabRegion: any = [];
@@ -2605,6 +2608,7 @@ export class AdminComponent implements OnInit {
     this.getSearchService.result(this.newSearch).subscribe({
       next: (res: any) => {
         if (res.result) {
+          this.toast.success({ detail: "Recherche de donnée", summary: "recherche avec succés"});
           this.visibilitySuccess = true;
            this.tabSearch = res.result;
    const filtred = this.tmp.reduce((response, elem) => {
@@ -2622,11 +2626,12 @@ export class AdminComponent implements OnInit {
     this.tmpSearch = filtred;
     console.log(this.tmpSearch)
         } else if (res.error) {
+          this.toast.warning({detail:"Recherche de donnée",summary:res.error})
           this.visibilityError = true;
         }
       },
       error:(err: any) => {
-
+        return err;
       }
     })
   }
